@@ -1,0 +1,121 @@
+ ~/Downloads/bootcamp  ps 76159                                                                                                                        ✔  21:14:36 
+  PID   TT  STAT      TIME COMMAND
+76159   ??  SN     0:00.04 bash logger.sh
+
+ ~/Downloads/bootcamp  tail -f output.log                                                                                                              ✔  21:14:46 
+Thu Apr 16 21:14:56 IST 2026
+Thu Apr 16 21:14:56 IST 2026
+Thu Apr 16 21:14:58 IST 2026
+Thu Apr 16 21:14:58 IST 2026
+Thu Apr 16 21:15:00 IST 2026
+Thu Apr 16 21:15:00 IST 2026
+Thu Apr 16 21:15:02 IST 2026
+Thu Apr 16 21:15:02 IST 2026
+Thu Apr 16 21:15:04 IST 2026
+Thu Apr 16 21:15:04 IST 2026
+Thu Apr 16 21:15:06 IST 2026
+Thu Apr 16 21:15:06 IST 2026
+Thu Apr 16 21:15:08 IST 2026
+Thu Apr 16 21:15:08 IST 2026
+Thu Apr 16 21:15:10 IST 2026
+Thu Apr 16 21:15:10 IST 2026
+Thu Apr 16 21:15:12 IST 2026
+Thu Apr 16 21:15:12 IST 2026
+Thu Apr 16 21:15:14 IST 2026
+Thu Apr 16 21:15:14 IST 2026
+Thu Apr 16 21:15:16 IST 2026
+Thu Apr 16 21:15:17 IST 2026
+Thu Apr 16 21:15:18 IST 2026
+Thu Apr 16 21:15:19 IST 2026
+Thu Apr 16 21:15:20 IST 2026
+Thu Apr 16 21:15:21 IST 2026
+qThu Apr 16 21:15:22 IST 2026
+Thu Apr 16 21:15:23 IST 2026
+Thu Apr 16 21:15:24 IST 2026
+Thu Apr 16 21:15:25 IST 2026
+Thu Apr 16 21:15:26 IST 2026
+
+Thu Apr 16 21:15:27 IST 2026
+Thu Apr 16 21:15:28 IST 2026
+Thu Apr 16 21:15:29 IST 2026
+Thu Apr 16 21:15:30 IST 2026
+Thu Apr 16 21:15:31 IST 2026
+^C
+
+ ~/Downloads/bootcamp  tail -f output.log                                                                                                    INT ✘  26s  21:15:31 
+Thu Apr 16 21:15:26 IST 2026
+Thu Apr 16 21:15:27 IST 2026
+Thu Apr 16 21:15:28 IST 2026
+Thu Apr 16 21:15:29 IST 2026
+Thu Apr 16 21:15:30 IST 2026
+Thu Apr 16 21:15:31 IST 2026
+Thu Apr 16 21:15:32 IST 2026
+Thu Apr 16 21:15:33 IST 2026
+Thu Apr 16 21:15:34 IST 2026
+Thu Apr 16 21:15:35 IST 2026
+Thu Apr 16 21:15:36 IST 2026
+Thu Apr 16 21:15:37 IST 2026
+^C
+
+ ~/Downloads/bootcamp  du /home                                                                                                                    INT ✘  21:15:38 
+0       /home
+
+ ~/Downloads/bootcamp  kill -15 76159                                                                                                                  ✔  21:15:46 
+
+ ~/Downloads/bootcamp  kill -9 76159                                                                                                                   ✔  21:17:05 
+kill: kill 76159 failed: no such process
+
+ ~/Downloads/bootcamp  kill -9 76159                                                                                                                 1 ✘  21:17:30 
+kill: kill 76159 failed: no such process
+
+ ~/Downloads/bootcamp  tail -f output.log                                                                                                            1 ✘  21:17:51 
+Thu Apr 16 21:17:47 IST 2026
+Thu Apr 16 21:17:50 IST 2026
+Thu Apr 16 21:17:52 IST 2026
+Thu Apr 16 21:17:54 IST 2026
+Thu Apr 16 21:17:56 IST 2026
+Thu Apr 16 21:17:58 IST 2026
+Thu Apr 16 21:18:00 IST 2026
+Thu Apr 16 21:18:02 IST 2026
+Thu Apr 16 21:18:04 IST 2026
+Thu Apr 16 21:18:06 IST 2026
+Thu Apr 16 21:18:08 IST 2026
+Thu Apr 16 21:18:10 IST 2026
+^C
+
+ ~/Downloads/bootcamp  la -la                                                                                                                 INT ✘  4s  21:18:12 
+total 64
+drwxr-xr-x   8 mindstix-dev  staff   256B 16 Apr 21:05 .
+drwx------@ 13 mindstix-dev  staff   416B 16 Apr 19:29 ..
+-rw-r--r--@  1 mindstix-dev  staff   1.8K 16 Apr 21:14 16-april-2026.txt
+-rwx--x--x   1 mindstix-dev  staff    34B 10 Apr 00:01 hello.sh
+-rw-r--r--@  1 mindstix-dev  staff    61B 16 Apr 21:03 logger.sh
+-rw-------@  1 mindstix-dev  staff     0B 16 Apr 21:05 nohup.out
+-rw-r--r--@  1 mindstix-dev  staff    14K 16 Apr 21:19 output.log
+-rw-------@  1 mindstix-dev  staff    26B  9 Apr 23:57 secret.txt
+
+ ~/Downloads/bootcamp  pa au                                                                                                                           ✔  21:19:05 
+zsh: command not found: pa
+
+ ~/Downloads/bootcamp  ps au                                                                                                                       127 ✘  21:19:16 
+USER           PID  %CPU %MEM      VSZ    RSS   TT  STAT STARTED      TIME COMMAND
+mindstix-dev 76199   0.6  0.1 442225584   5632 s011  Ss    9:14PM   0:00.75 /bin/zsh -il
+mindstix-dev 76268   0.0  0.0 417096576   1200 s011  S     9:14PM   0:00.02 /opt/homebrew/Cellar/powerlevel10k/1.20.0/share/powerlevel10k/gitstatus/usrbin/gitstatusd-d
+mindstix-dev 76267   0.0  0.0 435314544   1104 s011  S     9:14PM   0:00.01 /bin/zsh -il
+mindstix-dev 76265   0.0  0.0 435314560    928 s011  S     9:14PM   0:00.00 /bin/zsh -il
+mindstix-dev 76211   0.0  0.0 435310416    944 s011  S     9:14PM   0:00.00 /bin/zsh -il
+mindstix-dev 69039   0.0  0.0 417418112    640 s003  S     3:49PM   0:00.75 /opt/homebrew/Cellar/powerlevel10k/1.20.0/share/powerlevel10k/gitstatus/usrbin/gitstatusd-d
+mindstix-dev 69037   0.0  0.0 435306272    688 s003  S     3:49PM   0:00.53 /bin/zsh -il
+mindstix-dev 69036   0.0  0.0 435306288    320 s003  S     3:49PM   0:00.00 /bin/zsh -il
+mindstix-dev 69004   0.0  0.0 435306304    320 s003  S     3:49PM   0:00.00 /bin/zsh -il
+root         76916   0.0  0.0 441883936   1632 s011  R+    9:19PM   0:00.01 ps au
+mindstix-dev 68992   0.0  0.0 442221760   1216 s003  Ss+   3:49PM   0:02.79 /bin/zsh -il
+
+ ~/Dow/bootcamp                                                                                            ✔  21
+ ~/Downloads/bootcamp  pgrep bash logger.sh                                                                                                            ✔  21:19:19 
+75234
+
+ ~/Downloads/bootcamp  kill -15 75234                                                                                                                  ✔  21:31:11 
+
+ ~/Downloads/bootcamp  script 16-april-2026-2.txt                                                                                                      ✔  21:31:24 
+Script started, output file is 16-april-2026-2.txt

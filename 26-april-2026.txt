@@ -1,0 +1,374 @@
+~/Downloads/bootcamp  cat sample.log | awk '{print $3}' | sort                                                                       ✔  22:35:00 
+DEBUG
+DEBUG
+ERROR
+ERROR
+ERROR
+INFO
+INFO
+INFO
+WARN
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $3}' | sort | uniq                                                                ✔  22:40:00 
+DEBUG
+ERROR
+INFO
+WARN
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2,$3}' | sort                                                                    ✔  22:40:17 
+10:01:23 INFO
+10:01:45 DEBUG
+10:02:10 ERROR
+10:02:15 INFO
+10:02:20 ERROR
+10:02:25 WARN
+10:03:00 INFO
+10:03:05 DEBUG
+10:05:00 ERROR
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2,$3}' | sort | grep -i "error"                                                  ✔  22:42:08 
+10:02:10 ERROR
+10:02:20 ERROR
+10:05:00 ERROR
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2,$3}' | sort | grep -i "error" | sed -n '1p'                                    ✔  22:42:43 
+10:02:10 ERROR
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2,$3}' | sort | grep -i "error" | sed -n '2p'                                    ✔  22:44:15 
+10:02:20 ERROR
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2,$3}' | sort | grep -i "error" | sed -n '3p'                                    ✔  22:44:25 
+10:05:00 ERROR
+
+ ~/Downloads/bootcamp  cat sample.log | sort | grep -i "error" | sed -n '3p'                                                          ✔  22:44:36 
+2024-01-10 10:05:00 ERROR Disk usage at 94%
+
+ ~/Downloads/bootcamp  cat sample.log | sort | grep -i "error" | sed -n '1p'                                                          ✔  22:44:57 
+2024-01-10 10:02:10 ERROR Database connection failed: timeout
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2}'                                                                              ✔  22:45:04 
+10:01:23
+10:01:45
+10:02:10
+10:02:15
+10:02:20
+10:02:25
+10:03:00
+10:03:05
+10:05:00
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2}' | awk -F':' {$2}                                                             ✔  22:46:49 
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2}' | awk -F':' '{print $2}'                                                     ✔  22:49:01 
+01
+01
+02
+02
+02
+02
+03
+03
+05
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2}' | awk -F':' '{print $2}' | uniq -c                                           ✔  22:49:42 
+   2 01
+   4 02
+   2 03
+   1 05
+
+ ~/Downloads/bootcamp  cat sample.log | grep -i 'error'                                                                               ✔  22:50:06 
+2024-01-10 10:02:10 ERROR Database connection failed: timeout
+2024-01-10 10:02:20 ERROR Database connection failed: refused
+2024-01-10 10:05:00 ERROR Disk usage at 94%
+
+ ~/Downloads/bootcamp  cat sample.log | grep -i 'error' | awk 'print {$4, $5, $6, $7}'                                                ✔  22:50:43 
+awk: syntax error at source line 1
+ context is
+         >>> print <<<  {$4, $5, $6, $7}
+awk: bailing out at source line 1
+
+ ~/Downloads/bootcamp  cat sample.log | grep -i 'error' | cut -d' ' -f3-                                                        0|0|2 ✘  22:51:57 
+ERROR Database connection failed: timeout
+ERROR Database connection failed: refused
+ERROR Disk usage at 94%
+
+ ~/Downloads/bootcamp  cat sample.log | grep -i 'error' | cut -d' ' -f4-                                                              ✔  22:53:46 
+Database connection failed: timeout
+Database connection failed: refused
+Disk usage at 94%
+
+ ~/Downloads/bootcamp  cat sample.log | grep -i 'error' | cut -d' ' -f4- | sort                                                       ✔  22:53:51 
+Database connection failed: refused
+Database connection failed: timeout
+Disk usage at 94%
+
+ ~/Downloads/bootcamp  script                                                                                                         ✔  22:53:59 
+Script started, output file is typescript
+ ~/Downloads/bootcamp  script 24-april-2026-2.txt                                                                                     ✔  22:55:50 
+Script started, output file is 24-april-2026-2.txt
+ ~/Downloads/bootcamp  echo $PATH                                                                                                     ✔  22:56:18 
+/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/pkg/env/active/bin:/opt/pmk/env/global/bin
+
+ ~/Downloads/bootcamp  cat /.zshrc                                                                                                    ✔  22:57:36 
+cat: /.zshrc: No such file or directory
+
+ ~/Downloads/bootcamp  vi /.zshrc                                                                                                   1 ✘  09:45:01 
+
+ ~/Downloads/bootcamp  echo $SHELL                                                                                               ✔  5s  09:45:23 
+/bin/zsh
+
+ ~/Downloads/bootcamp  vi ~/.zshrc                                                                                                    ✔  09:46:40 
+
+ ~/Downloads/bootcamp  alias ll='ls -lrth'                                                                                   ✔  1m 32s  09:48:31 
+
+ ~/Downloads/bootcamp  ll sample.log                                                                                                  ✔  09:49:13 
+-rw-r--r--@ 1 mindstix-dev  staff   463B Apr 16 21:38 sample.log
+
+ ~/Downloads/bootcamp  touch script.sh                                                                                                ✔  09:49:31 
+
+ ~/Downloads/bootcamp  vi script.sh                                                                                                   ✔  09:50:50 
+
+ ~/Downloads/bootcamp  vi $PATH                                                                                                 ✔  22s  09:52:14 
+
+ ~/Downloads/bootcamp  vi $PATH                    
+
+ ~/Downloads/bootcamp                                                                                                            ✔  9s  20:25:15 
+
+ ~/Downloads/bootcamp  export PATH="$HOME/bootcamp/script.sh:$PATH" >> ~/.zshrc                                                       ✔  20:25:16 
+
+ ~/Downloads/bootcamp  cd ..                                                                                                          ✔  20:28:27 
+
+ ~/Downloads  bash script                                                                                                             ✔  20:28:31 
+/usr/bin/script: /usr/bin/script: cannot execute binary file
+
+ ~/Downloads  script                                                                                                              126 ✘  20:28:53 
+Script started, output file is typescript
+ ~/Downloads  script >> ./bootcamp/script-output.txt                                                                                  ✔  20:28:59 
+
+ ~/Downloads  exit                                                                                                          INT ✘  29s  20:30:12 
+
+Script done, output file is typescript
+
+ ~/Downloads  cd bootcamp                                                                                                INT ✘  1m 41s  20:30:40 
+
+ ~/Downloads/bootcamp  crontab -l                                                                                                     ✔  20:30:51 
+crontab: no crontab for mindstix-dev
+
+ ~/Downloads/bootcamp  export PATH="$HOME/bootcamp/scripts:$PATH"                                                                   1 ✘  22:23:55 
+
+ ~/Downloads/bootcamp  mkdir scripts                                                                                                  ✔  22:24:43 
+
+ ~/Downloads/bootcamp  cd scripts                                                                                                     ✔  22:24:52 
+
+ ~/Downloads/bootcamp/scripts  script                                                                                                 ✔  22:24:56 
+Script started, output file is typescript
+ ~/Downloads/bootcamp/scripts  exit                                                                                                   ✔  22:25:17 
+
+Script done, output file is typescript
+
+ ~/Downloads/bootcamp/scripts  script.sh                                                                                        ✔  13s  22:25:30 
+zsh: command not found: script.sh
+
+ ~/Downloads/bootcamp/scripts  echo 'export PATH="$HOME/Downloads/bootcamp/scripts:$PATH"' >> ~/.zshrc                            127 ✘  22:25:39 
+
+ ~/Downloads/bootcamp/scripts  script.sh                                                                                              ✔  22:27:45 
+zsh: command not found: script.sh
+
+ ~/Downloads/bootcamp/scripts  script.sh                                                                                          127 ✘  22:27:55 
+zsh: command not found: script.sh
+
+ ~/Downloads/bootcamp/scripts  nano ~/.zshrc                                                                                      127 ✘  22:28:40 
+
+ ~/Downloads/bootcamp/scripts  source ~/.zshrc                                                                               ✔  2m 18s  22:31:23 
+
+ ~/Downloads/bootcamp/scripts  scrip.sh                                                                                               ✔  22:31:36 
+zsh: command not found: scrip.sh
+
+ ~/Downloads/bootcamp/scripts  script.sh                                                                                          127 ✘  22:31:44 
+zsh: permission denied: script.sh
+
+ ~/Downloads/bootcamp/scripts  chmod +x script.sh                                                                                 126 ✘  22:31:48 
+
+ ~/Downloads/bootcamp/scripts  bash script.sh                                                                                         ✔  22:32:02 
+Hi there, this is Sharan
+
+ ~/Downloads/bootcamp/scripts  cd ..                                                                                                  ✔  22:32:11 
+
+ ~/Downloads/bootcamp  cd ..                                                                                                          ✔  22:32:14 
+
+ ~/Downloads  bash script.sh                                                                                                          ✔  22:32:16 
+Hi there, this is Sharan
+
+ ~/Downloads  crontab -l                                                                                                              ✔  22:32:25 
+crontab: no crontab for mindstix-dev
+
+ ~/Downloads  crontab -e                                                                                                            1 ✘  22:32:35 
+crontab: no crontab for mindstix-dev - using an empty one
+crontab: no changes made to crontab
+
+ ~/Downloads  cd bootcamp/                                                                                                       ✔  9s  22:32:48 
+
+ ~/Downloads/bootcamp  cron -e */1 * * * * echo "I am alive - $(date +%T)" >> heartbeat.log                                           ✔  22:32:56 
+zsh: no matches found: */1
+
+ ~/Downloads/bootcamp  cron -e                                                                                                      1 ✘  22:40:33 
+[1]    97527 killed     cron -e
+
+ ~/Downloads/bootcamp  cron -e                                                                                                   KILL ✘  22:40:59 
+[1]    97537 killed     cron -e
+
+ ~/Downloads/bootcamp  crontab -e                                                                                                KILL ✘  22:41:09 
+crontab: no crontab for mindstix-dev - using an empty one
+crontab: no changes made to crontab
+
+ ~/Downloads/bootcamp  crontab -e */1 * * * * echo "I am alive - $(date +%T)" >> heartbeat.log                                   ✔  6s  22:41:24 
+zsh: no matches found: */1
+
+ ~/Downloads/bootcamp  crontab -e                                                                                                   1 ✘  22:41:35 
+crontab: no crontab for mindstix-dev - using an empty one
+crontab: installing new crontab
+crontab: tmp/tmp.97604: Operation not permitted
+crontab: edits left in /tmp/crontab.bFPte0HgUZ
+
+ ~/Downloads/bootcamp  cd ..                                                                                                    ✔  16s  22:42:01 
+
+ ~/Downloads  cd ..                                                                                                                   ✔  22:47:01 
+
+ ~  cd ,                                                                                                                              ✔  22:47:02 
+cd: no such file or directory: ,
+
+ ~  cd ..                                                                                                                           1 ✘  22:47:04 
+
+ ∅ /Users  cd ..                                                                                                                      ✔  22:47:05 
+
+ ∅ /  ls -la                                                                                                                          ✔  22:47:07 
+total 11
+drwxr-xr-x  22 root  wheel   704 Apr  6 13:40 .
+drwxr-xr-x  22 root  wheel   704 Apr  6 13:40 ..
+lrwxr-xr-x   1 root  admin    36 Apr  6 13:40 .VolumeIcon.icns -> System/Volumes/Data/.VolumeIcon.icns
+----------   1 root  admin     0 Apr  6 13:40 .file
+drwxr-xr-x   2 root  wheel    64 Apr  6 13:40 .nofollow
+drwxr-xr-x   2 root  wheel    64 Apr  6 13:40 .resolve
+drwxr-xr-x   2 root  wheel    64 Apr  6 13:40 .vol
+drwxrwxr-x  10 root  admin   320 Apr 24 12:02 Applications
+drwxr-xr-x  68 root  wheel  2176 Apr 21 17:26 Library
+drwxr-xr-x@ 10 root  wheel   320 Apr  6 13:40 System
+drwxr-xr-x   7 root  admin   224 Apr 19 02:08 Users
+drwxr-xr-x   3 root  wheel    96 Apr 22 17:04 Volumes
+drwxr-xr-x@ 39 root  wheel  1248 Apr  6 13:40 bin
+drwxr-xr-x   2 root  wheel    64 Aug 16  2025 cores
+dr-xr-xr-x   4 root  wheel  5257 Apr 19 02:07 dev
+lrwxr-xr-x@  1 root  wheel    11 Apr  6 13:40 etc -> private/etc
+lrwxr-xr-x   1 root  wheel    25 Apr 19 02:09 home -> /System/Volumes/Data/home
+drwxr-xr-x   3 root  wheel    96 Apr  7 12:33 opt
+drwxr-xr-x   6 root  wheel   192 Apr 19 02:09 private
+drwxr-xr-x@ 76 root  wheel  2432 Apr  6 13:40 sbin
+lrwxr-xr-x@  1 root  wheel    11 Apr  6 13:40 tmp -> private/tmp
+drwxr-xr-x@ 11 root  wheel   352 Apr  6 13:40 usr
+lrwxr-xr-x@  1 root  wheel    11 Apr  6 13:40 var -> private/var
+
+ ∅ /  cd etc/systemd                                                                                                                  ✔  22:47:10 
+cd: no such file or directory: etc/systemd
+
+ ∅ /  cd etc                                                                                                                        1 ✘  22:47:26 
+
+ ∅ /etc  ls -la                                                                                                                       ✔  22:47:30 
+total 832
+drwxr-xr-x  77 root  wheel    2464 Apr 22 11:36 .
+drwxr-xr-x   6 root  wheel     192 Apr 19 02:09 ..
+-rw-r--r--   1 root  wheel     515 Apr  6 13:40 afpovertcp.cfg
+lrwxr-xr-x   1 root  wheel      15 Apr  6 13:40 aliases -> postfix/aliases
+-rw-r-----   1 root  wheel   16384 Apr  6 13:40 aliases.db
+drwxr-xr-x   9 root  wheel     288 Apr  6 13:40 apache2
+drwxr-xr-x  16 root  wheel     512 Apr  6 13:40 asl
+-rw-r--r--   1 root  wheel    1051 Apr  6 13:40 asl.conf
+-rw-r--r--   1 root  wheel     149 Apr  6 13:40 auto_home
+-rw-r--r--   1 root  wheel     195 Apr  6 13:40 auto_master
+-rw-r--r--   1 root  wheel    1932 Apr  6 13:40 autofs.conf
+-r--r--r--   1 root  wheel     265 Apr  6 13:40 bashrc
+-rw-r--r--   1 root  wheel    9293 Apr  6 13:40 bashrc_Apple_Terminal
+-rw-r--r--   1 root  wheel      82 Apr  6 13:40 com.apple.screensharing.agent.launchd
+-rw-r--r--   1 root  wheel     189 Apr  6 13:40 csh.cshrc
+-rw-r--r--   1 root  wheel     121 Apr  6 13:40 csh.login
+-rw-r--r--   1 root  wheel      39 Apr  6 13:40 csh.logout
+drwxr-xr-x  13 root  _lp       416 Apr 19 02:08 cups
+-rw-r--r--   1 root  wheel       0 Apr  6 13:40 find.codes
+-rw-r--r--   1 root  wheel     119 Apr  6 13:40 ftpusers
+-rw-r--r--   1 root  wheel    5678 Apr  6 13:40 gettytab
+-rw-r--r--   1 root  wheel    3960 Apr  6 13:40 group
+-rw-r--r--   1 root  wheel     252 Apr 22 11:36 hosts
+-rw-r--r--   1 root  wheel       0 Apr  6 13:40 hosts.equiv
+-r--r--r--   1 root  wheel    1299 Apr  6 13:40 irbrc
+-rw-r--r--   1 root  wheel       0 Apr  6 13:40 kern_loader.conf
+-rw-------   1 root  wheel    1946 Apr 19 02:09 krb5.keytab
+lrwxr-xr-x   1 root  wheel      38 Apr 19 02:09 localtime -> /var/db/timezone/zoneinfo/Asia/Kolkata
+-rw-r--r--   1 root  wheel     832 Apr  6 13:40 locate.rc
+-rw-r--r--   1 root  wheel     106 Apr  6 13:40 mail.rc
+-r--r--r--   1 root  wheel    2451 Apr  6 13:40 man.conf
+-rw-r--r--   1 root  wheel      36 Apr  6 13:40 manpaths
+drwxr-xr-x   2 root  wheel      64 Apr  6 13:40 manpaths.d
+-rw-------   1 root  wheel   10004 Apr  6 13:40 master.passwd
+-rw-r--r--   1 root  wheel      53 Apr  6 13:40 networks
+-rw-r--r--   1 root  wheel    1318 Apr  6 13:40 newsyslog.conf
+drwxr-xr-x   7 root  wheel     224 Apr  6 13:40 newsyslog.d
+-rw-r--r--   1 root  wheel      43 Apr  6 13:40 nfs.conf
+-rw-r--r--   1 root  wheel     557 Apr  6 13:40 notify.conf
+-rw-r--r--@  1 root  wheel      27 Apr  1 16:06 ntp.conf
+-rw-r--r--   1 root  wheel      23 Apr  6 13:40 ntp_opendirectory.conf
+drwxr-xr-x   8 root  wheel     256 Apr  6 13:40 openldap
+drwxr-xr-x  27 root  wheel     864 Apr  6 13:40 pam.d
+-rw-r--r--   1 root  wheel    9344 Apr  6 13:40 passwd
+-rw-r--r--   1 root  wheel      75 Apr  6 13:40 paths
+drwxr-xr-x   5 root  wheel     160 Apr 19 02:08 paths.d
+drwxr-xr-x   3 root  wheel      96 Apr  6 13:40 pf.anchors
+-rw-r--r--   1 root  wheel    1027 Apr  6 13:40 pf.conf
+-rw-r--r--   1 root  wheel   28311 Apr  6 13:40 pf.os
+drwxr-xr-x  23 root  wheel     736 Apr  6 13:40 postfix
+drwxr-xr-x   2 root  wheel      64 Apr  6 13:40 ppp
+-r--r--r--   1 root  wheel     189 Apr  6 13:40 profile
+-rw-r--r--   1 root  wheel    6393 Apr  6 13:40 protocols
+drwxr-xr-x   4 root  wheel     128 Apr  6 13:40 racoon
+-rw-r--r--   1 root  wheel    1560 Apr  6 13:40 rc.common
+-rw-r--r--   1 root  wheel    5264 Apr  6 13:40 rc.netboot
+lrwxr-xr-x   1 root  wheel      22 Apr  6 13:40 resolv.conf -> ../var/run/resolv.conf
+-rw-r--r--   1 root  wheel       0 Apr  6 13:40 rmtab
+-rw-r--r--   1 root  wheel    1735 Apr  6 13:40 rpc
+-rw-r--r--   1 root  wheel     891 Apr  6 13:40 rtadvd.conf
+drwxr-xr-x   7 root  wheel     224 Apr  6 13:40 security
+-rw-r--r--   1 root  wheel  678260 Apr  6 13:40 services
+-rw-r--r--   1 root  wheel     189 Apr  6 13:40 shells
+drwxr-xr-x   4 root  wheel     128 Apr  6 13:40 snmp
+drwxr-xr-x   7 root  wheel     224 Apr 19 02:08 ssh
+drwxr-xr-x   6 root  wheel     192 Apr  6 13:40 ssl
+-r--r-----   1 root  wheel     257 Apr  6 13:40 sudo_lecture
+-r--r-----   1 root  wheel    1709 Apr  6 13:40 sudoers
+drwxr-xr-x   2 root  wheel      64 Apr  6 13:40 sudoers.d
+-rw-r--r--   1 root  wheel      96 Apr  6 13:40 syslog.conf
+-rw-r--r--   1 root  wheel    1316 Apr  6 13:40 ttys
+drwxr-xr-x   5 root  wheel     160 Apr  6 13:40 uucp
+drwxr-xr-x   6 root  wheel     192 Apr  6 13:40 wfs
+-rw-r--r--   1 root  wheel       0 Apr  6 13:40 xtab
+-r--r--r--   1 root  wheel     304 Apr  6 13:40 zprofile
+-r--r--r--   1 root  wheel    3191 Apr  6 13:40 zshrc
+-rw-r--r--   1 root  wheel    9335 Apr  6 13:40 zshrc_Apple_Terminal
+
+ ∅ /etc  cd ..                                                                                                                        ✔  22:47:32 
+
+ ∅ /  cd ..                                                                                                                           ✔  22:47:52 
+
+ ∅ /  ~                                                                                                                               ✔  22:47:55 
+
+ ~  cd Downloads                                                                                                                      ✔  22:47:58 
+
+ ~/Downloads  cd bootcamp                                                                                                             ✔  22:48:01 
+
+ ~/Downloads/bootcamp  systemctl status nginx                                                                                         ✔  22:48:04 
+zsh: command not found: systemctl
+
+ ~/Downloads/bootcamp  systemctl start nginx                                                                                      127 ✘  22:53:07 
+zsh: command not found: systemctl
+
+ ~/Downloads/bootcamp  systemctl stop nginx                                                                                       127 ✘  22:53:16 
+zsh: command not found: systemctl
+
+ ~/Downloads/bootcamp                                                                                                             127 ✘  22:53:30 

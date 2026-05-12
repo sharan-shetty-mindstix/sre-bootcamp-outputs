@@ -1,0 +1,776 @@
+Script started on Mon Apr 20 00:22:28 2026
+[0m[49m[39m[27m[24m[K
+[1A7[0m[49m[39m[0m[44m[38;5;254m [1m[38;5;254m[44m[38;5;255m~[0m[38;5;255m[44m[44m[38;5;254m/Downloads/[1m[38;5;254m[44m[38;5;255mbootcamp[0m[38;5;255m[44m[44m[38;5;254m[0m[38;5;254m[44m[44m[38;5;254m [0m[38;5;254m[44m[49m[34m[0m[34m[49m[39m [0m[49m[39m                                                                                                                                  [0m[49m[30m[0m[30m[40m[32m [0m[32m[40m[40m[32m✔[0m[32m[40m[40m[32m [0m[32m[40m[40m[32m[37m[0m[37m[40m[47m[30m 00:22:28[0m[30m[47m[47m[30m[0m[30m[47m[47m[30m [0m[30m[47m[49m[39m[0m[49m[39m[27m[24m[24C[?2004h[?25l8[0m[49m[39m[27m[24m[J]2;mindstix-dev@Sharans-MacBook-Air:~/Downloads/bootcamp]1;..oads/bootcamp]7;file://Sharans-MacBook-Air.local/Users/mindstix-dev/Downloads/bootcamp\[0m[38;5;254m[49m[39m[27m[24m[1m[7m%[27m[1m[0m                                                                                                                                                                         [0m[49m[39m[27m[24m[K[0m[27m[24m[J[0m[49m[39m[0m[44m[38;5;254m [1m[38;5;254m[44m[38;5;255m~[0m[38;5;255m[44m[44m[38;5;254m/Downloads/[1m[38;5;254m[44m[38;5;255mbootcamp[0m[38;5;255m[44m[44m[38;5;254m[0m[38;5;254m[44m[44m[38;5;254m [0m[38;5;254m[44m[49m[34m[0m[34m[49m[39m [0m[49m[39m[K[130C[0m[49m[30m[0m[30m[40m[32m [0m[32m[40m[40m[32m✔[0m[32m[40m[40m[32m [0m[32m[40m[40m[32m[37m[0m[37m[40m[47m[30m 00:22:28[0m[30m[47m[47m[30m[0m[30m[47m[47m[30m [0m[30m[47m[49m[39m[145D[?1h=[?25h[?2004hscript 17-april-2026.txt[24Dsed 's/ERROR/SHARAN/' sample.log[13D' sample.log [?1l>[?2004l
+]2;sed 's/ERROR/SHARAN' sample.log]1;sedsed: 1: "s/ERROR/SHARAN
+": unescaped newline inside substitute pattern
+[1m[7m%[27m[1m[0m                                                                                                                                                                          ]2;mindstix-dev@Sharans-MacBook-Air:~/Downloads/bootcamp]1;..oads/bootcamp]7;file://Sharans-MacBook-Air.local/Users/mindstix-dev/Downloads/bootcamp\[0m[49m[39m[K
+[0m[27m[24m[J[0m[49m[39m[0m[44m[38;5;254m [1m[38;5;254m[44m[38;5;255m~[0m[38;5;255m[44m[44m[38;5;254m/Downloads/[1m[38;5;254m[44m[38;5;255mbootcamp[0m[38;5;255m[44m[44m[38;5;254m[0m[38;5;254m[44m[44m[38;5;254m [0m[38;5;254m[44m[49m[34m[0m[34m[49m[39m [0m[49m[39m[K[128C[0m[49m[31m[0m[31m[41m[33m 1[0m[33m[41m[41m[33m ✘[0m[33m[41m[41m[33m [0m[33m[41m[41m[33m[37m[0m[37m[41m[47m[30m 00:22:34[0m[30m[47m[47m[30m[0m[30m[47m[47m[30m [0m[30m[47m[49m[39m[145D[?1h=[?2004hsed 's/ERROR/SHARAN' sample.log[31Dscript 17-april-2026.txt       [24Dsed 's/ERROR/SHARAN/' sample.log[?1l>[?2004l
+]2;sed 's/ERROR/SHARAN/' sample.log]1;sed2024-01-10 10:01:23 INFO  Server started on port 8080
+2024-01-10 10:01:45 DEBUG Health check passed
+2024-01-10 10:02:10 SHARAN Database connection failed: timeout
+2024-01-10 10:02:15 INFO  Retrying connection...
+2024-01-10 10:02:20 SHARAN Database connection failed: refused
+2024-01-10 10:02:25 WARN  Max retries reached
+2024-01-10 10:03:00 INFO  Failover to secondary DB
+2024-01-10 10:03:05 DEBUG Query executed in 23ms
+2024-01-10 10:05:00 SHARAN Disk usage at 94%
+[1m[7m%[27m[1m[0m                                                                                                                                                                          ]2;mindstix-dev@Sharans-MacBook-Air:~/Downloads/bootcamp]1;..oads/bootcamp]7;file://Sharans-MacBook-Air.local/Users/mindstix-dev/Downloads/bootcamp\[0m[49m[39m[K
+[0m[27m[24m[J[0m[49m[39m[0m[44m[38;5;254m [1m[38;5;254m[44m[38;5;255m~[0m[38;5;255m[44m[44m[38;5;254m/Downloads/[1m[38;5;254m[44m[38;5;255mbootcamp[0m[38;5;255m[44m[44m[38;5;254m[0m[38;5;254m[44m[44m[38;5;254m [0m[38;5;254m[44m[49m[34m[0m[34m[49m[39m [0m[49m[39m[K[130C[0m[49m[30m[0m[30m[40m[32m [0m[32m[40m[40m[32m✔[0m[32m[40m[40m[32m [0m[32m[40m[40m[32m[37m[0m[37m[40m[47m[30m 00:22:36[0m[30m[47m[47m[30m[0m[30m[47m[47m[30m [0m[30m[47m[49m[39m[145D[?1h=[?2004hsed 's/ERROR/SHARAN/' sample.log/' sample.log [14D/' sample.log [14D/' sample.log [14D/' sample.log [14D/' sample.log [14D/' sample.log [14D[/' sample.log[13D]/' sample.log[13DC]/' sample.log[14DR]/' sample.log[14DI]/' sample.log[14DT]/' sample.log[14DI]/' sample.log[14DC]/' sample.log[14DA]/' sample.log[14DL]/' sample.log[14D[?1l>[?2004l
+]2;sed 's/ERROR/[CRITICAL]/' sample.log]1;sed2024-01-10 10:01:23 INFO  Server started on port 8080
+2024-01-10 10:01:45 DEBUG Health check passed
+2024-01-10 10:02:10 [CRITICAL] Database connection failed: timeout
+2024-01-10 10:02:15 INFO  Retrying connection...
+2024-01-10 10:02:20 [CRITICAL] Database connection failed: refused
+2024-01-10 10:02:25 WARN  Max retries reached
+2024-01-10 10:03:00 INFO  Failover to secondary DB
+2024-01-10 10:03:05 DEBUG Query executed in 23ms
+2024-01-10 10:05:00 [CRITICAL] Disk usage at 94%
+[1m[7m%[27m[1m[0m                                                                                                                                                                          ]2;mindstix-dev@Sharans-MacBook-Air:~/Downloads/bootcamp]1;..oads/bootcamp]7;file://Sharans-MacBook-Air.local/Users/mindstix-dev/Downloads/bootcamp\[0m[49m[39m[K
+[0m[27m[24m[J[0m[49m[39m[0m[44m[38;5;254m [1m[38;5;254m[44m[38;5;255m~[0m[38;5;255m[44m[44m[38;5;254m/Downloads/[1m[38;5;254m[44m[38;5;255mbootcamp[0m[38;5;255m[44m[44m[38;5;254m[0m[38;5;254m[44m[44m[38;5;254m [0m[38;5;254m[44m[49m[34m[0m[34m[49m[39m [0m[49m[39m[K[130C[0m[49m[30m[0m[30m[40m[32m [0m[32m[40m[40m[32m✔[0m[32m[40m[40m[32m [0m[32m[40m[40m[32m[37m[0m[37m[40m[47m[30m 00:22:47[0m[30m[47m[47m[30m[0m[30m[47m[47m[30m [0m[30m[47m[49m[39m[145D[?1h=[?2004hsed 's/ERROR/[CRITICAL]/' sample.log[1C/' sample.log [14D/' sample.log [14D/' sample.log [14D/' sample.log [14D/' sample.log [14D/' sample.log [14D/' sample.log [14D/' sample.log [14D/' sample.log [14D/' sample.log [14D//' sample.log [15D//' sample.log [15D//' sample.log [15D//' sample.log [15D//' sample.log [15DD//' sample.log[14DE//' sample.log[14DB//' sample.log[14DU//' sample.log[14DG//' sample.log[14D[?1l>[?2004l
+]2;sed 's/DEBUG//' sample.log]1;sed2024-01-10 10:01:23 INFO  Server started on port 8080
+2024-01-10 10:01:45  Health check passed
+2024-01-10 10:02:10 ERROR Database connection failed: timeout
+2024-01-10 10:02:15 INFO  Retrying connection...
+2024-01-10 10:02:20 ERROR Database connection failed: refused
+2024-01-10 10:02:25 WARN  Max retries reached
+2024-01-10 10:03:00 INFO  Failover to secondary DB
+2024-01-10 10:03:05  Query executed in 23ms
+2024-01-10 10:05:00 ERROR Disk usage at 94%
+[1m[7m%[27m[1m[0m                                                                                                                                                                          ]2;mindstix-dev@Sharans-MacBook-Air:~/Downloads/bootcamp]1;..oads/bootcamp]7;file://Sharans-MacBook-Air.local/Users/mindstix-dev/Downloads/bootcamp\[0m[49m[39m[K
+[0m[27m[24m[J[0m[49m[39m[0m[44m[38;5;254m [1m[38;5;254m[44m[38;5;255m~[0m[38;5;255m[44m[44m[38;5;254m/Downloads/[1m[38;5;254m[44m[38;5;255mbootcamp[0m[38;5;255m[44m[44m[38;5;254m[0m[38;5;254m[44m[44m[38;5;254m [0m[38;5;254m[44m[49m[34m[0m[34m[49m[39m [0m[49m[39m[K[130C[0m[49m[30m[0m[30m[40m[32m [0m[32m[40m[40m[32m✔[0m[32m[40m[40m[32m [0m[32m[40m[40m[32m[37m[0m[37m[40m[47m[30m 00:23:35[0m[30m[47m[47m[30m[0m[30m[47m[47m[30m [0m[30m[47m[49m[39m[145D[?1h=[?2004hsed 's/DEBUG//' sample.log//' sample.log [15D//' sample.log [15D//' sample.log [15D//' sample.log [15D//' sample.log [15D[7m2[7m0[7m2[7m4[7m-[7m0[7m1[7m-[7m1[7m0[27m//' sample.log[14D[10D[27m2[27m0[27m2[27m4[27m-[27m0[27m1[27m-[27m1[27m0[1C[7mR[7mE[7mD[7mA[7mC[7mT[7mE[7mD[27m/' sample.log[13D[8D[27mR[27mE[27mD[27mA[27mC[27mT[27mE[27mD[?1l>[?2004l
+]2;sed 's/2024-01-10/REDACTED/' sample.log]1;sedREDACTED 10:01:23 INFO  Server started on port 8080
+REDACTED 10:01:45 DEBUG Health check passed
+REDACTED 10:02:10 ERROR Database connection failed: timeout
+REDACTED 10:02:15 INFO  Retrying connection...
+REDACTED 10:02:20 ERROR Database connection failed: refused
+REDACTED 10:02:25 WARN  Max retries reached
+REDACTED 10:03:00 INFO  Failover to secondary DB
+REDACTED 10:03:05 DEBUG Query executed in 23ms
+REDACTED 10:05:00 ERROR Disk usage at 94%
+[1m[7m%[27m[1m[0m                                                                                                                                                                          ]2;mindstix-dev@Sharans-MacBook-Air:~/Downloads/bootcamp]1;..oads/bootcamp]7;file://Sharans-MacBook-Air.local/Users/mindstix-dev/Downloads/bootcamp\[0m[49m[39m[K
+[0m[27m[24m[J[0m[49m[39m[0m[44m[38;5;254m [1m[38;5;254m[44m[38;5;255m~[0m[38;5;255m[44m[44m[38;5;254m/Downloads/[1m[38;5;254m[44m[38;5;255mbootcamp[0m[38;5;255m[44m[44m[38;5;254m[0m[38;5;254m[44m[44m[38;5;254m [0m[38;5;254m[44m[49m[34m[0m[34m[49m[39m [0m[49m[39m[K[130C[0m[49m[30m[0m[30m[40m[32m [0m[32m[40m[40m[32m✔[0m[32m[40m[40m[32m [0m[32m[40m[40m[32m[37m[0m[37m[40m[47m[30m 00:24:36[0m[30m[47m[47m[30m[0m[30m[47m[47m[30m [0m[30m[47m[49m[39m[145D[?1h=[?2004hsed 's/2024-01-10/REDACTED/' sample.log[32DDEBUG//' sample.log             [13D[19DERROR/[CRITICAL]/' sample.log[23DSHARAN/' sample.log    [13D' sample.log [12D/' sample.log[19D[CRITICAL]/' sample.log>  > [7msample_sed.log[27m[14D[27ms[27ma[27mm[27mp[27ml[27me[27m_[27ms[27me[27md[27m.[27ml[27mo[27mg[?1l>[?2004l
+]2;sed 's/ERROR/[CRITICAL]/' sample.log > sample_sed.log]1;sed[1m[7m%[27m[1m[0m                                                                                                                                                                          ]2;mindstix-dev@Sharans-MacBook-Air:~/Downloads/bootcamp]1;..oads/bootcamp]7;file://Sharans-MacBook-Air.local/Users/mindstix-dev/Downloads/bootcamp\[0m[49m[39m[K
+[0m[27m[24m[J[0m[49m[39m[0m[44m[38;5;254m [1m[38;5;254m[44m[38;5;255m~[0m[38;5;255m[44m[44m[38;5;254m/Downloads/[1m[38;5;254m[44m[38;5;255mbootcamp[0m[38;5;255m[44m[44m[38;5;254m[0m[38;5;254m[44m[44m[38;5;254m [0m[38;5;254m[44m[49m[34m[0m[34m[49m[39m [0m[49m[39m[K[130C[0m[49m[30m[0m[30m[40m[32m [0m[32m[40m[40m[32m✔[0m[32m[40m[40m[32m [0m[32m[40m[40m[32m[37m[0m[37m[40m[47m[30m 00:26:52[0m[30m[47m[47m[30m[0m[30m[47m[47m[30m [0m[30m[47m[49m[39m[145D[?1h=[?2004hsed 's/ERROR/[CRITICAL]/' sample.log > sample_sed.log[1C[1C 's/ERROR/[CRITICAL]/' sample.log > sample_sed.log[50D- 's/ERROR/[CRITICAL]/' sample.log > sample_sed.log[50Dr 's/ERROR/[CRITICAL]/' sample.log > sample_sed.log[50D 's/ERROR/[CRITICAL]/' sample.log > sample_sed.log [51Dv 's/ERROR/[CRITICAL]/' sample.log > sample_sed.log[50D[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C[1C                         [1C  sample.log[1m [0m[0m ' sample.log [13D' sample.log [13D' sample.log [13D' sample.log [13D' sample.log [13D' sample.log [13D' sample.log [13D' sample.log [13D' sample.log [13D' sample.log [13D' sample.log [13D' sample.log [13D' sample.log [13D' sample.log [13D' sample.log [13D' sample.log [13D' sample.log [13D' sample.log [13D' sample.log [13D3' sample.log[12D,' sample.log[12D7' sample.log[12Dd' sample.log[12D[?1l>[?2004l
+]2;sed -v '3,7d' sample.log]1;sedsed: illegal option -- v
+usage: sed script [-EHalnru] [-i extension] [file ...]
+	sed [-EHalnu] [-i extension] [-e script] ... [-f script_file] ... [file ...]
+[1m[7m%[27m[1m[0m                                                                                                                                                                          ]2;mindstix-dev@Sharans-MacBook-Air:~/Downloads/bootcamp]1;..oads/bootcamp]7;file://Sharans-MacBook-Air.local/Users/mindstix-dev/Downloads/bootcamp\[0m[49m[39m[K
+[0m[27m[24m[J[0m[49m[39m[0m[44m[38;5;254m [1m[38;5;254m[44m[38;5;255m~[0m[38;5;255m[44m[44m[38;5;254m/Downloads/[1m[38;5;254m[44m[38;5;255mbootcamp[0m[38;5;255m[44m[44m[38;5;254m[0m[38;5;254m[44m[44m[38;5;254m [0m[38;5;254m[44m[49m[34m[0m[34m[49m[39m [0m[49m[39m[K[128C[0m[49m[31m[0m[31m[41m[33m 1[0m[33m[41m[41m[33m ✘[0m[33m[41m[41m[33m [0m[33m[41m[41m[33m[37m[0m[37m[41m[47m[30m 00:28:02[0m[30m[47m[47m[30m[0m[30m[47m[47m[30m [0m[30m[47m[49m[39m[145D[?1h=[?2004hmman sed[?1l>[?2004l
+]2;man sed]1;man[?1049h[36;1H[?1h=SED(1)                                                                   General Commands Manual                                                                  SED(1)[m
+[m
+[1mNAME[0m[m
+     [1msed[0m – stream editor[m
+[m
+[1mSYNOPSIS[0m[m
+     [1msed[0m [[1m-EHalnru[0m] [4mcommand[24m [[1m-I[0m [4mextension[24m] [[1m-i[0m [4mextension[24m] [[4mfile[24m [4m...[24m][m
+     [1msed[0m [[1m-EHalnru[0m] [[1m-e[0m [4mcommand[24m] [[1m-f[0m [4mcommand_file[24m] [[1m-I[0m [4mextension[24m] [[1m-i[0m [4mextension[24m] [[4mfile[24m [4m...[24m][m
+[m
+[1mDESCRIPTION[0m[m
+     The [1msed[0m utility reads the specified files, or the standard input if no files are specified, modifying the input as specified by a list of commands.  The input is[m
+     then written to the standard output.[m
+[m
+     A single command may be specified as the first argument to [1msed[0m.  Multiple commands may be specified by using the [1m-e[0m or [1m-f[0m options.  All commands are applied to the[m
+     input in the order they are specified regardless of their origin.[m
+[m
+     The following options are available:[m
+[m
+     [1m-E[0m      Interpret regular expressions as extended (modern) regular expressions rather than basic regular expressions (BRE's).  The re_format(7) manual page fully[m
+             describes both formats.[m
+[m
+     [1m-a[0m      The files listed as parameters for the “w” functions are created (or truncated) before any processing begins, by default.  The [1m-a[0m option causes [1msed[0m to[m
+             delay opening each file until a command containing the related “w” function is applied to a line of input.[m
+[m
+     [1m-e[0m [4mcommand[24m[m
+             Append the editing commands specified by the [4mcommand[24m argument to the list of commands.[m
+[m
+     [1m-f[0m [4mcommand_file[24m[m
+             Append the editing commands found in the file [4mcommand_file[24m to the list of commands.  The editing commands should each be listed on a separate line.  The[m
+             commands are read from the standard input if [4mcommand_file[24m is “-”.[m
+[m
+     [1m-H[0m      Enable enhanced features in the regular expression syntax.  Note that this option is independent of the [1m-E[0m option.  See re_format(7) for details.[m
+[m
+     [1m-I[0m [4mextension[24m[m
+             Edit files in-place, saving backups with the specified [4mextension[24m.  If a zero-length [4mextension[24m is given, no backup will be saved.  It is not recommended to[m
+:[K[K [KESCESC[KOO[KBB[K             give a zero-length [4mextension[24m when in-place editing files, as you risk corruption or partial content in situations where disk space is exhausted, etc.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K             Note that in-place editing with [1m-I[0m still takes place in a single continuous line address space covering all files, although each file preserves its[m
+:[K[K [KESCESC[KOO[KBB[K             individuality instead of forming one output stream.  The line counter is never reset between files, address ranges can span file boundaries, and the “$”[m
+:[K[K [KESCESC[KOO[KBB[K             address matches only the last line of the last file.  (See [4mSed[24m [4mAddresses[24m.) That can lead to unexpected results in many cases of in-place editing, where[m
+:[K[K [KESCESC[KOO[KBB[K             using [1m-i[0m is desired.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [1m-i[0m [4mextension[24m[m
+:[K[K [KESCESC[KOO[KBB[K             Edit files in-place similarly to [1m-I[0m, but treat each file independently from other files.  In particular, line numbers in each file start at 1, the “$”[m
+:[K[K [KESCESC[KOO[KBB[K             address matches the last line of the current file, and address ranges are limited to the current file.  (See [4mSed[24m [4mAddresses[24m.) The net result is as though[m
+:[K[K [KESCESC[KOO[KBB[K             each file were edited by a separate [1msed[0m instance.[m
+:[K[K [KESCESC[KOO[KAA[K[HM     The [1msed[0m utility reads the specified files, or the standard input if no files are specified, modifying the input as specified by a list of commands.  The input is[m
+[36;1H[K:[K[K [KESCESC[KOO[KBB[K             each file were edited by a separate [1msed[0m instance.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [1m-l[0m      Make output line buffered.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [1m-n[0m      By default, each line of input is echoed to the standard output after all of the commands have been applied to it.  The [1m-n[0m option suppresses this behavior.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [1m-r[0m      Same as [1m-E[0m for compatibility with GNU sed.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [1m-u[0m      Make output unbuffered.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     The form of a [1msed[0m command is as follows:[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K           [address[,address]]function[arguments][m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     Whitespace may be inserted before the first address and the function portions of the command.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     Normally, [1msed[0m cyclically copies a line of input, not including its terminating newline character, into a [4mpattern[24m [4mspace[24m, (unless there is something left after a “D”[m
+:[K[K [KESCESC[KOO[KBB[K     function), applies all of the commands with addresses that select that pattern space, copies the pattern space to the standard output, appending a newline, and[m
+:[K[K [KESCESC[KOO[KBB[K     deletes the pattern space.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     Some of the functions use a [4mhold[24m [4mspace[24m to save all or part of the pattern space for subsequent retrieval.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[1mSed[0m [1mAddresses[0m[m
+:[K[K [KESCESC[KOO[KBB[K     An address is not required, but if specified must have one of the following formats:[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K           [1m•[0m   a number that counts input lines cumulatively across input files (or in each file independently if a [1m-i[0m option is in effect);[m
+:[K[K [KESCESC[KOO[KAA[K[HM             give a zero-length [4mextension[24m when in-place editing files, as you risk corruption or partial content in situations where disk space is exhausted, etc.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM             Edit files in-place, saving backups with the specified [4mextension[24m.  If a zero-length [4mextension[24m is given, no backup will be saved.  It is not recommended to[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM     [1m-I[0m [4mextension[24m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM     [1m-H[0m      Enable enhanced features in the regular expression syntax.  Note that this option is independent of the [1m-E[0m option.  See re_format(7) for details.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM             commands are read from the standard input if [4mcommand_file[24m is “-”.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM             Append the editing commands found in the file [4mcommand_file[24m to the list of commands.  The editing commands should each be listed on a separate line.  The[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM     [1m-f[0m [4mcommand_file[24m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM             Append the editing commands specified by the [4mcommand[24m argument to the list of commands.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM     [1m-e[0m [4mcommand[24m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM             delay opening each file until a command containing the related “w” function is applied to a line of input.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM     [1m-a[0m      The files listed as parameters for the “w” functions are created (or truncated) before any processing begins, by default.  The [1m-a[0m option causes [1msed[0m to[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM             describes both formats.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM     [1m-E[0m      Interpret regular expressions as extended (modern) regular expressions rather than basic regular expressions (BRE's).  The re_format(7) manual page fully[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM     The following options are available:[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM     input in the order they are specified regardless of their origin.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM     A single command may be specified as the first argument to [1msed[0m.  Multiple commands may be specified by using the [1m-e[0m or [1m-f[0m options.  All commands are applied to the[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM     then written to the standard output.[m
+[36;1H[K:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [1m-l[0m      Make output line buffered.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [1m-n[0m      By default, each line of input is echoed to the standard output after all of the commands have been applied to it.  The [1m-n[0m option suppresses this behavior.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [1m-r[0m      Same as [1m-E[0m for compatibility with GNU sed.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [1m-u[0m      Make output unbuffered.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     The form of a [1msed[0m command is as follows:[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K           [address[,address]]function[arguments][m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     Whitespace may be inserted before the first address and the function portions of the command.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     Normally, [1msed[0m cyclically copies a line of input, not including its terminating newline character, into a [4mpattern[24m [4mspace[24m, (unless there is something left after a “D”[m
+:[K[K [KESCESC[KOO[KBB[K     function), applies all of the commands with addresses that select that pattern space, copies the pattern space to the standard output, appending a newline, and[m
+:[K[K [KESCESC[KOO[KBB[K     deletes the pattern space.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     Some of the functions use a [4mhold[24m [4mspace[24m to save all or part of the pattern space for subsequent retrieval.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[1mSed[0m [1mAddresses[0m[m
+:[K[K [KESCESC[KOO[KBB[K     An address is not required, but if specified must have one of the following formats:[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K           [1m•[0m   a number that counts input lines cumulatively across input files (or in each file independently if a [1m-i[0m option is in effect);[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K           [1m•[0m   a dollar (“$”) character that addresses the last line of input (or the last line of the current file if a [1m-i[0m option was specified);[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K           [1m•[0m   a context address that consists of a regular expression preceded and followed by a delimiter.  The closing delimiter can also optionally be followed by[m
+:[K[K [KESCESC[KOO[KBB[K               the “I” character, to indicate that the regular expression is to be matched in a case-insensitive way.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     A command line with no addresses selects every pattern space.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     A command line with one address selects all of the pattern spaces that match the address.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     A command line with two addresses selects an inclusive range.  This range starts with the first pattern space that matches the first address.  The end of the range[m
+:[K[K [KESCESC[KOO[KBB[K     is the next following pattern space that matches the second address.  If the second address is a number less than or equal to the line number first selected, only[m
+:[K[K [KESCESC[KOO[KBB[K     that line is selected.  The number in the second address may be prefixed with a (“+”) to specify the number of lines to match after the first pattern.  In the case[m
+:[K[K [KESCESC[KOO[KBB[K     when the second address is a context address, [1msed[0m does not re-match the second address against the pattern space that matched the first address.  Starting at the[m
+:[K[K [KESCESC[KOO[KBB[K     first line following the selected range, [1msed[0m starts looking again for the first address.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     Editing commands can be applied to non-selected pattern spaces by use of the exclamation character (“!”) function.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[1mSed[0m [1mRegular[0m [1mExpressions[0m[m
+:[K[K [KESCESC[KOO[KBB[K     The regular expressions used in [1msed[0m, by default, are basic regular expressions (BREs, see re_format(7) for more information), but extended (modern) regular[m
+:[K[K [KESCESC[KOO[KBB[K     expressions can be used instead if the [1m-E[0m flag is given.  In addition, [1msed[0m has the following two additions to regular expressions:[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     1.   In a context address, any character other than a backslash (“\”) or newline character may be used to delimit the regular expression.  The opening delimiter[m
+:[K[K [KESCESC[KOO[KBB[K          needs to be preceded by a backslash unless it is a slash.  For example, the context address \xabcx is equivalent to /abc/.  Also, putting a backslash[m
+:[K[K [KESCESC[KOO[KBB[K          character before the delimiting character within the regular expression causes the character to be treated literally.  For example, in the context address[m
+:[K[K [KESCESC[KOO[KBB[K          \xabc\xdefx, the RE delimiter is an “x” and the second “x” stands for itself, so that the regular expression is “abcxdef”.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     2.   The escape sequence \n matches a newline character embedded in the pattern space.  You cannot, however, use a literal newline character in an address or in[m
+:[K[K [KESCESC[KOO[KBB[K          the substitute command.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     One special feature of [1msed[0m regular expressions is that they can default to the last regular expression used.  If a regular expression is empty, i.e., just the[m
+:[K[K [KESCESC[KOO[KBB[K     delimiter characters are specified, the last regular expression encountered is used instead.  The last regular expression is defined as the last regular expression[m
+:[K[K [KESCESC[KOO[KBB[K     used as part of an address or substitute command, and at run-time, not compile-time.  For example, the command “/abc/s//XXX/” will substitute “XXX” for the pattern[m
+:[K[K [KESCESC[KOO[KBB[K     “abc”.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[1mSed[0m [1mFunctions[0m[m
+:[K[K [KESCESC[KOO[KBB[K     In the following list of commands, the maximum number of permissible addresses for each command is indicated by [0addr], [1addr], or [2addr], representing zero,[m
+:[K[K [KESCESC[KOO[KBB[K     one, or two addresses.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     The argument [4mtext[24m consists of one or more lines.  To embed a newline in the text, precede it with a backslash.  Other backslashes in text are deleted and the[m
+:[K[K [KESCESC[KOO[KBB[K     following character taken literally.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     The “r” and “w” functions take an optional file parameter, which should be separated from the function letter by white space.  Each file given as an argument to[m
+:[K[K [KESCESC[KOO[KBB[K     [1msed[0m is created (or its contents truncated) before any input processing begins.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     The “b”, “r”, “s”, “t”, “w”, “y”, “!”, and “:” functions all accept additional arguments.  The following synopses indicate which arguments have to be separated[m
+:[K[K [KESCESC[KOO[KBB[K     from the function letters by white space characters.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     Two of the functions take a function-list.  This is a list of [1msed[0m functions separated by newlines, as follows:[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K           { function[m
+:[K[K [KESCESC[KOO[KBB[K             function[m
+:[K[K [KESCESC[KOO[KBB[K             ...[m
+:[K[K [KESCESC[KOO[KBB[K             function[m
+:[K[K [KESCESC[KOO[KBB[K           }[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     The “{” can be preceded by white space and can be followed by white space.  The function can be preceded by white space.  The terminating “}” must be preceded by a[m
+:[K[K [KESCESC[KOO[KBB[K     newline, and may also be preceded by white space.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr] function-list[m
+:[K[K [KESCESC[KOO[KBB[K             Execute function-list only when the pattern space is selected.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [1addr]a\[m
+:[K[K [KESCESC[KOO[KBB[K     text    Write [4mtext[24m to standard output immediately before each attempt to read a line of input, whether by executing the “N” function or by beginning a new cycle.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]b[label][m
+:[K[K [KESCESC[KOO[KBB[K             Branch to the “:” function with the specified label.  If the label is not specified, branch to the end of the script.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]c\[m
+:[K[K [KESCESC[KOO[KBB[K     text    Delete the pattern space and start the next cycle.  With 0 or 1 address or at the end of a 2-address range, [4mtext[24m is written to the standard output.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]d[m
+:[K[K [KESCESC[KOO[KBB[K             Delete the pattern space and start the next cycle.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]D[m
+:[K[K [KESCESC[KOO[KBB[K             Delete the initial segment of the pattern space through the first newline character and start the next cycle.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]g[m
+:[K[K [KESCESC[KOO[KBB[K             Replace the contents of the pattern space with the contents of the hold space.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]G[m
+:[K[K [KESCESC[KOO[KBB[K             Append a newline character followed by the contents of the hold space to the pattern space.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]h[m
+:[K[K [KESCESC[KOO[KBB[K             Replace the contents of the hold space with the contents of the pattern space.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]H[m
+:[K[K [KESCESC[KOO[KBB[K             Append a newline character followed by the contents of the pattern space to the hold space.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [1addr]i\[m
+:[K[K [KESCESC[KOO[KBB[K     text    Write [4mtext[24m to the standard output.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]l[m
+:[K[K [KESCESC[KOO[KBB[K             (The letter ell.)  Write the pattern space to the standard output in a visually unambiguous form.  This form is as follows:[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K                   backslash          \\[m
+:[K[K [KESCESC[KOO[KBB[K                   alert              \a[m
+:[K[K [KESCESC[KOO[KBB[K                   form-feed          \f[m
+:[K[K [KESCESC[KOO[KBB[K                   carriage-return    \r[m
+:[K[K [KESCESC[KOO[KBB[K                   tab                \t[m
+:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KBB[K                   tab                \t[m
+:[K[K [KESCESC[KOO[KBB[K                   vertical tab       \v[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K             Nonprintable characters are written as three-digit octal numbers (with a preceding backslash) for each byte in the character (most significant byte first).[m
+:[K[K [KESCESC[KOO[KBB[K             Long lines are folded, with the point of folding indicated by displaying a backslash followed by a newline.  The end of each line is marked with a “$”.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]n[m
+:[K[K [KESCESC[KOO[KBB[K             Write the pattern space to the standard output if the default output has not been suppressed, and replace the pattern space with the next line of input.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]N[m
+:[K[K [KESCESC[KOO[KBB[K             Append the next line of input to the pattern space, using an embedded newline character to separate the appended material from the original contents.  Note[m
+:[K[K [KESCESC[KOO[KBB[K             that the current line number changes.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]p[m
+:[K[K [KESCESC[KOO[KBB[K             Write the pattern space to standard output.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]P[m
+:[K[K [KESCESC[KOO[KBB[K             Write the pattern space, up to the first newline character to the standard output.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [1addr]q[m
+:[K[K [KESCESC[KOO[KBB[K             Branch to the end of the script and quit without starting a new cycle.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [1addr]r file[m
+:[K[K [KESCESC[KOO[KBB[K             Copy the contents of [4mfile[24m to the standard output immediately before the next attempt to read a line of input.  If [4mfile[24m cannot be read for any reason, it is[m
+:[K[K [KESCESC[KOO[KBB[K             silently ignored and no error condition is set.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]s/regular expression/replacement/flags[m
+:[K[K [KESCESC[KOO[KBB[K             Substitute the replacement string for the first instance of the regular expression in the pattern space.  Any character other than backslash or newline can[m
+:[K[K [KESCESC[KOO[KBB[K             be used instead of a slash to delimit the RE and the replacement.  Within the RE and the replacement, the RE delimiter itself can be used as a literal[m
+:[K[K [KESCESC[KOO[KBB[K             character if it is preceded by a backslash.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K             An ampersand (“&”) appearing in the replacement is replaced by the string matching the RE.  The special meaning of “&” in this context can be suppressed by[m
+:[K[K [KESCESC[KOO[KBB[K             preceding it by a backslash.  The string “\#”, where “#” is a digit, is replaced by the text matched by the corresponding backreference expression (see[m
+:[K[K [KESCESC[KOO[KBB[K             re_format(7)).[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K             A line can be split by substituting a newline character into it.  To specify a newline character in the replacement string, precede it with a backslash.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K             The value of [4mflags[24m in the substitute function is zero or more of the following:[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K                   [4mN[24m       Make the substitution only for the [4mN[24m'th occurrence of the regular expression in the pattern space.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K                   g       Make the substitution for all non-overlapping matches of the regular expression, not just the first one.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K                   p       Write the pattern space to standard output if a replacement was made.  If the replacement string is identical to that which it replaces, it[m
+:[K[K [KESCESC[KOO[KBB[K                           is still considered to have been a replacement.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K                   w [4mfile[24m  Append the pattern space to [4mfile[24m if a replacement was made.  If the replacement string is identical to that which it replaces, it is still[m
+:[K[K [KESCESC[KOO[KBB[K                           considered to have been a replacement.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K                   i or I  Match the regular expression in a case-insensitive way.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]t [label][m
+:[K[K [KESCESC[KOO[KBB[K             Branch to the “:” function bearing the label if any substitutions have been made since the most recent reading of an input line or execution of a “t”[m
+:[K[K [KESCESC[KOO[KBB[K             function.  If no label is specified, branch to the end of the script.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]w [4mfile[24m[m
+:[K[K [KESCESC[KOO[KBB[K             Append the pattern space to the [4mfile[24m.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]x[m
+:[K[K [KESCESC[KOO[KBB[K             Swap the contents of the pattern and hold spaces.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]y/string1/string2/[m
+:[K[K [KESCESC[KOO[KBB[K             Replace all occurrences of characters in [4mstring1[24m in the pattern space with the corresponding characters from [4mstring2[24m.  Any character other than a backslash[m
+:[K[K [KESCESC[KOO[KBB[K             or newline can be used instead of a slash to delimit the strings.  Within [4mstring1[24m and [4mstring2[24m, a backslash followed by any character other than a newline[m
+:[K[K [KESCESC[KOO[KBB[K             is that literal character, and a backslash followed by an ``n'' is replaced by a newline character.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]!function[m
+:[K[K [KESCESC[KOO[KBB[K     [2addr]!function-list[m
+:[K[K [KESCESC[KOO[KBB[K             Apply the function or function-list only to the lines that are [4mnot[24m selected by the address(es).[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [0addr]:label[m
+:[K[K [KESCESC[KOO[KBB[K             This function does nothing; it bears a label to which the “b” and “t” commands may branch.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [1addr]=[m
+:[K[K [KESCESC[KOO[KBB[K             Write the line number to the standard output followed by a newline character.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [0addr][m
+:[K[K [KESCESC[KOO[KBB[K             Empty lines are ignored.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     [0addr]#[m
+:[K[K [KESCESC[KOO[KBB[K             The “#” and the remainder of the line are ignored (treated as a comment), with the single exception that if the first two characters in the file are “#n”,[m
+:[K[K [KESCESC[KOO[KBB[K             the default output is suppressed.  This is the same as specifying the [1m-n[0m option on the command line.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[1mENVIRONMENT[0m[m
+:[K[K [KESCESC[KOO[KBB[K     The COLUMNS, LANG, LC_ALL, LC_CTYPE and LC_COLLATE environment variables affect the execution of [1msed[0m as described in environ(7).[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[1mEXIT[0m [1mSTATUS[0m[m
+:[K[K [KESCESC[KOO[KBB[K     The [1msed[0m utility exits 0 on success, and >0 if an error occurs.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[1mEXAMPLES[0m[m
+:[K[K [KESCESC[KOO[KBB[K     Replace ‘bar’ with ‘baz’ when piped from another command:[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K           echo "An alternate word, like bar, is sometimes used in examples." | sed 's/bar/baz/'[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     Using backlashes can sometimes be hard to read and follow:[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K           echo "/home/example" | sed  's/\/home\/example/\/usr\/local\/example/'[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     Using a different separator can be handy when working with paths:[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K           echo "/home/example" | sed 's#/home/example#/usr/local/example#'[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     Replace all occurrences of ‘foo’ with ‘bar’ in the file [4mtest.txt[24m, without creating a backup of the file:[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K           sed -i '' -e 's/foo/bar/g' test.txt[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[1mSEE[0m [1mALSO[0m[m
+:[K[K [KESCESC[KOO[KBB[K     awk(1), ed(1), grep(1), regex(3), re_format(7)[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     Lee E. McMahon, [4mSED[24m [4m—[24m [4mA[24m [4mNon-interactive[24m [4mText[24m [4mEditor[24m, [4mAT&T[24m [4mBell[24m [4mLaboratories[24m, Computing Science Technical Report, 77, January 1979.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[1mSTANDARDS[0m[m
+:[K[K [KESCESC[KOO[KBB[K     The [1msed[0m utility is expected to be a superset of the IEEE Std 1003.2 (“POSIX.2”) specification.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K     The [1m-E[0m, [1m-I[0m, [1m-a[0m and [1m-i[0m options, the special meaning of [1m-f[0m [1m-[0m, the prefixing “+” in the second member of an address range, as well as the “I” flag to the address[m
+:[K[K [KESCESC[KOO[KBB[K     regular expression and substitution command are non-standard FreeBSD extensions and may not be available on other operating systems.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[1mHISTORY[0m[m
+:[K[K [KESCESC[KOO[KBB[K     A [1msed[0m command, written by L. E. McMahon, appeared in Version 7 AT&T UNIX.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[1mAUTHORS[0m[m
+:[K[K [KESCESC[KOO[KBB[K     Diomidis D. Spinellis <[4mdds@FreeBSD.org[24m>[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[1mBUGS[0m[m
+:[K[K [KESCESC[KOO[KBB[K     Multibyte characters containing a byte with value 0x5C (ASCII ‘\’) may be incorrectly treated as line continuation characters in arguments to the “a”, “c” and “i”[m
+:[K[K [KESCESC[KOO[KBB[K     commands.  Multibyte characters cannot be used as delimiters with the “s” and “y” commands.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[KmacOS 26.4                                                                  December 17, 2024                                                                 macOS 26.4[m
+:[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K[?1l>[?1049l[1m[7m%[27m[1m[0m                                                                                                                                                                          ]2;mindstix-dev@Sharans-MacBook-Air:~/Downloads/bootcamp]1;..oads/bootcamp]7;file://Sharans-MacBook-Air.local/Users/mindstix-dev/Downloads/bootcamp\[0m[49m[39m[K
+[0m[27m[24m[J[0m[49m[39m[0m[44m[38;5;254m [1m[38;5;254m[44m[38;5;255m~[0m[38;5;255m[44m[44m[38;5;254m/Downloads/[1m[38;5;254m[44m[38;5;255mbootcamp[0m[38;5;255m[44m[44m[38;5;254m[0m[38;5;254m[44m[44m[38;5;254m [0m[38;5;254m[44m[49m[34m[0m[34m[49m[39m [0m[49m[39m[K[121C[0m[49m[30m[0m[30m[40m[32m [0m[32m[40m[40m[32m✔[0m[32m[40m[40m[32m [0m[32m[40m[40m[32m[33m[0m[33m[40m[43m[30m 3m 19s[0m[30m[43m[43m[30m[0m[30m[43m[43m[30m [0m[30m[43m[43m[30m[37m[0m[37m[43m[47m[30m 00:31:29[0m[30m[47m[47m[30m[0m[30m[47m[47m[30m [0m[30m[47m[49m[39m[145D[?1h=[?2004hman sedsed -v '3,7d' sample.log' sample.log [13Dp' sample.log[12D'3,7p' sample.log [18D'3,7p' sample.log [18D'3,7p' sample.log [18D'3,7p' sample.log [18D '3,7p' sample.log[17D-'3,7p' sample.log[17Dn'3,7p' sample.log[17D '3,7p' sample.log[17D[?1l>[?2004l
+]2;sed -n '3,7p' sample.log]1;sed2024-01-10 10:02:10 ERROR Database connection failed: timeout
+2024-01-10 10:02:15 INFO  Retrying connection...
+2024-01-10 10:02:20 ERROR Database connection failed: refused
+2024-01-10 10:02:25 WARN  Max retries reached
+2024-01-10 10:03:00 INFO  Failover to secondary DB
+[1m[7m%[27m[1m[0m                                                                                                                                                                          ]2;mindstix-dev@Sharans-MacBook-Air:~/Downloads/bootcamp]1;..oads/bootcamp]7;file://Sharans-MacBook-Air.local/Users/mindstix-dev/Downloads/bootcamp\[0m[49m[39m[K
+[0m[27m[24m[J[0m[49m[39m[0m[44m[38;5;254m [1m[38;5;254m[44m[38;5;255m~[0m[38;5;255m[44m[44m[38;5;254m/Downloads/[1m[38;5;254m[44m[38;5;255mbootcamp[0m[38;5;255m[44m[44m[38;5;254m[0m[38;5;254m[44m[44m[38;5;254m [0m[38;5;254m[44m[49m[34m[0m[34m[49m[39m [0m[49m[39m[K[130C[0m[49m[30m[0m[30m[40m[32m [0m[32m[40m[40m[32m✔[0m[32m[40m[40m[32m [0m[32m[40m[40m[32m[37m[0m[37m[40m[47m[30m 00:31:49[0m[30m[47m[47m[30m[0m[30m[47m[47m[30m [0m[30m[47m[49m[39m[145D[?1h=[?2004haawk mawk [1Cawk nawk  awk [?1l>[?2004l
+]2;man awk]1;man[?1049h[36;1H[?1h=AWK(1)                                                                   General Commands Manual                                                                  AWK(1)[m
+[m
+[1mNAME[0m[m
+       awk - pattern-directed scanning and processing language[m
+[m
+[1mSYNOPSIS[0m[m
+       [1mawk[0m [ [1m-F[0m [4mfs[24m ] [ [1m-v[0m [4mvar=value[24m ] [ [4m'prog'[24m | [1m-f[0m [4mprogfile[24m ] [ [4mfile[24m [4m...[24m  ][m
+[m
+[1mDESCRIPTION[0m[m
+       [4mAwk[24m scans each input [4mfile[24m for lines that match any of a set of patterns specified literally in [4mprog[24m or in one or more files specified as [1m-f[0m [4mprogfile[24m.  With each[m
+       pattern there can be an associated action that will be performed when a line of a [4mfile[24m matches the pattern.  Each line is matched against the pattern portion of[m
+       every pattern-action statement; the associated action is performed for each matched pattern.  The file name [1m-[0m means the standard input.  Any [4mfile[24m of the form[m
+       [4mvar=value[24m is treated as an assignment, not a filename, and is executed at the time it would have been opened if it were a filename.  The option [1m-v[0m followed by[m
+       [4mvar=value[24m is an assignment to be done before [4mprog[24m is executed; any number of [1m-v[0m options may be present.  The [1m-F[0m [4mfs[24m option defines the input field separator to be[m
+       the regular expression [4mfs[24m.[m
+[m
+       An input line is normally made up of fields separated by white space, or by the regular expression [1mFS[0m.  The fields are denoted [1m$1[0m, [1m$2[0m, ..., while [1m$0[0m refers to[m
+       the entire line.  If [1mFS[0m is null, the input line is split into one field per character.[m
+[m
+       A pattern-action statement has the form:[m
+[m
+              [4mpattern[24m [1m{[0m [4maction[24m [1m}[0m[m
+[m
+       A missing [1m{[0m [4maction[24m [1m}[0m means print the line; a missing pattern always matches.  Pattern-action statements are separated by newlines or semicolons.[m
+[m
+       An action is a sequence of statements.  A statement can be one of the following:[m
+[m
+              if( [4mexpression[24m ) [4mstatement[24m [ else [4mstatement[24m ][m
+              while( [4mexpression[24m ) [4mstatement[24m[m
+              for( [4mexpression[24m ; [4mexpression[24m ; [4mexpression[24m ) [4mstatement[24m[m
+              for( [4mvar[24m in [4marray[24m ) [4mstatement[24m[m
+              do [4mstatement[24m while( [4mexpression[24m )[m
+              break[m
+              continue[m
+              { [ [4mstatement[24m [4m...[24m ] }[m
+:[K[K [KESCESC[KOO[KBB[K              [4mexpression[24m              # commonly [4mvar[24m [4m=[24m [4mexpression[24m[m
+:[K[K [KESCESC[KOO[KBB[K              print [ [4mexpression-list[24m ] [ > [4mexpression[24m ][m
+:[K[K [KESCESC[KOO[KBB[K              printf [4mformat[24m [ , [4mexpression-list[24m ] [ > [4mexpression[24m ][m
+:[K[K [KESCESC[KOO[KBB[K              return [ [4mexpression[24m ][m
+:[K[K [KESCESC[KOO[KBB[K              next                    # skip remaining patterns on this input line[m
+:[K[K [KESCESC[KOO[KBB[K              nextfile                # skip rest of this file, open next, start at top[m
+:[K[K [KESCESC[KOO[KBB[K              delete [4marray[24m[ [4mexpression[24m ]# delete an array element[m
+:[K[K [KESCESC[KOO[KAA[K[HM       [1mawk[0m [ [1m-F[0m [4mfs[24m ] [ [1m-v[0m [4mvar=value[24m ] [ [4m'prog'[24m | [1m-f[0m [4mprogfile[24m ] [ [4mfile[24m [4m...[24m  ][m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[1mSYNOPSIS[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       awk - pattern-directed scanning and processing language[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[1mNAME[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HMAWK(1)                                                                   General Commands Manual                                                                  AWK(1)[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KBB[K              [4mexpression[24m              # commonly [4mvar[24m [4m=[24m [4mexpression[24m[m
+:[K[K [KESCESC[KOO[KBB[K              print [ [4mexpression-list[24m ] [ > [4mexpression[24m ][m
+:[K[K [KESCESC[KOO[KBB[K              printf [4mformat[24m [ , [4mexpression-list[24m ] [ > [4mexpression[24m ][m
+:[K[K [KESCESC[KOO[KBB[K              return [ [4mexpression[24m ][m
+:[K[K [KESCESC[KOO[KBB[K              next                    # skip remaining patterns on this input line[m
+:[K[K [KESCESC[KOO[KBB[K              nextfile                # skip rest of this file, open next, start at top[m
+:[K[K [KESCESC[KOO[KBB[K              delete [4marray[24m[ [4mexpression[24m ]# delete an array element[m
+:[K[K [KESCESC[KOO[KBB[K              delete [4marray[24m            # delete all elements of array[m
+:[K[K [KESCESC[KOO[KBB[K              exit [ [4mexpression[24m ]     # exit immediately; status is [4mexpression[24m[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       Statements are terminated by semicolons, newlines or right braces.  An empty [4mexpression-list[24m stands for [1m$0[0m.  String constants are quoted " ", with the usual C[m
+:[K[K [KESCESC[KOO[KBB[K       escapes recognized within.  Expressions take on string or numeric values as appropriate, and are built using the operators [1m+[0m [1m-[0m [1m*[0m [1m/[0m [1m%[0m [1m^[0m (exponentiation), and[m
+:[K[K [KESCESC[KOO[KBB[K       concatenation (indicated by white space).  The operators [1m![0m [1m++[0m [1m--[0m [1m+=[0m [1m-=[0m [1m*=[0m [1m/=[0m [1m%=[0m [1m^=[0m [1m>[0m [1m>=[0m [1m<[0m [1m<=[0m [1m==[0m [1m!=[0m [1m?:[0m are also available in expressions.  Variables may be[m
+:[K[K [KESCESC[KOO[KBB[K       scalars, array elements (denoted [4mx[24m[1m[[0m[4mi[24m[1m][0m) or fields.  Variables are initialized to the null string.  Array subscripts may be any string, not necessarily numeric;[m
+:[K[K [KESCESC[KOO[KBB[K       this allows for a form of associative memory.  Multiple subscripts such as [1m[i,j,k][0m are permitted; the constituents are concatenated, separated by the value of[m
+:[K[K [KESCESC[KOO[KBB[K       [1mSUBSEP[0m.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       The [1mprint[0m statement prints its arguments on the standard output (or on a file if [1m>[0m [4mfile[24m  or [1m>>[0m [4mfile[24m  is present or on a pipe if [1m|[0m [4mcmd[24m  is present), separated by[m
+:[K[K [KESCESC[KOO[KBB[K       the current output field separator, and terminated by the output record separator.  [4mfile[24m and [4mcmd[24m may be literal names or parenthesized expressions; identical[m
+:[K[K [KESCESC[KOO[KBB[K       string values in different statements denote the same open file.  The [1mprintf[0m statement formats its expression list according to the [4mformat[24m (see [4mprintf[24m(3)).  The[m
+:[K[K [KESCESC[KOO[KBB[K       built-in function [1mclose([0m[4mexpr[24m[1m)[0m closes the file or pipe [4mexpr[24m.  The built-in function [1mfflush([0m[4mexpr[24m[1m)[0m flushes any buffered output for the file or pipe [4mexpr[24m.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       The mathematical functions [1matan2[0m, [1mcos[0m, [1mexp[0m, [1mlog[0m, [1msin[0m, and [1msqrt[0m are built in.  Other built-in functions:[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       [1mlength[0m[m
+:[K[K [KESCESC[KOO[KBB[K            the length of its argument taken as a string, number of elements in an array for an array argument, or length of [1m$0[0m if no argument.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mrand[0m random number on [0,1).[m
+:[K[K [KESCESC[KOO[KBB[K       [1msrand[0m[m
+:[K[K [KESCESC[KOO[KBB[K            sets seed for [1mrand[0m and returns the previous seed.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mint[0m  truncates to an integer value.[m
+:[K[K [KESCESC[KOO[KBB[K       [1msubstr([0m[4ms[24m[1m,[0m [4mm[24m [[1m,[0m [4mn[24m][1m)[0m[m
+:[K[K [KESCESC[KOO[KBB[K            the [4mn[24m-character substring of [4ms[24m that begins at position [4mm[24m counted from 1.  If no [4mn[24m, use the rest of the string.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mindex([0m[4ms[24m[1m,[0m [4mt[24m[1m)[0m[m
+:[K[K [KESCESC[KOO[KBB[K            the position in [4ms[24m where the string [4mt[24m occurs, or 0 if it does not.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mmatch([0m[4ms[24m[1m,[0m [4mr[24m[1m)[0m[m
+:[K[K [KESCESC[KOO[KBB[K            the position in [4ms[24m where the regular expression [4mr[24m occurs, or 0 if it does not.  The variables [1mRSTART[0m and [1mRLENGTH[0m are set to the position and length of the[m
+:[K[K [KESCESC[KOO[KBB[K            matched string.[m
+:[K[K [KESCESC[KOO[KBB[K       [1msplit([0m[4ms[24m[1m,[0m [4ma[24m [[1m,[0m [4mfs[24m][1m)[0m[m
+:[K[K [KESCESC[KOO[KBB[K            splits the string [4ms[24m into array elements [4ma[24m[1m[1][0m, [4ma[24m[1m[2][0m, ..., [4ma[24m[1m[[0m[4mn[24m[1m][0m, and returns [4mn[24m.  The separation is done with the regular expression [4mfs[24m or with the field[m
+:[K[K [KESCESC[KOO[KBB[K            separator [1mFS[0m if [4mfs[24m is not given.  An empty string as field separator splits the string into one array element per character.[m
+:[K[K [KESCESC[KOO[KBB[K       [1msub([0m[4mr[24m[1m,[0m [4mt[24m [, [4ms[24m][1m)[0m[m
+:[K[K [KESCESC[KOO[KBB[K            substitutes [4mt[24m for the first occurrence of the regular expression [4mr[24m in the string [4ms[24m.  If [4ms[24m is not given, [1m$0[0m is used.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mgsub([0m[4mr[24m[1m,[0m [4mt[24m [, [4ms[24m][1m)[0m[m
+:[K[K [KESCESC[KOO[KBB[K            same as [1msub[0m except that all occurrences of the regular expression are replaced; [1msub[0m and [1mgsub[0m return the number of replacements.[m
+:[K[K [KESCESC[KOO[KBB[K       [1msprintf([0m[4mfmt[24m[1m,[0m [4mexpr[24m[1m,[0m [4m...[24m[1m)[0m[m
+:[K[K [KESCESC[KOO[KBB[K            the string resulting from formatting [4mexpr[24m [4m...[24m  according to the [4mprintf[24m(3) format [4mfmt[24m.[m
+:[K[K [KESCESC[KOO[KBB[K       [1msystem([0m[4mcmd[24m[1m)[0m[m
+:[K[K [KESCESC[KOO[KBB[K            executes [4mcmd[24m and returns its exit status. This will be -1 upon error, [4mcmd[24m's exit status upon a normal exit, 256 + [4msig[24m upon death-by-signal, where [4msig[24m is the[m
+:[K[K [KESCESC[KOO[KBB[K            number of the murdering signal, or 512 + [4msig[24m if there was a core dump.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mtolower([0m[4mstr[24m[1m)[0m[m
+:[K[K [KESCESC[KOO[KBB[K            returns a copy of [4mstr[24m with all upper-case characters translated to their corresponding lower-case equivalents.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mtoupper([0m[4mstr[24m[1m)[0m[m
+:[K[K [KESCESC[KOO[KBB[K            returns a copy of [4mstr[24m with all lower-case characters translated to their corresponding upper-case equivalents.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       The ``function'' [1mgetline[0m sets [1m$0[0m to the next input record from the current input file; [1mgetline[0m [1m<[0m [4mfile[24m  sets [1m$0[0m to the next record from [4mfile[24m.  [1mgetline[0m [4mx[24m sets[m
+:[K[K [KESCESC[KOO[KBB[K       variable [4mx[24m instead.  Finally, [4mcmd[24m [1m|[0m [1mgetline[0m  pipes the output of [4mcmd[24m into [1mgetline[0m; each call of [1mgetline[0m returns the next line of output from [4mcmd[24m.  In all cases,[m
+:[K[K [KESCESC[KOO[KBB[K       [1mgetline[0m returns 1 for a successful input, 0 for end of file, and -1 for an error.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       Patterns are arbitrary Boolean combinations (with [1m![0m [1m||[0m [1m&&[0m) of regular expressions and relational expressions.  Regular expressions are as defined in[m
+:[K[K [KESCESC[KOO[KBB[K       [4mre_format[24m(7).  Isolated regular expressions in a pattern apply to the entire line.  Regular expressions may also occur in relational expressions, using the[m
+:[K[K [KESCESC[KOO[KBB[K       operators [1m~[0m and [1m!~[0m.  [1m/[0m[4mre[24m[1m/[0m is a constant regular expression; any string (constant or variable) may be used as a regular expression, except in the position of an[m
+:[K[K [KESCESC[KOO[KBB[K       isolated regular expression in a pattern.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       A pattern may consist of two patterns separated by a comma; in this case, the action is performed for all lines from an occurrence of the first pattern though an[m
+:[K[K [KESCESC[KOO[KBB[K       occurrence of the second.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       A relational expression is one of the following:[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K              [4mexpression[24m [4mmatchop[24m [4mregular-expression[24m[m
+:[K[K [KESCESC[KOO[KBB[K              [4mexpression[24m [4mrelop[24m [4mexpression[24m[m
+:[K[K [KESCESC[KOO[KBB[K              [4mexpression[24m [1min[0m [4marray-name[24m[m
+:[K[K [KESCESC[KOO[KBB[K              [1m([0m[4mexpr[24m[1m,[0m[4mexpr,...[24m[1m)[0m [1min[0m [4marray-name[24m[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       where a [4mrelop[24m is any of the six relational operators in C, and a [4mmatchop[24m is either [1m~[0m (matches) or [1m!~[0m (does not match).  A conditional is an arithmetic[m
+:[K[K [KESCESC[KOO[KBB[K       expression, a relational expression, or a Boolean combination of these.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       The special patterns [1mBEGIN[0m and [1mEND[0m may be used to capture control before the first input line is read and after the last.  [1mBEGIN[0m and [1mEND[0m do not combine with[m
+:[K[K [KESCESC[KOO[KBB[K       other patterns.  They may appear multiple times in a program and execute in the order they are read by [4mawk[24m.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       Variable names with special meanings:[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       [1mARGC[0m argument count, assignable.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mARGV[0m argument array, assignable; non-null members are taken as filenames.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mCONVFMT[0m[m
+:[K[K [KESCESC[KOO[KBB[K            conversion format used when converting numbers (default [1m%.6g[0m).[m
+:[K[K [KESCESC[KOO[KBB[K       [1mENVIRON[0m[m
+:[K[K [KESCESC[KOO[KBB[K            array of environment variables; subscripts are names.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mFILENAME[0m[m
+:[K[K [KESCESC[KOO[KBB[K            the name of the current input file.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mFNR[0m  ordinal number of the current record in the current file.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mFS[0m   regular expression used to separate fields; also settable by option [1m-F[0m[4mfs[24m.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mNF[0m   number of fields in the current record.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mNR[0m   ordinal number of the current record.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mOFMT[0m output format for numbers (default [1m%.6g[0m).[m
+:[K[K [KESCESC[KOO[KBB[K       [1mOFS[0m  output field separator (default space).[m
+:[K[K [KESCESC[KOO[KBB[K       [1mORS[0m  output record separator (default newline).[m
+:[K[K [KESCESC[KOO[KBB[K       [1mRLENGTH[0m[m
+:[K[K [KESCESC[KOO[KBB[K            the length of a string matched by [1mmatch[0m.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mRS[0m   input record separator (default newline).  If empty, blank lines separate records.  If more than one character long, [1mRS[0m is treated as a regular expression,[m
+:[K[K [KESCESC[KOO[KBB[K            and records are separated by text matching the expression.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mRSTART[0m[m
+:[K[K [KESCESC[KOO[KBB[K            the start position of a string matched by [1mmatch[0m.[m
+:[K[K [KESCESC[KOO[KBB[K       [1mSUBSEP[0m[m
+:[K[K [KESCESC[KOO[KBB[K            separates multiple subscripts (default 034).[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       Functions may be defined (at the position of a pattern-action statement) thus:[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K              [1mfunction[0m [1mfoo(a,[0m [1mb,[0m [1mc)[0m [1m{[0m [1m...;[0m [1mreturn[0m [1mx[0m [1m}[0m[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       Parameters are passed by value if scalar and by reference if array name; functions may be called recursively.  Parameters are local to the function; all other[m
+:[K[K [KESCESC[KOO[KBB[K       variables are global.  Thus local variables may be created by providing excess parameters in the function definition.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[1mENVIRONMENT[0m [1mVARIABLES[0m[m
+:[K[K [KESCESC[KOO[KBB[K       If [1mPOSIXLY_CORRECT[0m is set in the environment, then [4mawk[24m follows the POSIX rules for [1msub[0m and [1mgsub[0m with respect to consecutive backslashes and ampersands.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[1mEXAMPLES[0m[m
+:[K[K [KESCESC[KOO[KBB[K       length($0) > 72[m
+:[K[K [KESCESC[KOO[KBB[K       Print lines longer than 72 characters.[m
+:[K[K [KESCESC[KOO[KBB[K       { print $2, $1 }[m
+:[K[K [KESCESC[KOO[KBB[K       Print first two fields in opposite order.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       BEGIN { FS = ",[ \t]*|[ \t]+" }[m
+:[K[K [KESCESC[KOO[KBB[K             { print $2, $1 }[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K              Same, with input fields separated by comma and/or spaces and tabs.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K            { s += $1 }[m
+:[K[K [KESCESC[KOO[KBB[K       END  { print "sum is", s, " average is", s/NR }[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K              Add up first column, print sum and average.[m
+:[K[K [KESCESC[KOO[KBB[K              /start/, /stop/[m
+:[K[K [KESCESC[KOO[KBB[K              Print all lines between start/stop pairs.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       BEGIN     {    # Simulate echo(1)[m
+:[K[K [KESCESC[KOO[KBB[K            for (i = 1; i < ARGC; i++) printf "%s ", ARGV[i][m
+:[K[K [KESCESC[KOO[KBB[K            printf "\n"[m
+:[K[K [KESCESC[KOO[KBB[K            exit }[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[1mSEE[0m [1mALSO[0m[m
+:[K[K [KESCESC[KOO[KBB[K       [4mgrep[24m(1), [4mlex[24m(1), [4msed[24m(1)[m
+:[K[K [KESCESC[KOO[KBB[K       A. V. Aho, B. W. Kernighan, P. J. Weinberger, [4mThe[24m [4mAWK[24m [4mProgramming[24m [4mLanguage[24m, Addison-Wesley, 1988.  ISBN 0-201-07981-X.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K[1mBUGS[0m[m
+:[K[K [KESCESC[KOO[KBB[K       There are no explicit conversions between numbers and strings.  To force an expression to be treated as a number add 0 to it; to force it to be treated as a[m
+:[K[K [KESCESC[KOO[KBB[K       string concatenate "" to it.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       The scope rules for variables in functions are a botch; the syntax is worse.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K       Only eight-bit characters sets are handled correctly.[m
+:[K[K [KESCESC[KOO[KBB[K[m
+:[K[K [KESCESC[KOO[KBB[K                                                                               2020-11-24                                                                         AWK(1)[m
+:[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mEXAMPLES[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       If [1mPOSIXLY_CORRECT[0m is set in the environment, then [4mawk[24m follows the POSIX rules for [1msub[0m and [1mgsub[0m with respect to consecutive backslashes and ampersands.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[1mENVIRONMENT[0m [1mVARIABLES[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       variables are global.  Thus local variables may be created by providing excess parameters in the function definition.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       Parameters are passed by value if scalar and by reference if array name; functions may be called recursively.  Parameters are local to the function; all other[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              [1mfunction[0m [1mfoo(a,[0m [1mb,[0m [1mc)[0m [1m{[0m [1m...;[0m [1mreturn[0m [1mx[0m [1m}[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       Functions may be defined (at the position of a pattern-action statement) thus:[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            separates multiple subscripts (default 034).[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mSUBSEP[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            the start position of a string matched by [1mmatch[0m.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mRSTART[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            and records are separated by text matching the expression.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mRS[0m   input record separator (default newline).  If empty, blank lines separate records.  If more than one character long, [1mRS[0m is treated as a regular expression,[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            the length of a string matched by [1mmatch[0m.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mRLENGTH[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mORS[0m  output record separator (default newline).[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mOFS[0m  output field separator (default space).[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mOFMT[0m output format for numbers (default [1m%.6g[0m).[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mNR[0m   ordinal number of the current record.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mNF[0m   number of fields in the current record.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mFS[0m   regular expression used to separate fields; also settable by option [1m-F[0m[4mfs[24m.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mFNR[0m  ordinal number of the current record in the current file.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            the name of the current input file.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mFILENAME[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            array of environment variables; subscripts are names.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mENVIRON[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            conversion format used when converting numbers (default [1m%.6g[0m).[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mCONVFMT[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mARGV[0m argument array, assignable; non-null members are taken as filenames.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mARGC[0m argument count, assignable.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       Variable names with special meanings:[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       other patterns.  They may appear multiple times in a program and execute in the order they are read by [4mawk[24m.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       The special patterns [1mBEGIN[0m and [1mEND[0m may be used to capture control before the first input line is read and after the last.  [1mBEGIN[0m and [1mEND[0m do not combine with[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       expression, a relational expression, or a Boolean combination of these.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       where a [4mrelop[24m is any of the six relational operators in C, and a [4mmatchop[24m is either [1m~[0m (matches) or [1m!~[0m (does not match).  A conditional is an arithmetic[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              [1m([0m[4mexpr[24m[1m,[0m[4mexpr,...[24m[1m)[0m [1min[0m [4marray-name[24m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              [4mexpression[24m [1min[0m [4marray-name[24m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              [4mexpression[24m [4mrelop[24m [4mexpression[24m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              [4mexpression[24m [4mmatchop[24m [4mregular-expression[24m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       A relational expression is one of the following:[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       occurrence of the second.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       A pattern may consist of two patterns separated by a comma; in this case, the action is performed for all lines from an occurrence of the first pattern though an[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       isolated regular expression in a pattern.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       operators [1m~[0m and [1m!~[0m.  [1m/[0m[4mre[24m[1m/[0m is a constant regular expression; any string (constant or variable) may be used as a regular expression, except in the position of an[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [4mre_format[24m(7).  Isolated regular expressions in a pattern apply to the entire line.  Regular expressions may also occur in relational expressions, using the[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       Patterns are arbitrary Boolean combinations (with [1m![0m [1m||[0m [1m&&[0m) of regular expressions and relational expressions.  Regular expressions are as defined in[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mgetline[0m returns 1 for a successful input, 0 for end of file, and -1 for an error.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       variable [4mx[24m instead.  Finally, [4mcmd[24m [1m|[0m [1mgetline[0m  pipes the output of [4mcmd[24m into [1mgetline[0m; each call of [1mgetline[0m returns the next line of output from [4mcmd[24m.  In all cases,[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       The ``function'' [1mgetline[0m sets [1m$0[0m to the next input record from the current input file; [1mgetline[0m [1m<[0m [4mfile[24m  sets [1m$0[0m to the next record from [4mfile[24m.  [1mgetline[0m [4mx[24m sets[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            returns a copy of [4mstr[24m with all lower-case characters translated to their corresponding upper-case equivalents.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mtoupper([0m[4mstr[24m[1m)[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            returns a copy of [4mstr[24m with all upper-case characters translated to their corresponding lower-case equivalents.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mtolower([0m[4mstr[24m[1m)[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            number of the murdering signal, or 512 + [4msig[24m if there was a core dump.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            executes [4mcmd[24m and returns its exit status. This will be -1 upon error, [4mcmd[24m's exit status upon a normal exit, 256 + [4msig[24m upon death-by-signal, where [4msig[24m is the[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1msystem([0m[4mcmd[24m[1m)[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            the string resulting from formatting [4mexpr[24m [4m...[24m  according to the [4mprintf[24m(3) format [4mfmt[24m.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1msprintf([0m[4mfmt[24m[1m,[0m [4mexpr[24m[1m,[0m [4m...[24m[1m)[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            same as [1msub[0m except that all occurrences of the regular expression are replaced; [1msub[0m and [1mgsub[0m return the number of replacements.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mgsub([0m[4mr[24m[1m,[0m [4mt[24m [, [4ms[24m][1m)[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            substitutes [4mt[24m for the first occurrence of the regular expression [4mr[24m in the string [4ms[24m.  If [4ms[24m is not given, [1m$0[0m is used.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1msub([0m[4mr[24m[1m,[0m [4mt[24m [, [4ms[24m][1m)[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            separator [1mFS[0m if [4mfs[24m is not given.  An empty string as field separator splits the string into one array element per character.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            splits the string [4ms[24m into array elements [4ma[24m[1m[1][0m, [4ma[24m[1m[2][0m, ..., [4ma[24m[1m[[0m[4mn[24m[1m][0m, and returns [4mn[24m.  The separation is done with the regular expression [4mfs[24m or with the field[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1msplit([0m[4ms[24m[1m,[0m [4ma[24m [[1m,[0m [4mfs[24m][1m)[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            matched string.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            the position in [4ms[24m where the regular expression [4mr[24m occurs, or 0 if it does not.  The variables [1mRSTART[0m and [1mRLENGTH[0m are set to the position and length of the[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mmatch([0m[4ms[24m[1m,[0m [4mr[24m[1m)[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            the position in [4ms[24m where the string [4mt[24m occurs, or 0 if it does not.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mindex([0m[4ms[24m[1m,[0m [4mt[24m[1m)[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            the [4mn[24m-character substring of [4ms[24m that begins at position [4mm[24m counted from 1.  If no [4mn[24m, use the rest of the string.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1msubstr([0m[4ms[24m[1m,[0m [4mm[24m [[1m,[0m [4mn[24m][1m)[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mint[0m  truncates to an integer value.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            sets seed for [1mrand[0m and returns the previous seed.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1msrand[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mrand[0m random number on [0,1).[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM            the length of its argument taken as a string, number of elements in an array for an array argument, or length of [1m$0[0m if no argument.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mlength[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       The mathematical functions [1matan2[0m, [1mcos[0m, [1mexp[0m, [1mlog[0m, [1msin[0m, and [1msqrt[0m are built in.  Other built-in functions:[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       built-in function [1mclose([0m[4mexpr[24m[1m)[0m closes the file or pipe [4mexpr[24m.  The built-in function [1mfflush([0m[4mexpr[24m[1m)[0m flushes any buffered output for the file or pipe [4mexpr[24m.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       string values in different statements denote the same open file.  The [1mprintf[0m statement formats its expression list according to the [4mformat[24m (see [4mprintf[24m(3)).  The[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       the current output field separator, and terminated by the output record separator.  [4mfile[24m and [4mcmd[24m may be literal names or parenthesized expressions; identical[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       The [1mprint[0m statement prints its arguments on the standard output (or on a file if [1m>[0m [4mfile[24m  or [1m>>[0m [4mfile[24m  is present or on a pipe if [1m|[0m [4mcmd[24m  is present), separated by[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mSUBSEP[0m.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       this allows for a form of associative memory.  Multiple subscripts such as [1m[i,j,k][0m are permitted; the constituents are concatenated, separated by the value of[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       scalars, array elements (denoted [4mx[24m[1m[[0m[4mi[24m[1m][0m) or fields.  Variables are initialized to the null string.  Array subscripts may be any string, not necessarily numeric;[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       concatenation (indicated by white space).  The operators [1m![0m [1m++[0m [1m--[0m [1m+=[0m [1m-=[0m [1m*=[0m [1m/=[0m [1m%=[0m [1m^=[0m [1m>[0m [1m>=[0m [1m<[0m [1m<=[0m [1m==[0m [1m!=[0m [1m?:[0m are also available in expressions.  Variables may be[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       escapes recognized within.  Expressions take on string or numeric values as appropriate, and are built using the operators [1m+[0m [1m-[0m [1m*[0m [1m/[0m [1m%[0m [1m^[0m (exponentiation), and[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       Statements are terminated by semicolons, newlines or right braces.  An empty [4mexpression-list[24m stands for [1m$0[0m.  String constants are quoted " ", with the usual C[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              exit [ [4mexpression[24m ]     # exit immediately; status is [4mexpression[24m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              delete [4marray[24m            # delete all elements of array[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              delete [4marray[24m[ [4mexpression[24m ]# delete an array element[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              nextfile                # skip rest of this file, open next, start at top[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              next                    # skip remaining patterns on this input line[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              return [ [4mexpression[24m ][m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              printf [4mformat[24m [ , [4mexpression-list[24m ] [ > [4mexpression[24m ][m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              print [ [4mexpression-list[24m ] [ > [4mexpression[24m ][m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              [4mexpression[24m              # commonly [4mvar[24m [4m=[24m [4mexpression[24m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              { [ [4mstatement[24m [4m...[24m ] }[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              continue[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              break[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              do [4mstatement[24m while( [4mexpression[24m )[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              for( [4mvar[24m in [4marray[24m ) [4mstatement[24m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              for( [4mexpression[24m ; [4mexpression[24m ; [4mexpression[24m ) [4mstatement[24m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              while( [4mexpression[24m ) [4mstatement[24m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              if( [4mexpression[24m ) [4mstatement[24m [ else [4mstatement[24m ][m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       An action is a sequence of statements.  A statement can be one of the following:[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       A missing [1m{[0m [4maction[24m [1m}[0m means print the line; a missing pattern always matches.  Pattern-action statements are separated by newlines or semicolons.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM              [4mpattern[24m [1m{[0m [4maction[24m [1m}[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       A pattern-action statement has the form:[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       the entire line.  If [1mFS[0m is null, the input line is split into one field per character.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       An input line is normally made up of fields separated by white space, or by the regular expression [1mFS[0m.  The fields are denoted [1m$1[0m, [1m$2[0m, ..., while [1m$0[0m refers to[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       the regular expression [4mfs[24m.[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [4mvar=value[24m is an assignment to be done before [4mprog[24m is executed; any number of [1m-v[0m options may be present.  The [1m-F[0m [4mfs[24m option defines the input field separator to be[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [4mvar=value[24m is treated as an assignment, not a filename, and is executed at the time it would have been opened if it were a filename.  The option [1m-v[0m followed by[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       every pattern-action statement; the associated action is performed for each matched pattern.  The file name [1m-[0m means the standard input.  Any [4mfile[24m of the form[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       pattern there can be an associated action that will be performed when a line of a [4mfile[24m matches the pattern.  Each line is matched against the pattern portion of[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [4mAwk[24m scans each input [4mfile[24m for lines that match any of a set of patterns specified literally in [4mprog[24m or in one or more files specified as [1m-f[0m [4mprogfile[24m.  With each[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[1mDESCRIPTION[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       [1mawk[0m [ [1m-F[0m [4mfs[24m ] [ [1m-v[0m [4mvar=value[24m ] [ [4m'prog'[24m | [1m-f[0m [4mprogfile[24m ] [ [4mfile[24m [4m...[24m  ][m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[1mSYNOPSIS[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM       awk - pattern-directed scanning and processing language[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[1mNAME[0m[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HM[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[HMAWK(1)                                                                   General Commands Manual                                                                  AWK(1)[m
+[36;1H[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K[?1l>[?1049l[1m[7m%[27m[1m[0m                                                                                                                                                                          ]2;mindstix-dev@Sharans-MacBook-Air:~/Downloads/bootcamp]1;..oads/bootcamp]7;file://Sharans-MacBook-Air.local/Users/mindstix-dev/Downloads/bootcamp\[0m[49m[39m[K
+[0m[27m[24m[J[0m[49m[39m[0m[44m[38;5;254m [1m[38;5;254m[44m[38;5;255m~[0m[38;5;255m[44m[44m[38;5;254m/Downloads/[1m[38;5;254m[44m[38;5;255mbootcamp[0m[38;5;255m[44m[44m[38;5;254m[0m[38;5;254m[44m[44m[38;5;254m [0m[38;5;254m[44m[49m[34m[0m[34m[49m[39m [0m[49m[39m[K[124C[0m[49m[30m[0m[30m[40m[32m [0m[32m[40m[40m[32m✔[0m[32m[40m[40m[32m [0m[32m[40m[40m[32m[33m[0m[33m[40m[43m[30m 18s[0m[30m[43m[43m[30m[0m[30m[43m[43m[30m [0m[30m[43m[43m[30m[37m[0m[37m[43m[47m[30m 00:32:24[0m[30m[47m[47m[30m[0m[30m[47m[47m[30m [0m[30m[47m[49m[39m[145D[?1h=[?2004h[7mnslookup _8abb2cf9aa995ca7bd0a2d02489a4a7d.support.amway.in[27m[59D[27mn[27ms[27ml[27mo[27mo[27mk[27mu[27mp[27m [27m_[27m8[27ma[27mb[27mb[27m2[27mc[27mf[27m9[27ma[27ma[27m9[27m9[27m5[27mc[27ma[27m7[27mb[27md[27m0[27ma[27m2[27md[27m0[27m2[27m4[27m8[27m9[27ma[27m4[27ma[27m7[27md[27m.[27ms[27mu[27mp[27mp[27mo[27mr[27mt[27m.[27ma[27mm[27mw[27ma[27my[27m.[27m [27m       [8D        [8D[33D                                 [33D[10D          [10D

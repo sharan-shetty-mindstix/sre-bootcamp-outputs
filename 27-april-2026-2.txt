@@ -1,0 +1,199 @@
+~/Downloads/bootcamp  curl https://httpbin.org/get  ✔  21:44:44 
+{
+  "args": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Host": "httpbin.org", 
+    "User-Agent": "curl/8.7.1", 
+    "X-Amzn-Trace-Id": "Root=1-69ef8b7d-58530ea14abab7e367cbc1c2"
+  }, 
+  "origin": "223.233.82.221", 
+  "url": "https://httpbin.org/get"
+}
+
+ ~/Downloads/bootcamp  curl --location --request GET 'https://httpbin.org/post' \  ✔  21:44:54 
+--header 'Content-Type: application/json' \
+--data '{"name": "Sharan Shetty", "bootcamp": "week1"}'
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>405 Method Not Allowed</title>
+<h1>Method Not Allowed</h1>
+<p>The method is not allowed for the requested URL.</p>
+
+ ~/Downloads/bootcamp  curl --location 'https://httpbin.org/post' \  ✔  21:51:42 
+--header 'Content-Type: application/json' \
+--data '{"name": "Sharan Shetty", "bootcamp": "week1"}'
+{
+  "args": {}, 
+  "data": "{\"name\": \"Sharan Shetty\", \"bootcamp\": \"week1\"}", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Content-Length": "46", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "curl/8.7.1", 
+    "X-Amzn-Trace-Id": "Root=1-69ef8d3d-4d09229a080b36dc754fe1f0"
+  }, 
+  "json": {
+    "bootcamp": "week1", 
+    "name": "Sharan Shetty"
+  }, 
+  "origin": "223.233.82.221", 
+  "url": "https://httpbin.org/post"
+}
+
+ ~/Downloads/bootcamp  curl --location 'https://httpbin.org/status/404'  ✔  21:52:21 
+
+ ~/Downloads/bootcamp  curl --location 'https://httpbin.org/status/302'  ✔  21:53:43 
+{
+  "args": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Host": "httpbin.org", 
+    "User-Agent": "curl/8.7.1", 
+    "X-Amzn-Trace-Id": "Root=1-69ef8d9f-1b30aaf64cf51d1a3112e3b3"
+  }, 
+  "origin": "223.233.82.221", 
+  "url": "https://httpbin.org/get"
+}
+
+ ~/Downloads/bootcamp  curl --location 'https://httpbin.org/status/500'  ✔  21:54:00 
+
+ ~/Downloads/bootcamp  curl --location 'https://httpbin.org/status/302'  ✔  21:54:11 
+{
+  "args": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Host": "httpbin.org", 
+    "User-Agent": "curl/8.7.1", 
+    "X-Amzn-Trace-Id": "Root=1-69ef8db6-64e9458010b9b25d3f585307"
+  }, 
+  "origin": "223.233.82.221", 
+  "url": "https://httpbin.org/get"
+}
+
+ ~/Downloads/bootcamp  curl --location 'https://httpbin.org/headers' \  ✔  21:54:23 
+--header 'X-My-Header: hello-devops'
+{
+  "headers": {
+    "Accept": "*/*", 
+    "Host": "httpbin.org", 
+    "User-Agent": "curl/8.7.1", 
+    "X-Amzn-Trace-Id": "Root=1-69ef8dec-329c76a71682d2e434268d41", 
+    "X-My-Header": "hello-devops"
+  }
+}
+
+ ~/Downloads/bootcamp  curl --location 'https://httpbin.org/delay/5'  ✔  21:55:16 
+{
+  "args": {}, 
+  "data": "", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Host": "httpbin.org", 
+    "User-Agent": "curl/8.7.1", 
+    "X-Amzn-Trace-Id": "Root=1-69ef8e13-1ee5987c0184904e4d68bcdc"
+  }, 
+  "origin": "223.233.82.221", 
+  "url": "https://httpbin.org/delay/5"
+}
+
+ ~/Downloads/bootcamp  mkdir app-v1                                                                                               ✔  6s  21:56:00 
+
+ ~/Downloads/bootcamp  cd app-v1   ✔  22:06:13 
+
+ ~/Downloads/bootcamp/app-v1  python3 -m http.server 8080  ✔  22:06:16 
+Serving HTTP on :: port 8080 (http://[::]:8080/) ...
+::ffff:127.0.0.1 - - [27/Apr/2026 22:08:00] "GET / HTTP/1.1" 200 -
+^C
+Keyboard interrupt received, exiting.
+
+ ~/Downloads/bootcamp/app-v1                                                                                ✔  13m 28s  22:19:52 
+
+
+ -------------
+
+
+ mkdir app-v2                                                                                   ✔  22:06:30 
+
+ ~/Downloads/bootcamp  cd app-v2                                                                                      ✔  22:06:35 
+
+ ~/Downloads/bootcamp/app-v2  python3 -m http.server 9090                                                             ✔  22:06:40 
+Serving HTTP on :: port 9090 (http://[::]:9090/) ...
+::ffff:127.0.0.1 - - [27/Apr/2026 22:08:55] "GET / HTTP/1.1" 200 -
+
+
+
+----------
+
+
+sudo vi /etc/hosts                                                                             ✔  22:06:57 
+Password:
+
+ ~/Downloads/bootcamp  curl http://app-v1.local:8080                                                            ✔  33s  22:07:40 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Directory listing for /</title>
+</head>
+<body>
+<h1>Directory listing for /</h1>
+<hr>
+<ul>
+</ul>
+<hr>
+</body>
+</html>
+
+ ~/Downloads/bootcamp  curl http://app-v1.local:9090                                                             ✔  5s  22:08:00 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Directory listing for /</title>
+</head>
+<body>
+<h1>Directory listing for /</h1>
+<hr>
+<ul>
+</ul>
+<hr>
+</body>
+</html>
+
+ ~/Downloads/bootcamp  nslookup github.com                                                                       ✔  5s  22:08:55 
+Server:         2401:4900:50:9::290
+Address:        2401:4900:50:9::290#53
+
+Non-authoritative answer:
+Name:   github.com
+Address: 20.207.73.82
+
+
+ ~/Downloads/bootcamp  curl -I https://github.com                                                                     ✔  22:12:38 
+HTTP/2 200 
+date: Mon, 27 Apr 2026 16:43:02 GMT
+content-type: text/html; charset=utf-8
+vary: X-PJAX, X-PJAX-Container, Turbo-Visit, Turbo-Frame, X-Requested-With, Accept-Language, Sec-Fetch-Site,Accept-Encoding, Accept, X-Requested-With
+content-language: en-US
+etag: W/"43f86e7a44b0ec1d0d7e9f1f11f93a42"
+cache-control: max-age=0, private, must-revalidate
+strict-transport-security: max-age=31536000; includeSubdomains; preload
+x-frame-options: deny
+x-content-type-options: nosniff
+x-xss-protection: 0
+referrer-policy: origin-when-cross-origin, strict-origin-when-cross-origin
+content-security-policy: default-src 'none'; base-uri 'self'; child-src github.githubassets.com github.com/assets-cdn/worker/ github.com/assets/ gist.github.com/assets-cdn/worker/; connect-src 'self' uploads.github.com www.githubstatus.com collector.github.com raw.githubusercontent.com api.github.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com *.rel.tunnels.api.visualstudio.com wss://*.rel.tunnels.api.visualstudio.com github.githubassets.com objects-origin.githubusercontent.com copilot-proxy.githubusercontent.com proxy.individual.githubcopilot.com proxy.business.githubcopilot.com proxy.enterprise.githubcopilot.com *.actions.githubusercontent.com wss://*.actions.githubusercontent.com productionresultssa0.blob.core.windows.net productionresultssa1.blob.core.windows.net productionresultssa2.blob.core.windows.net productionresultssa3.blob.core.windows.net productionresultssa4.blob.core.windows.net productionresultssa5.blob.core.windows.net productionresultssa6.blob.core.windows.net productionresultssa7.blob.core.windows.net productionresultssa8.blob.core.windows.net productionresultssa9.blob.core.windows.net productionresultssa10.blob.core.windows.net productionresultssa11.blob.core.windows.net productionresultssa12.blob.core.windows.net productionresultssa13.blob.core.windows.net productionresultssa14.blob.core.windows.net productionresultssa15.blob.core.windows.net productionresultssa16.blob.core.windows.net productionresultssa17.blob.core.windows.net productionresultssa18.blob.core.windows.net productionresultssa19.blob.core.windows.net github-production-repository-image-32fea6.s3.amazonaws.com github-production-release-asset-2e65be.s3.amazonaws.com insights.github.com wss://alive.github.com wss://alive-staging.github.com api.githubcopilot.com api.individual.githubcopilot.com api.business.githubcopilot.com api.enterprise.githubcopilot.com edge.fullstory.com rs.fullstory.com; font-src github.githubassets.com; form-action 'self' github.com gist.github.com copilot-workspace.githubnext.com objects-origin.githubusercontent.com; frame-ancestors 'none'; frame-src viewscreen.githubusercontent.com notebooks.githubusercontent.com www.youtube-nocookie.com; img-src 'self' data: blob: github.githubassets.com media.githubusercontent.com camo.githubusercontent.com identicons.github.com avatars.githubusercontent.com private-avatars.githubusercontent.com github-cloud.s3.amazonaws.com objects.githubusercontent.com release-assets.githubusercontent.com secured-user-images.githubusercontent.com user-images.githubusercontent.com private-user-images.githubusercontent.com opengraph.githubassets.com marketplace-screenshots.githubusercontent.com copilotprodattachments.blob.core.windows.net/github-production-copilot-attachments/ github-production-user-asset-6210df.s3.amazonaws.com customer-stories-feed.github.com spotlights-feed.github.com objects-origin.githubusercontent.com *.githubusercontent.com images.ctfassets.net/8aevphvgewt8/; manifest-src 'self'; media-src github.com user-images.githubusercontent.com secured-user-images.githubusercontent.com private-user-images.githubusercontent.com github-production-user-asset-6210df.s3.amazonaws.com gist.github.com github.githubassets.com assets.ctfassets.net/8aevphvgewt8/ videos.ctfassets.net/8aevphvgewt8/; script-src github.githubassets.com; style-src 'unsafe-inline' github.githubassets.com; upgrade-insecure-requests; worker-src github.githubassets.com github.com/assets-cdn/worker/ github.com/assets/ gist.github.com/assets-cdn/worker/
+server: github.com
+accept-ranges: bytes
+set-cookie: _gh_sess=Lz5b4KwpziYP6UktOERbpi1ByEabqwe6bbe7JgI4kSdhdQglO%2F755Dc2aN25jQjcb8Eb8ofgYuH1Lgni8qc9EZFrWzEtuXIroaHQiuWRTLtyT0l8PhS5EkciNDXXVPk6uP%2Bgyrm7JHbkTeUbdRdWkwVLUFBcvw08CoYvbXIBxo3xuv9Lmm7g%2BYHHbepyuYunQP0vRX5GngQ3GYHqc9fDqJfjhBue%2FJ%2BAdsax6wGJQbENWQ8RFLODXTIRq3%2BhJ%2BSDH%2FEPd4eJKvF1C4QPa7Nl0w%3D%3D--7zNUJ9ZNzQrfMA7a--BJ7eNGhhSjW7yZnPbiae8g%3D%3D; path=/; HttpOnly; secure; SameSite=Lax
+set-cookie: _octo=GH1.1.92145803.1777308186; expires=Tue, 27 Apr 2027 16:43:06 GMT; domain=.github.com; path=/; secure; SameSite=Lax
+set-cookie: logged_in=no; expires=Tue, 27 Apr 2027 16:43:06 GMT; domain=.github.com; path=/; HttpOnly; secure; SameSite=Lax
+x-github-request-id: 41BF:31A92:1AE5B2:1E080B:69EF921A
+
+
+ ~/Downloads/bootcamp                                                                                                 ✔  22:13:06 

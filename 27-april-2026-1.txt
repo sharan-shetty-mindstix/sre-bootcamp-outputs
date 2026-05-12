@@ -1,0 +1,540 @@
+crontab -e                                      ✔  22:58:25 
+crontab: installing new crontab
+
+ ~/Dow/bootcamp  crontab -l                                      ✔  16s  22:58:57 
+* * * * * echo "I am alive - $(date +\%T)" >> $HOME/Downloads/bootcamp/heartbeat.log                                   
+
+ ~/Downloads/bootcamp  systemclt                                       ✔  22:59:03 
+zsh: command not found: systemclt
+
+ ~/Dow/bootcamp  systemctl                                         127 ✘  22:59:42 
+zsh: command not found: systemctl
+
+ ~/Dow/bootcamp  systemctl status                                  127 ✘  22:59:49 
+zsh: command not found: systemctl
+
+ ~/Dow/bootcamp  systemctl status nginx                            127 ✘  22:59:55 
+zsh: command not found: systemctl
+
+ ~/Dow/bootcamp  crontab -e                                        127 ✘  22:59:58 
+crontab: installing new crontab
+
+ ~/Dow/bootcamp  systemctl status nginx                          ✔  32s  23:00:42 
+zsh: command not found: systemctl
+
+ ~/Dow/bootcamp  launchctl print system/com.apple.wirelessproxd    127 ✘  23:00:48 
+Bad request.
+Could not find service "com.apple.wirelessproxd" in domain for system
+
+ ~/Dow/bootcamp  ping mindstix.com                                 113 ✘  23:05:35 
+PING mindstix.com (199.36.158.100): 56 data bytes
+64 bytes from 199.36.158.100: icmp_seq=0 ttl=61 time=14.097 ms
+64 bytes from 199.36.158.100: icmp_seq=1 ttl=61 time=12.250 ms
+64 bytes from 199.36.158.100: icmp_seq=2 ttl=61 time=12.279 ms
+64 bytes from 199.36.158.100: icmp_seq=3 ttl=61 time=13.114 ms
+64 bytes from 199.36.158.100: icmp_seq=4 ttl=61 time=15.140 ms
+64 bytes from 199.36.158.100: icmp_seq=5 ttl=61 time=14.127 ms
+64 bytes from 199.36.158.100: icmp_seq=6 ttl=61 time=12.554 ms
+64 bytes from 199.36.158.100: icmp_seq=7 ttl=61 time=14.172 ms
+64 bytes from 199.36.158.100: icmp_seq=8 ttl=61 time=14.413 ms
+64 bytes from 199.36.158.100: icmp_seq=9 ttl=61 time=11.646 ms
+64 bytes from 199.36.158.100: icmp_seq=10 ttl=61 time=13.709 ms
+64 bytes from 199.36.158.100: icmp_seq=11 ttl=61 time=13.124 ms
+64 bytes from 199.36.158.100: icmp_seq=12 ttl=61 time=12.889 ms
+64 bytes from 199.36.158.100: icmp_seq=13 ttl=61 time=15.387 ms
+64 bytes from 199.36.158.100: icmp_seq=14 ttl=61 time=13.493 ms
+64 bytes from 199.36.158.100: icmp_seq=15 ttl=61 time=13.705 ms
+64 bytes from 199.36.158.100: icmp_seq=16 ttl=61 time=12.597 ms
+^C
+--- mindstix.com ping statistics ---
+17 packets transmitted, 17 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 11.646/13.453/15.387/1.006 ms
+
+ ~/Dow/bootcamp  journalctl -u                                   ✔  16s  23:06:27 
+zsh: command not found: journalctl
+
+ ~/Dow/bootcamp  journald -u                                       127 ✘  23:07:16 
+zsh: command not found: journald
+
+ ~/Dow/bootcamp  journalctl -u                                     127 ✘  23:07:23 
+zsh: command not found: journalctl
+
+ ~/Dow/bootcamp  journalctl -u nginx                               127 ✘  23:07:42 
+zsh: command not found: journalctl
+
+ ~/Dow/bootcamp  ping googl.com                                    127 ✘  23:07:57 
+PING googl.com (142.251.43.4): 56 data bytes
+64 bytes from 142.251.43.4: icmp_seq=0 ttl=119 time=13.313 ms
+64 bytes from 142.251.43.4: icmp_seq=1 ttl=119 time=12.841 ms
+64 bytes from 142.251.43.4: icmp_seq=2 ttl=119 time=12.951 ms
+64 bytes from 142.251.43.4: icmp_seq=3 ttl=119 time=15.805 ms
+64 bytes from 142.251.43.4: icmp_seq=4 ttl=119 time=11.592 ms
+64 bytes from 142.251.43.4: icmp_seq=5 ttl=119 time=13.414 ms
+64 bytes from 142.251.43.4: icmp_seq=6 ttl=119 time=13.186 ms
+64 bytes from 142.251.43.4: icmp_seq=7 ttl=119 time=12.466 ms
+64 bytes from 142.251.43.4: icmp_seq=8 ttl=119 time=14.782 ms
+^C
+--- googl.com ping statistics ---
+9 packets transmitted, 9 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 11.592/13.372/15.805/1.174 ms
+
+ ~/Dow/bootcamp  traceroute google.com                            ✔  9s  23:30:38 
+traceroute to google.com (142.251.221.142), 64 hops max, 40 byte packets
+ 1  192.168.1.1 (192.168.1.1)  4.938 ms  4.326 ms  3.517 ms
+^C
+
+ ~/Dow/bootcamp  nslookup google.com                         INT ✘  19s  23:31:06 
+Server:         2401:4900:50:9::290
+Address:        2401:4900:50:9::290#53
+
+Non-authoritative answer:
+Name:   google.com
+Address: 142.251.42.238
+
+
+ ~/Downloads/bootcamp  curl https://google.com                         ✔  23:31:12 
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>301 Moved</TITLE></HEAD><BODY>
+<H1>301 Moved</H1>
+The document has moved
+<A HREF="https://www.google.com/">here</A>.
+</BODY></HTML>
+
+ ~/Downloads/bootcamp  wget https://google.com                         ✔  23:31:43 
+zsh: command not found: wget
+
+ ~/Dow/bootcamp  curl -I https://google.com                        127 ✘  23:32:01 
+HTTP/2 301 
+location: https://www.google.com/
+content-type: text/html; charset=UTF-8
+content-security-policy-report-only: object-src 'none';base-uri 'self';script-src 'nonce-6F8xHpq-HH9qI2ZCfen5jQ' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp
+date: Sun, 26 Apr 2026 18:02:20 GMT
+expires: Tue, 26 May 2026 18:02:20 GMT
+cache-control: public, max-age=2592000
+server: gws
+content-length: 220
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+
+
+ ~/Downloads/bootcamp  curl -v https://google.com                                                                                      ✔  23:32:20 
+* Host google.com:443 was resolved.
+* IPv6: 2404:6800:4009:808::200e
+* IPv4: 142.251.42.238
+*   Trying [2404:6800:4009:808::200e]:443...
+* Connected to google.com (2404:6800:4009:808::200e) port 443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+* (304) (IN), TLS handshake, Unknown (8):
+* (304) (IN), TLS handshake, Certificate (11):
+* (304) (IN), TLS handshake, CERT verify (15):
+* (304) (IN), TLS handshake, Finished (20):
+* (304) (OUT), TLS handshake, Finished (20):
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=*.google.com
+*  start date: Mar 30 08:35:08 2026 GMT
+*  expire date: Jun 22 08:35:07 2026 GMT
+*  subjectAltName: host "google.com" matched cert's "google.com"
+*  issuer: C=US; O=Google Trust Services; CN=WR2
+*  SSL certificate verify ok.
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://google.com/
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: google.com]
+* [HTTP/2] [1] [:path: /]
+* [HTTP/2] [1] [user-agent: curl/8.7.1]
+* [HTTP/2] [1] [accept: */*]
+> GET / HTTP/2
+> Host: google.com
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/2 301 
+< location: https://www.google.com/
+< content-type: text/html; charset=UTF-8
+< content-security-policy-report-only: object-src 'none';base-uri 'self';script-src 'nonce-kKEjYPznYydgKb4O9oGDPw' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp
+< date: Sun, 26 Apr 2026 18:03:39 GMT
+< expires: Tue, 26 May 2026 18:03:39 GMT
+< cache-control: public, max-age=2592000
+< server: gws
+< content-length: 220
+< x-xss-protection: 0
+< x-frame-options: SAMEORIGIN
+< alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+< 
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>301 Moved</TITLE></HEAD><BODY>
+<H1>301 Moved</H1>
+The document has moved
+<A HREF="https://www.google.com/">here</A>.
+</BODY></HTML>
+* Connection #0 to host google.com left intact
+
+ ~/Downloads/bootcamp  curl -v http://google.com                                                                                       ✔  23:33:39 
+* Host google.com:80 was resolved.
+* IPv6: 2404:6800:4009:808::200e
+* IPv4: 142.251.42.238
+*   Trying [2404:6800:4009:808::200e]:80...
+* Connected to google.com (2404:6800:4009:808::200e) port 80
+> GET / HTTP/1.1
+> Host: google.com
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 301 Moved Permanently
+< Location: http://www.google.com/
+< Content-Type: text/html; charset=UTF-8
+< Content-Security-Policy-Report-Only: object-src 'none';base-uri 'self';script-src 'nonce-tfhFoieZFUJyKJgo7HgnfQ' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp
+< Date: Sun, 26 Apr 2026 18:04:33 GMT
+< Expires: Tue, 26 May 2026 18:04:33 GMT
+< Cache-Control: public, max-age=2592000
+< Server: gws
+< Content-Length: 219
+< X-XSS-Protection: 0
+< X-Frame-Options: SAMEORIGIN
+< 
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>301 Moved</TITLE></HEAD><BODY>
+<H1>301 Moved</H1>
+The document has moved
+<A HREF="http://www.google.com/">here</A>.
+</BODY></HTML>
+* Connection #0 to host google.com left intact
+
+ ~/Downloads/bootcamp  ~                                                                                                               ✔  23:34:33 
+
+ ~  cd ..                                                                                                                              ✔  23:37:25 
+
+ ∅ /Users  cd .                                                                                                                        ✔  23:37:28 
+
+ ∅ /Users  cd ..                                                                                                                       ✔  23:37:29 
+
+ ∅ /  cd etc/                                                                                                                          ✔  23:37:32 
+
+ ∅ /etc  ls -la                                                                                                                        ✔  23:37:39 
+total 832
+drwxr-xr-x  77 root  wheel    2464 Apr 22 11:36 .
+drwxr-xr-x   6 root  wheel     192 Apr 19 02:09 ..
+-rw-r--r--   1 root  wheel     515 Apr  6 13:40 afpovertcp.cfg
+lrwxr-xr-x   1 root  wheel      15 Apr  6 13:40 aliases -> postfix/aliases
+-rw-r-----   1 root  wheel   16384 Apr  6 13:40 aliases.db
+drwxr-xr-x   9 root  wheel     288 Apr  6 13:40 apache2
+drwxr-xr-x  16 root  wheel     512 Apr  6 13:40 asl
+-rw-r--r--   1 root  wheel    1051 Apr  6 13:40 asl.conf
+-rw-r--r--   1 root  wheel     149 Apr  6 13:40 auto_home
+-rw-r--r--   1 root  wheel     195 Apr  6 13:40 auto_master
+-rw-r--r--   1 root  wheel    1932 Apr  6 13:40 autofs.conf
+-r--r--r--   1 root  wheel     265 Apr  6 13:40 bashrc
+-rw-r--r--   1 root  wheel    9293 Apr  6 13:40 bashrc_Apple_Terminal
+-rw-r--r--   1 root  wheel      82 Apr  6 13:40 com.apple.screensharing.agent.launchd
+-rw-r--r--   1 root  wheel     189 Apr  6 13:40 csh.cshrc
+-rw-r--r--   1 root  wheel     121 Apr  6 13:40 csh.login
+-rw-r--r--   1 root  wheel      39 Apr  6 13:40 csh.logout
+drwxr-xr-x  13 root  _lp       416 Apr 19 02:08 cups
+-rw-r--r--   1 root  wheel       0 Apr  6 13:40 find.codes
+-rw-r--r--   1 root  wheel     119 Apr  6 13:40 ftpusers
+-rw-r--r--   1 root  wheel    5678 Apr  6 13:40 gettytab
+-rw-r--r--   1 root  wheel    3960 Apr  6 13:40 group
+-rw-r--r--   1 root  wheel     252 Apr 22 11:36 hosts
+-rw-r--r--   1 root  wheel       0 Apr  6 13:40 hosts.equiv
+-r--r--r--   1 root  wheel    1299 Apr  6 13:40 irbrc
+-rw-r--r--   1 root  wheel       0 Apr  6 13:40 kern_loader.conf
+-rw-------   1 root  wheel    1946 Apr 19 02:09 krb5.keytab
+lrwxr-xr-x   1 root  wheel      38 Apr 19 02:09 localtime -> /var/db/timezone/zoneinfo/Asia/Kolkata
+-rw-r--r--   1 root  wheel     832 Apr  6 13:40 locate.rc
+-rw-r--r--   1 root  wheel     106 Apr  6 13:40 mail.rc
+-r--r--r--   1 root  wheel    2451 Apr  6 13:40 man.conf
+-rw-r--r--   1 root  wheel      36 Apr  6 13:40 manpaths
+drwxr-xr-x   2 root  wheel      64 Apr  6 13:40 manpaths.d
+-rw-------   1 root  wheel   10004 Apr  6 13:40 master.passwd
+-rw-r--r--   1 root  wheel      53 Apr  6 13:40 networks
+-rw-r--r--   1 root  wheel    1318 Apr  6 13:40 newsyslog.conf
+drwxr-xr-x   7 root  wheel     224 Apr  6 13:40 newsyslog.d
+-rw-r--r--   1 root  wheel      43 Apr  6 13:40 nfs.conf
+-rw-r--r--   1 root  wheel     557 Apr  6 13:40 notify.conf
+-rw-r--r--@  1 root  wheel      27 Apr  1 16:06 ntp.conf
+-rw-r--r--   1 root  wheel      23 Apr  6 13:40 ntp_opendirectory.conf
+drwxr-xr-x   8 root  wheel     256 Apr  6 13:40 openldap
+drwxr-xr-x  27 root  wheel     864 Apr  6 13:40 pam.d
+-rw-r--r--   1 root  wheel    9344 Apr  6 13:40 passwd
+-rw-r--r--   1 root  wheel      75 Apr  6 13:40 paths
+drwxr-xr-x   5 root  wheel     160 Apr 19 02:08 paths.d
+drwxr-xr-x   3 root  wheel      96 Apr  6 13:40 pf.anchors
+-rw-r--r--   1 root  wheel    1027 Apr  6 13:40 pf.conf
+-rw-r--r--   1 root  wheel   28311 Apr  6 13:40 pf.os
+drwxr-xr-x  23 root  wheel     736 Apr  6 13:40 postfix
+drwxr-xr-x   2 root  wheel      64 Apr  6 13:40 ppp
+-r--r--r--   1 root  wheel     189 Apr  6 13:40 profile
+-rw-r--r--   1 root  wheel    6393 Apr  6 13:40 protocols
+drwxr-xr-x   4 root  wheel     128 Apr  6 13:40 racoon
+-rw-r--r--   1 root  wheel    1560 Apr  6 13:40 rc.common
+-rw-r--r--   1 root  wheel    5264 Apr  6 13:40 rc.netboot
+lrwxr-xr-x   1 root  wheel      22 Apr  6 13:40 resolv.conf -> ../var/run/resolv.conf
+-rw-r--r--   1 root  wheel       0 Apr  6 13:40 rmtab
+-rw-r--r--   1 root  wheel    1735 Apr  6 13:40 rpc
+-rw-r--r--   1 root  wheel     891 Apr  6 13:40 rtadvd.conf
+drwxr-xr-x   7 root  wheel     224 Apr  6 13:40 security
+-rw-r--r--   1 root  wheel  678260 Apr  6 13:40 services
+-rw-r--r--   1 root  wheel     189 Apr  6 13:40 shells
+drwxr-xr-x   4 root  wheel     128 Apr  6 13:40 snmp
+drwxr-xr-x   7 root  wheel     224 Apr 19 02:08 ssh
+drwxr-xr-x   6 root  wheel     192 Apr  6 13:40 ssl
+-r--r-----   1 root  wheel     257 Apr  6 13:40 sudo_lecture
+-r--r-----   1 root  wheel    1709 Apr  6 13:40 sudoers
+drwxr-xr-x   2 root  wheel      64 Apr  6 13:40 sudoers.d
+-rw-r--r--   1 root  wheel      96 Apr  6 13:40 syslog.conf
+-rw-r--r--   1 root  wheel    1316 Apr  6 13:40 ttys
+drwxr-xr-x   5 root  wheel     160 Apr  6 13:40 uucp
+drwxr-xr-x   6 root  wheel     192 Apr  6 13:40 wfs
+-rw-r--r--   1 root  wheel       0 Apr  6 13:40 xtab
+-r--r--r--   1 root  wheel     304 Apr  6 13:40 zprofile
+-r--r--r--   1 root  wheel    3191 Apr  6 13:40 zshrc
+-rw-r--r--   1 root  wheel    9335 Apr  6 13:40 zshrc_Apple_Terminal
+
+ ∅ /etc  cat hosts                                                                                                                     ✔  23:37:42 
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1       localhost
+255.255.255.255 broadcasthost
+::1             localhost
+18.161.246.39   boss.ind.test.amway.in
+
+ ∅ /etc  ~                                                                                                                             ✔  23:38:05 
+
+ ~  cd Downloads/bootcamp                                                                                                              ✔  00:02:08 
+
+ ~/Downloads/bootcamp  curl -v https://httpbin.org/get                                                                                 ✔  00:02:31 
+* Host httpbin.org:443 was resolved.
+* IPv6: (none)
+* IPv4: 3.217.55.179, 98.84.87.4, 3.234.199.80, 54.198.84.224, 3.220.42.21, 3.228.76.52
+*   Trying 3.217.55.179:443...
+* Connected to httpbin.org (3.217.55.179) port 443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+* TLSv1.2 (IN), TLS handshake, Certificate (11):
+* TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+* TLSv1.2 (IN), TLS handshake, Server finished (14):
+* TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+* TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
+* TLSv1.2 (OUT), TLS handshake, Finished (20):
+* TLSv1.2 (IN), TLS change cipher, Change cipher spec (1):
+* TLSv1.2 (IN), TLS handshake, Finished (20):
+* SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256 / [blank] / UNDEF
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=httpbin.org
+*  start date: Jul 20 00:00:00 2025 GMT
+*  expire date: Aug 17 23:59:59 2026 GMT
+*  subjectAltName: host "httpbin.org" matched cert's "httpbin.org"
+*  issuer: C=US; O=Amazon; CN=Amazon RSA 2048 M03
+*  SSL certificate verify ok.
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://httpbin.org/get
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: httpbin.org]
+* [HTTP/2] [1] [:path: /get]
+* [HTTP/2] [1] [user-agent: curl/8.7.1]
+* [HTTP/2] [1] [accept: */*]
+> GET /get HTTP/2
+> Host: httpbin.org
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/2 200 
+< date: Sun, 26 Apr 2026 18:32:35 GMT
+< content-type: application/json
+< content-length: 255
+< server: gunicorn/19.9.0
+< access-control-allow-origin: *
+< access-control-allow-credentials: true
+< 
+{
+  "args": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Host": "httpbin.org", 
+    "User-Agent": "curl/8.7.1", 
+    "X-Amzn-Trace-Id": "Root=1-69ee5a43-12f776892e3c223d4c1bf95b"
+  }, 
+  "origin": "223.233.82.221", 
+  "url": "https://httpbin.org/get"
+}
+* Connection #0 to host httpbin.org left intact
+
+ ~/Downloads/bootcamp  nslookup github.com                                                                                             ✔  00:02:35 
+;; Got recursion not available from 2401:4900:50:9::290, trying next server
+Server:         2401:4900:50:9::7ad
+Address:        2401:4900:50:9::7ad#53
+
+Non-authoritative answer:
+Name:   github.com
+Address: 20.207.73.82
+
+
+ ~/Downloads/bootcamp  nslookup github.com 8.8.8.8                                                                                     ✔  02:25:28 
+Server:         8.8.8.8
+Address:        8.8.8.8#53
+
+Non-authoritative answer:
+Name:   github.com
+Address: 20.207.73.82
+
+
+ ~/Downloads/bootcamp  nslookup github.com 1.1.1.1                                                                                     ✔  02:26:16 
+Server:         1.1.1.1
+Address:        1.1.1.1#53
+
+Non-authoritative answer:
+Name:   github.com
+Address: 140.82.112.4
+
+
+ ~/Downloads/bootcamp  nslookup github.com                                                                                             ✔  02:26:28 
+;; Got recursion not available from 2401:4900:50:9::290, trying next server
+Server:         2401:4900:50:9::7ad
+Address:        2401:4900:50:9::7ad#53
+
+Non-authoritative answer:
+Name:   github.com
+Address: 20.207.73.82
+
+
+ ~/Downloads/bootcamp  curl -v https://github.com 2>&1 | head -30                                                                      ✔  21:12:17 
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host github.com:443 was resolved.
+* IPv6: (none)
+* IPv4: 20.207.73.82
+*   Trying 20.207.73.82:443...
+* Connected to github.com (20.207.73.82) port 443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [315 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [19 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [2739 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [78 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=github.com
+*  start date: Mar  6 00:00:00 2026 GMT
+*  expire date: Jun  3 23:59:59 2026 GMT
+
+ ~/Downloads/bootcamp  nslookup -q=mx github.com                                                                                  56|0 ✔  21:12:58 
+Server:         2401:4900:50:9::290
+Address:        2401:4900:50:9::290#53
+
+Non-authoritative answer:
+github.com      mail exchanger = 0 github-com.mail.protection.outlook.com.
+
+Authoritative answers can be found from:
+github.com      nameserver = dns1.p08.nsone.net.
+github.com      nameserver = dns2.p08.nsone.net.
+github.com      nameserver = dns3.p08.nsone.net.
+github.com      nameserver = dns4.p08.nsone.net.
+github.com      nameserver = ns-1283.awsdns-32.org.
+github.com      nameserver = ns-1707.awsdns-21.co.uk.
+github.com      nameserver = ns-421.awsdns-52.com.
+github.com      nameserver = ns-520.awsdns-01.net.
+
+
+ ~/Downloads/bootcamp  dig github.com mx                                                                                               ✔  21:15:36 
+
+; <<>> DiG 9.10.6 <<>> github.com mx
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 50301
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 8, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;github.com.                    IN      MX
+
+;; ANSWER SECTION:
+github.com.             300     IN      MX      0 github-com.mail.protection.outlook.com.
+
+;; AUTHORITY SECTION:
+github.com.             484     IN      NS      dns1.p08.nsone.net.
+github.com.             484     IN      NS      dns2.p08.nsone.net.
+github.com.             484     IN      NS      dns3.p08.nsone.net.
+github.com.             484     IN      NS      dns4.p08.nsone.net.
+github.com.             484     IN      NS      ns-1283.awsdns-32.org.
+github.com.             484     IN      NS      ns-1707.awsdns-21.co.uk.
+github.com.             484     IN      NS      ns-421.awsdns-52.com.
+github.com.             484     IN      NS      ns-520.awsdns-01.net.
+
+;; Query time: 102 msec
+;; SERVER: 2401:4900:50:9::7ad#53(2401:4900:50:9::7ad)
+;; WHEN: Mon Apr 27 21:16:10 IST 2026
+;; MSG SIZE  rcvd: 313
+
+
+ ~/Downloads/bootcamp  dig github.com txt                                                                                              ✔  21:16:10 
+;; Truncated, retrying in TCP mode.
+
+; <<>> DiG 9.10.6 <<>> github.com txt
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 19290
+;; flags: qr rd ra; MBZ: 0x4; QUERY: 1, ANSWER: 19, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;github.com.                    IN      TXT
+
+;; ANSWER SECTION:
+github.com.             300     IN      TXT     "MS=6BF03E6AF5CB689E315FB6199603BABF2C88D805"
+github.com.             300     IN      TXT     "MS=ms44452932"
+github.com.             300     IN      TXT     "MS=ms58704441"
+github.com.             300     IN      TXT     "TAILSCALE-xOzoDvFUzZr5YYVCQFuD"
+github.com.             300     IN      TXT     "adobe-idp-site-verification=b92c9e999aef825edc36e0a3d847d2dbad5b2fc0e05c79ddd7a16139b48ecf4b"
+github.com.             300     IN      TXT     "apple-domain-verification=RyQhdzTl6Z6x8ZP4"
+github.com.             300     IN      TXT     "atlassian-domain-verification=jjgw98AKv2aeoYFxiL/VFaoyPkn3undEssTRuMg6C/3Fp/iqhkV4HVV7WjYlVeF8"
+github.com.             300     IN      TXT     "calendly-site-verification=at0DQARi7IZvJtXQAWhMqpmIzpvoBNF7aam5VKKxP"
+github.com.             300     IN      TXT     "docusign=087098e3-3d46-47b7-9b4e-8a23028154cd"
+github.com.             300     IN      TXT     "facebook-domain-verification=39xu4jzl7roi7x0n93ldkxjiaarx50"
+github.com.             300     IN      TXT     "google-site-verification=82Le34Flgtd15ojYhHlGF_6g72muSjamlMVThBOJpks"
+github.com.             300     IN      TXT     "google-site-verification=UTM-3akMgubp6tQtgEuAkYNYLyYAvpTnnSrDMWoDR3o"
+github.com.             300     IN      TXT     "jamf-site-verification=XtaPNIYghF_e_xRDI8CjgQ"
+github.com.             300     IN      TXT     "krisp-domain-verification=ZlyiK7XLhnaoUQb2hpak1PLY7dFkl1WE"
+github.com.             300     IN      TXT     "loom-site-verification=f3787154f1154b7880e720a511ea664d"
+github.com.             300     IN      TXT     "miro-verification=d2e174fdb00c71e0bcf58f8e58c3da2dd80dcfa9"
+github.com.             300     IN      TXT     "shopify-verification-code=t1YPwcmvnxZyBycaCpk1MPyWoFs72o"
+github.com.             300     IN      TXT     "stripe-verification=f88ef17321660a01bab1660454192e014defa29ba7b8de9633c69d6b4912217f"
+github.com.             300     IN      TXT     "v=spf1 ip4:192.30.252.0/22 include:spf.protection.outlook.com include:_netblocks.google.com include:_netblocks2.google.com include:mail.zendesk.com include:_spf.salesforce.com include:servers.mcsv.net include:mktomail.com include:sendgrid.net ip4:62.253.2" "27.114 ip4:166.78.69.169 ip4:166.78.69.170 ip4:166.78.71.131 ~all"
+
+;; Query time: 96 msec
+;; SERVER: 2401:4900:50:9::290#53(2401:4900:50:9::290)
+;; WHEN: Mon Apr 27 21:16:38 IST 2026
+;; MSG SIZE  rcvd: 1598

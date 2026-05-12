@@ -1,0 +1,105 @@
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $3}' | sort                                                                       ✔  22:35:00 
+DEBUG
+DEBUG
+ERROR
+ERROR
+ERROR
+INFO
+INFO
+INFO
+WARN
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $3}' | sort | uniq                                                                ✔  22:40:00 
+DEBUG
+ERROR
+INFO
+WARN
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2,$3}' | sort                                                                    ✔  22:40:17 
+10:01:23 INFO
+10:01:45 DEBUG
+10:02:10 ERROR
+10:02:15 INFO
+10:02:20 ERROR
+10:02:25 WARN
+10:03:00 INFO
+10:03:05 DEBUG
+10:05:00 ERROR
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2,$3}' | sort | grep -i "error"                                                  ✔  22:42:08 
+10:02:10 ERROR
+10:02:20 ERROR
+10:05:00 ERROR
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2,$3}' | sort | grep -i "error" | sed -n '1p'                                    ✔  22:42:43 
+10:02:10 ERROR
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2,$3}' | sort | grep -i "error" | sed -n '2p'                                    ✔  22:44:15 
+10:02:20 ERROR
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2,$3}' | sort | grep -i "error" | sed -n '3p'                                    ✔  22:44:25 
+10:05:00 ERROR
+
+ ~/Downloads/bootcamp  cat sample.log | sort | grep -i "error" | sed -n '3p'                                                          ✔  22:44:36 
+2024-01-10 10:05:00 ERROR Disk usage at 94%
+
+ ~/Downloads/bootcamp  cat sample.log | sort | grep -i "error" | sed -n '1p'                                                          ✔  22:44:57 
+2024-01-10 10:02:10 ERROR Database connection failed: timeout
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2}'                                                                              ✔  22:45:04 
+10:01:23
+10:01:45
+10:02:10
+10:02:15
+10:02:20
+10:02:25
+10:03:00
+10:03:05
+10:05:00
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2}' | awk -F':' {$2}                                                             ✔  22:46:49 
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2}' | awk -F':' '{print $2}'                                                     ✔  22:49:01 
+01
+01
+02
+02
+02
+02
+03
+03
+05
+
+ ~/Downloads/bootcamp  cat sample.log | awk '{print $2}' | awk -F':' '{print $2}' | uniq -c                                           ✔  22:49:42 
+   2 01
+   4 02
+   2 03
+   1 05
+
+ ~/Downloads/bootcamp  cat sample.log | grep -i 'error'                                                                               ✔  22:50:06 
+2024-01-10 10:02:10 ERROR Database connection failed: timeout
+2024-01-10 10:02:20 ERROR Database connection failed: refused
+2024-01-10 10:05:00 ERROR Disk usage at 94%
+
+ ~/Downloads/bootcamp  cat sample.log | grep -i 'error' | awk 'print {$4, $5, $6, $7}'                                                ✔  22:50:43 
+awk: syntax error at source line 1
+ context is
+         >>> print <<<  {$4, $5, $6, $7}
+awk: bailing out at source line 1
+
+ ~/Downloads/bootcamp  cat sample.log | grep -i 'error' | cut -d' ' -f3-                                                        0|0|2 ✘  22:51:57 
+ERROR Database connection failed: timeout
+ERROR Database connection failed: refused
+ERROR Disk usage at 94%
+
+ ~/Downloads/bootcamp  cat sample.log | grep -i 'error' | cut -d' ' -f4-                                                              ✔  22:53:46 
+Database connection failed: timeout
+Database connection failed: refused
+Disk usage at 94%
+
+ ~/Downloads/bootcamp  cat sample.log | grep -i 'error' | cut -d' ' -f4- | sort                                                       ✔  22:53:51 
+Database connection failed: refused
+Database connection failed: timeout
+Disk usage at 94%
+
+ ~/Downloads/bootcamp                                                                                                                 ✔  22:53:59 

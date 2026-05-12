@@ -1,0 +1,14 @@
+&>>
+
+2>>
+
+appends
+
+systemctl
+systemd 
+
+packets of data in networking 
+
+ncat
+
+x-request-id
