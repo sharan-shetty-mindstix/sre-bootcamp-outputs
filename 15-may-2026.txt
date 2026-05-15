@@ -1,0 +1,88 @@
+ ~/Downloads/bootcamp  main ?1  aws ec2 create-subnet \                                ✔  01:46:54 
+    --vpc-id vpc-08ac09f5907462868 \
+    --availability-zone us-east-1a \
+    --cidr-block 10.0.1.0/24 \
+    --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=Public-Subnet-A}]'
+
+aws: [ERROR]: An error occurred (InvalidSubnet.Range) when calling the CreateSubnet operation: The CIDR '10.0.1.0/24' is invalid.
+
+ ~/Dow/bootcamp  main ?1  clear                                                    254 ✘  01:48:58 
+ ~/Downloads/bootcamp  main ?1  aws ec2 create-vpc \                                   ✔  01:49:09 
+    --cidr-block 10.0.1.0/16 \
+    --region us-east-1
+
+ ~/Dow/bootcamp  main ?1  aws ec2 create-subnet \                              ✔  1m 1s  01:50:33 
+    --vpc-id vpc-0cad9e805c28d0666 \
+    --availability-zone us-east-1a \
+    --cidr-block 10.0.1.0/24 \
+    --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=Public-Subnet-A}]'
+
+ ~/Dow/bootcamp  main ?1  aws ec2 create-subnet \                                ✔  21s  01:51:02 
+    --vpc-id vpc-0cad9e805c28d0666 \
+    --availability-zone us-east-1b \
+    --cidr-block 10.0.2.0/24 \
+    --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=Public-Subnet-B}]'
+
+ ~/Dow/bootcamp  main ?1  aws ec2 create-subnet \                                ✔  20s  01:51:27 
+    --vpc-id vpc-0cad9e805c28d0666 \
+    --availability-zone us-east-1a \
+    --cidr-block 10.0.3.0/24 \
+    --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=Private-Subnet-A}]'
+
+ ~/Dow/bootcamp  main ?1  aws ec2 create-subnet \                                ✔  15s  01:51:47 
+    --vpc-id vpc-0cad9e805c28d0666 \
+    --availability-zone us-east-1b \
+    --cidr-block 10.0.4.0/24 \
+    --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=Private-Subnet-B}]'
+
+ ~/Dow/bootcamp  main ?1  aws ec2 create-internet-gateway                        ✔  15s  01:52:04 
+
+ ~/Dow/bootcamp  main ?1  aws ec2 attach-internet-gateway                        ✔  40s  01:52:47 
+    --internet-gateway-id igw-0484af98c81ad0e86 \
+    --vpc-id vpc-0cad9e805c28d0666
+
+aws: [ERROR]: An error occurred (ParamValidation): the following arguments are required: --internet-gateway-id, --vpc-id
+
+usage: aws [options] <command> <subcommand> [<subcommand> ...] [parameters]
+To see help text, you can run:
+
+  aws help
+  aws <command> help
+  aws <command> <subcommand> help
+
+zsh: command not found: --internet-gateway-id
+
+ ~/Dow/bootcamp  main ?1  aws ec2 attach-internet-gateway \                        127 ✘  01:52:50 
+    --internet-gateway-id igw-0484af98c81ad0e86 \
+    --vpc-id vpc-0cad9e805c28d0666
+
+ ~/Downloads/bootcamp  main ?1  aws ec2 create-route-table \                           ✔  01:53:56 
+    --vpc-id vpc-0cad9e805c28d0666 \
+    --tag-specifications 'ResourceType=route-table,Tags=[{Key=Name,Value=Public-Route-Table}]'
+
+ ~/Dow/bootcamp  main ?1  aws ec2 create-route \                              ✔  1m 11s  01:55:25 
+    --route-table-id rtb-0d636ad6d9049b4cd \
+    --destination-cidr-block 0.0.0.0/0 \
+    --gateway-id igw-0484af98c81ad0e86
+
+ ~/Dow/bootcamp  main ?1  aws ec2 create-route-table \                           ✔  22s  01:55:49 
+    --vpc-id vpc-0cad9e805c28d0666 \
+    --tag-specifications 'ResourceType=route-table,Tags=[{Key=Name,Value=Private-Route-Table}]'
+
+ ~/Dow/bootcamp  main ?1  aws ec2 associate-route-table \                        ✔  27s  01:56:19 
+    --route-table-id rtb-0d636ad6d9049b4cd \
+    --subnet-id subnet-0919954727df74b79
+
+ ~/Dow/bootcamp  main ?1  aws ec2 associate-route-table \                        ✔  16s  02:00:33 
+    --route-table-id rtb-0d636ad6d9049b4cd \
+    --subnet-id subnet-0ebfcfd0d3e6a82f7
+
+ ~/Dow/bootcamp  main ?1  aws ec2 associate-route-table \                        ✔  16s  02:00:51 
+    --route-table-id rtb-03966813736135115 \
+    --subnet-id subnet-00d0ced5774594639
+
+ ~/Dow/bootcamp  main ?1  aws ec2 associate-route-table \                        ✔  13s  02:01:05 
+    --route-table-id rtb-03966813736135115 \
+    --subnet-id subnet-0dd90f16fc83295f7
+
+ ~/Dow/bootcamp  main ?1                     

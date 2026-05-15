@@ -1,0 +1,417 @@
+aws ec2 create-vpc --cidr-block 10.0.1.0/16
+{
+    "Vpc": {
+        "OwnerId": "953873390012",
+        "InstanceTenancy": "default",
+        "Ipv6CidrBlockAssociationSet": [],
+        "CidrBlockAssociationSet": [
+            {
+                "AssociationId": "vpc-cidr-assoc-0c58683c1ebb0ac2c",
+                "CidrBlock": "10.0.0.0/16",
+                "CidrBlockState": {
+                    "State": "associated"
+                }
+            }
+        ],
+        "IsDefault": false,
+        "VpcId": "vpc-088aeda4c2b2b7940",
+        "State": "pending",
+        "CidrBlock": "10.0.0.0/16",
+        "DhcpOptionsId": "dopt-02689f512770bf765"
+    }
+}
+
+aws ec2 create-subnet \
+    --vpc-id vpc-088aeda4c2b2b7940 \
+    --availability-zone ap-south-1a \
+    --cidr-block 10.0.1.0/24 \
+    --tag-specifications ResourceType=subnet,Tags=[{Key="Name",Value="Public-Subnet-A"}]
+
+aws ec2 describe-vpcs
+
+vpc-08ac09f5907462868
+vpc-0978752beafe5cea7
+
+aws ec2 delete-subnet \
+    --subnet-id subnet-0b5b401e2fb06f55b
+
+aws ec2 delete-vpc \
+    --vpc-id vpc-088aeda4c2b2b7940
+
+aws ec2 create-vpc \
+    --cidr-block 10.0.1.0/16
+    --region ap-south-1
+
+aws ec2 create-subnet \
+    --vpc-id
+
+aws ec2 describe-subnets
+subnet-097348b6958db9311
+subnet-01c3bf491c94333c2
+subnet-0efc7a6e50208999c
+subnet-0fb7a196933ef1a98
+subnet-02f091f307fa57d47
+subnet-037f1a8ccb9d999d7
+
+aws ec2 delete-subnet \
+    --subnet-id subnet-097348b6958db9311 \
+    --subnet-id subnet-01c3bf491c94333c2 \
+    --subnet-id subnet-0efc7a6e50208999c \
+    --subnet-id subnet-0fb7a196933ef1a98 \
+    --subnet-id subnet-02f091f307fa57d47 \
+    --subnet-id subnet-037f1a8ccb9d999d7
+
+aws ec2 delete-vpc \
+    --vpc-id vpc-08ac09f5907462868
+    --vpc-id vpc-0978752beafe5cea7
+
+aws ec2 create-vpc \
+    --cidr-block 10.0.1.0/16 \
+    --region ap-south-1
+---
+{
+    "Vpc": {
+        "OwnerId": "953873390012",
+        "InstanceTenancy": "default",
+        "Ipv6CidrBlockAssociationSet": [],
+        "CidrBlockAssociationSet": [
+            {
+                "AssociationId": "vpc-cidr-assoc-05bacc621f7bd3684",
+                "CidrBlock": "10.0.0.0/16",
+                "CidrBlockState": {
+                    "State": "associated"
+                }
+            }
+        ],
+        "IsDefault": false,
+        "VpcId": "vpc-0b6e6c5f2804e4787",
+        "State": "pending",
+        "CidrBlock": "10.0.0.0/16",
+        "DhcpOptionsId": "dopt-0fdf14494589f81cb"
+    }
+}
+
+aws ec2 create-subnet \
+    --vpc-id vpc-0b6e6c5f2804e4787 \
+    --availability-zone ap-south-1a \
+    --cidr-block 10.0.1.0/24 \
+    --tag-specifications 
+
+----
+
+Public Subnet A:  10.0.1.0/24  (use your region's first AZ)
+Public Subnet B:  10.0.2.0/24  (use your region's second AZ)
+Private Subnet A: 10.0.3.0/24  (same AZ as Public Subnet A)
+Private Subnet B: 10.0.4.0/24  (same AZ as Public Subnet B)
+
+Internet Gateway: created and attached to the VPC
+Public Route Table: 0.0.0.0/0 → IGW, associated with both public subnets
+Private Route Table: local route only, associated with both private subnets
+
+----
+
+aws ec2 create-vpc \
+    --cidr-block 10.0.1.0/16 \
+    --region us-east-1
+---
+{
+    "Vpc": {
+        "OwnerId": "953873390012",
+        "InstanceTenancy": "default",
+        "Ipv6CidrBlockAssociationSet": [],
+        "CidrBlockAssociationSet": [
+            {
+                "AssociationId": "vpc-cidr-assoc-0f5af1e6479de41c6",
+                "CidrBlock": "10.0.0.0/16",
+                "CidrBlockState": {
+                    "State": "associated"
+                }
+            }
+        ],
+        "IsDefault": false,
+        "VpcId": "vpc-0cad9e805c28d0666",
+        "State": "pending",
+        "CidrBlock": "10.0.0.0/16",
+        "DhcpOptionsId": "dopt-02689f512770bf765"
+    }
+}
+
+aws ec2 create-subnet \
+    --vpc-id vpc-0cad9e805c28d0666 \
+    --availability-zone us-east-1a \
+    --cidr-block 10.0.1.0/24 \
+    --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=Public-Subnet-A}]'
+---
+
+{
+    "Subnet": {
+        "AvailabilityZoneId": "use1-az6",
+        "MapCustomerOwnedIpOnLaunch": false,
+        "OwnerId": "953873390012",
+        "AssignIpv6AddressOnCreation": false,
+        "Ipv6CidrBlockAssociationSet": [],
+        "Tags": [
+            {
+                "Key": "Name",
+                "Value": "Public-Subnet-A"
+            }
+        ],
+        "SubnetArn": "arn:aws:ec2:us-east-1:953873390012:subnet/subnet-0919954727df74b79",
+        "EnableDns64": false,
+        "Ipv6Native": false,
+        "PrivateDnsNameOptionsOnLaunch": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "SubnetId": "subnet-0919954727df74b79",
+        "State": "available",
+        "VpcId": "vpc-0cad9e805c28d0666",
+        "CidrBlock": "10.0.1.0/24",
+        "AvailableIpAddressCount": 251,
+        "AvailabilityZone": "us-east-1a",
+        "DefaultForAz": false,
+        "MapPublicIpOnLaunch": false
+    }
+}
+
+aws ec2 create-subnet \
+    --vpc-id vpc-0cad9e805c28d0666 \
+    --availability-zone us-east-1b \
+    --cidr-block 10.0.2.0/24 \
+    --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=Public-Subnet-B}]'
+---
+{
+    "Subnet": {
+        "AvailabilityZoneId": "use1-az1",
+        "MapCustomerOwnedIpOnLaunch": false,
+        "OwnerId": "953873390012",
+        "AssignIpv6AddressOnCreation": false,
+        "Ipv6CidrBlockAssociationSet": [],
+        "Tags": [
+            {
+                "Key": "Name",
+                "Value": "Public-Subnet-B"
+            }
+        ],
+        "SubnetArn": "arn:aws:ec2:us-east-1:953873390012:subnet/subnet-0ebfcfd0d3e6a82f7",
+        "EnableDns64": false,
+        "Ipv6Native": false,
+        "PrivateDnsNameOptionsOnLaunch": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "SubnetId": "subnet-0ebfcfd0d3e6a82f7",
+        "State": "available",
+        "VpcId": "vpc-0cad9e805c28d0666",
+        "CidrBlock": "10.0.2.0/24",
+        "AvailableIpAddressCount": 251,
+        "AvailabilityZone": "us-east-1b",
+        "DefaultForAz": false,
+        "MapPublicIpOnLaunch": false
+    }
+}
+
+aws ec2 create-subnet \
+    --vpc-id vpc-0cad9e805c28d0666 \
+    --availability-zone us-east-1a \
+    --cidr-block 10.0.3.0/24 \
+    --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=Private-Subnet-A}]'
+---
+{
+    "Subnet": {
+        "AvailabilityZoneId": "use1-az6",
+        "MapCustomerOwnedIpOnLaunch": false,
+        "OwnerId": "953873390012",
+        "AssignIpv6AddressOnCreation": false,
+        "Ipv6CidrBlockAssociationSet": [],
+        "Tags": [
+            {
+                "Key": "Name",
+                "Value": "Private-Subnet-A"
+            }
+        ],
+        "SubnetArn": "arn:aws:ec2:us-east-1:953873390012:subnet/subnet-00d0ced5774594639",
+        "EnableDns64": false,
+        "Ipv6Native": false,
+        "PrivateDnsNameOptionsOnLaunch": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "SubnetId": "subnet-00d0ced5774594639",
+        "State": "available",
+        "VpcId": "vpc-0cad9e805c28d0666",
+        "CidrBlock": "10.0.3.0/24",
+        "AvailableIpAddressCount": 251,
+        "AvailabilityZone": "us-east-1a",
+        "DefaultForAz": false,
+        "MapPublicIpOnLaunch": false
+    }
+}
+
+aws ec2 create-subnet \
+    --vpc-id vpc-0cad9e805c28d0666 \
+    --availability-zone us-east-1b \
+    --cidr-block 10.0.4.0/24 \
+    --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=Private-Subnet-B}]'
+---
+{
+    "Subnet": {
+        "AvailabilityZoneId": "use1-az1",
+        "MapCustomerOwnedIpOnLaunch": false,
+        "OwnerId": "953873390012",
+        "AssignIpv6AddressOnCreation": false,
+        "Ipv6CidrBlockAssociationSet": [],
+        "Tags": [
+            {
+                "Key": "Name",
+                "Value": "Private-Subnet-B"
+            }
+        ],
+        "SubnetArn": "arn:aws:ec2:us-east-1:953873390012:subnet/subnet-0dd90f16fc83295f7",
+        "EnableDns64": false,
+        "Ipv6Native": false,
+        "PrivateDnsNameOptionsOnLaunch": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "SubnetId": "subnet-0dd90f16fc83295f7",
+        "State": "available",
+        "VpcId": "vpc-0cad9e805c28d0666",
+        "CidrBlock": "10.0.4.0/24",
+        "AvailableIpAddressCount": 251,
+        "AvailabilityZone": "us-east-1b",
+        "DefaultForAz": false,
+        "MapPublicIpOnLaunch": false
+    }
+}
+
+aws ec2 create-internet-gateway
+---
+{
+    "InternetGateway": {
+        "Attachments": [],
+        "InternetGatewayId": "igw-0484af98c81ad0e86",
+        "OwnerId": "953873390012",
+        "Tags": []
+    }
+}
+
+aws ec2 attach-internet-gateway \
+    --internet-gateway-id igw-0484af98c81ad0e86 \
+    --vpc-id vpc-0cad9e805c28d0666
+---
+
+aws ec2 create-route-table \
+    --vpc-id vpc-0cad9e805c28d0666 \
+    --tag-specifications 'ResourceType=route-table,Tags=[{Key=Name,Value=Public-Route-Table}]'
+---
+{
+    "RouteTable": {
+        "Associations": [],
+        "PropagatingVgws": [],
+        "RouteTableId": "rtb-0d636ad6d9049b4cd",
+        "Routes": [
+            {
+                "DestinationCidrBlock": "10.0.0.0/16",
+                "GatewayId": "local",
+                "Origin": "CreateRouteTable",
+                "State": "active"
+            }
+        ],
+        "Tags": [
+            {
+                "Key": "Name",
+                "Value": "Public-Route-Table"
+            }
+        ],
+        "VpcId": "vpc-0cad9e805c28d0666",
+        "OwnerId": "953873390012"
+    },
+    "ClientToken": "a2bfeeed-ac27-412c-b55a-c6f8aa210d0d"
+}
+
+aws ec2 create-route \
+    --route-table-id rtb-0d636ad6d9049b4cd \
+    --destination-cidr-block 0.0.0.0/0 \
+    --gateway-id igw-0484af98c81ad0e86
+---
+{
+    "Return": true
+}
+
+aws ec2 create-route-table \
+    --vpc-id vpc-0cad9e805c28d0666 \
+    --tag-specifications 'ResourceType=route-table,Tags=[{Key=Name,Value=Private-Route-Table}]' 
+---
+{
+    "RouteTable": {
+        "Associations": [],
+        "PropagatingVgws": [],
+        "RouteTableId": "rtb-03966813736135115",
+        "Routes": [
+            {
+                "DestinationCidrBlock": "10.0.0.0/16",
+                "GatewayId": "local",
+                "Origin": "CreateRouteTable",
+                "State": "active"
+            }
+        ],
+        "Tags": [
+            {
+                "Key": "Name",
+                "Value": "Private-Route-Table"
+            }
+        ],
+        "VpcId": "vpc-0cad9e805c28d0666",
+        "OwnerId": "953873390012"
+    },
+    "ClientToken": "f9485055-f4af-4bb7-b7b5-c2791fae5160"
+}
+
+aws ec2 associate-route-table \
+    --route-table-id rtb-0d636ad6d9049b4cd \
+    --subnet-id subnet-0919954727df74b79
+---
+{
+    "AssociationId": "rtbassoc-0700e02b14384cebc",
+    "AssociationState": {
+        "State": "associated"
+    }
+}
+
+aws ec2 associate-route-table \
+    --route-table-id rtb-0d636ad6d9049b4cd \
+    --subnet-id subnet-0ebfcfd0d3e6a82f7
+---
+{
+    "AssociationId": "rtbassoc-085869e3f0dea1d73",
+    "AssociationState": {
+        "State": "associated"
+    }
+}
+
+aws ec2 associate-route-table \
+    --route-table-id rtb-03966813736135115 \
+    --subnet-id subnet-00d0ced5774594639
+---
+{
+    "AssociationId": "rtbassoc-06a1483fa671443fb",
+    "AssociationState": {
+        "State": "associated"
+    }
+}
+
+aws ec2 associate-route-table \
+    --route-table-id rtb-03966813736135115 \
+    --subnet-id subnet-0dd90f16fc83295f7
+---
+{
+    "AssociationId": "rtbassoc-09bb834c44156a930",
+    "AssociationState": {
+        "State": "associated"
+    }
+}
