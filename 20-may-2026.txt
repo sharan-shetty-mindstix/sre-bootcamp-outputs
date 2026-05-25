@@ -1,0 +1,754 @@
+[root@ip-10-0-1-202 ~]# TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` \
+&& curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    56 100    56   0     0 25350     0  --:--:-- --:--:-- --:--:-- 28000
+1.0
+2007-01-19
+2007-03-01
+2007-08-29
+2007-10-10
+2007-12-15
+2008-02-01
+2008-09-01
+2009-04-04
+2011-01-01
+2011-05-01
+2012-01-12
+2014-02-25
+2014-11-05
+2015-10-20
+2016-04-19
+2016-06-30
+2016-09-02
+2018-03-28
+2018-08-17
+2018-09-24
+2019-10-01
+2020-10-27
+2021-01-03
+2021-03-23
+2021-07-15
+2022-09-24
+2024-04-11
+2025-10-04
+2026-04-15
+latest[root@ip-10-0-1-20TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` \00"` \
+&& curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/    
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    56 100    56   0     0 16166     0  --:--:-- --:--:-- --:--:-- 18666
+ami-id
+ami-launch-index
+ami-manifest-path
+block-device-mapping/
+events/
+hostname
+identity-credentials/
+instance-action
+instance-id
+instance-life-cycle
+instance-type
+local-hostname
+local-ipv4
+mac
+metrics/
+network/
+placement/
+profile
+public-hostname
+public-ipv4
+public-keys/
+reservation-id
+security-groups
+services/
+system[root@ip-10-0-1-20curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/-data/
+ami-id
+ami-launch-index
+ami-manifest-path
+block-device-mapping/
+events/
+hostname
+identity-credentials/
+instance-action
+instance-id
+instance-life-cycle
+instance-type
+local-hostname
+local-ipv4
+mac
+metrics/
+network/
+placement/
+profile
+public-hostname
+public-ipv4
+public-keys/
+reservation-id
+security-groups
+services/
+system[root@ip-10-0-1-202 ~]# curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/ami-id
+ami-0576ef8e344fbf536[root@ip-10-0-1-202 ~]# 
+[root@ip-10-0-1-202 ~]# 
+[root@ip-10-0-1-202 ~]# 
+[root@ip-10-0-1-202 ~]# curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/mac
+0e:6d:bf:92:6c:49[root@ip-10-0-1-202 ~]# 
+[root@ip-10-0-1-202 ~]# 
+[root@ip-10-0-1-202 ~]# 
+[root@ip-10-0-1-202 ~]# aws s3 ls
+
+Unable to locate credentials. You can configure credentials by running "aws login".
+[root@ip-10-0-1-202 ~]# exit
+logout
+[ec2-user@ip-10-0-1-202 ~]$ exit
+logout
+Connection to 13.217.158.145 closed.
+
+----------------------------------------------------------
+
+aws ec2 run-instances \
+  --image-id ami-0576ef8e344fbf536 \
+  --instance-type t4g.nano \
+  --key-name ec2-access-key-pair \
+  --subnet-id subnet-0919954727df74b79 \
+  --security-group-ids sg-02f47f440dc2560a9 \
+  --associate-public-ip-address \
+  --user-data file://userdata.sh
+---
+{
+    "ReservationId": "r-0695ee59ca51fa6ee",
+    "OwnerId": "953873390012",
+    "Groups": [],
+    "Instances": [
+        {
+            "Architecture": "arm64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "4a396d24-8ff9-4b75-af93-5e18264d033d",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2026-05-19T18:53:50+00:00",
+                        "AttachmentId": "eni-attach-0a106fe46611fbd8d",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupId": "sg-02f47f440dc2560a9",
+                            "GroupName": "Security-Group-EC2"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "0e:db:1c:3f:64:07",
+                    "NetworkInterfaceId": "eni-01e5a1e73b83e069e",
+                    "OwnerId": "953873390012",
+                    "PrivateIpAddress": "10.0.1.85",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateIpAddress": "10.0.1.85"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0919954727df74b79",
+                    "VpcId": "vpc-0cad9e805c28d0666",
+                    "InterfaceType": "interface",
+                    "Operator": {
+                        "Managed": false
+                    }
+                }
+            ],
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupId": "sg-02f47f440dc2560a9",
+                    "GroupName": "Security-Group-EC2"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 2,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "required",
+                "HttpPutResponseHopLimit": 2,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "BootMode": "uefi",
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default",
+                "RebootMigration": "default"
+            },
+            "CurrentInstanceBootMode": "uefi",
+            "Operator": {
+                "Managed": false
+            },
+            "InstanceId": "i-0d176dfe00eda37f7",
+            "ImageId": "ami-0576ef8e344fbf536",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PrivateDnsName": "ip-10-0-1-85.ec2.internal",
+            "PublicDnsName": "",
+            "StateTransitionReason": "",
+            "KeyName": "ec2-access-key-pair",
+            "AmiLaunchIndex": 0,
+            "ProductCodes": [],
+            "InstanceType": "t4g.nano",
+            "LaunchTime": "2026-05-19T18:53:50+00:00",
+            "Placement": {
+                "AvailabilityZoneId": "use1-az6",
+                "GroupName": "",
+                "Tenancy": "default",
+                "AvailabilityZone": "us-east-1a"
+            },
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "SubnetId": "subnet-0919954727df74b79",
+            "VpcId": "vpc-0cad9e805c28d0666",
+            "PrivateIpAddress": "10.0.1.85"
+        }
+    ]
+}
+
+aws ec2 stop-instances --instance-ids i-0d176dfe00eda37f7
+---
+{
+    "StoppingInstances": [
+        {
+            "InstanceId": "i-0d176dfe00eda37f7",
+            "CurrentState": {
+                "Code": 64,
+                "Name": "stopping"
+            },
+            "PreviousState": {
+                "Code": 16,
+                "Name": "running"
+            }
+        }
+    ]
+}
+
+aws ec2 modify-instance-attribute \
+  --instance-id i-0d176dfe00eda37f7 \
+  --user-data Value="$(base64 userdata.sh)"
+
+aws ec2 start-instances --instance-ids i-0d176dfe00eda37f7
+---
+{
+    "StartingInstances": [
+        {
+            "InstanceId": "i-0d176dfe00eda37f7",
+            "CurrentState": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PreviousState": {
+                "Code": 80,
+                "Name": "stopped"
+            }
+        }
+    ]
+}
+
+aws ec2 terminate-instances --instance-ids i-0d176dfe00eda37f7
+---
+{
+    "TerminatingInstances": [
+        {
+            "InstanceId": "i-0d176dfe00eda37f7",
+            "CurrentState": {
+                "Code": 32,
+                "Name": "shutting-down"
+            },
+            "PreviousState": {
+                "Code": 16,
+                "Name": "running"
+            }
+        }
+    ]
+}
+
+aws ec2 run-instances \
+  --image-id ami-0576ef8e344fbf536 \
+  --instance-type t4g.nano \
+  --key-name ec2-access-key-pair \
+  --subnet-id subnet-0919954727df74b79 \
+  --security-group-ids sg-02f47f440dc2560a9 \
+  --associate-public-ip-address \
+  --user-data "$(base64 userdata.sh)"
+---
+{
+    "ReservationId": "r-0747e83968f034ed1",
+    "OwnerId": "953873390012",
+    "Groups": [],
+    "Instances": [
+        {
+            "Architecture": "arm64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "b7b9be0b-6b23-402d-8dca-f5a27a0a3b45",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2026-05-19T19:21:31+00:00",
+                        "AttachmentId": "eni-attach-0ca3e6a8b1707127b",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupId": "sg-02f47f440dc2560a9",
+                            "GroupName": "Security-Group-EC2"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "0e:b8:d0:62:ac:e5",
+                    "NetworkInterfaceId": "eni-0e74601db3de77cef",
+                    "OwnerId": "953873390012",
+                    "PrivateIpAddress": "10.0.1.208",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateIpAddress": "10.0.1.208"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0919954727df74b79",
+                    "VpcId": "vpc-0cad9e805c28d0666",
+                    "InterfaceType": "interface",
+                    "Operator": {
+                        "Managed": false
+                    }
+                }
+            ],
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupId": "sg-02f47f440dc2560a9",
+                    "GroupName": "Security-Group-EC2"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 2,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "required",
+                "HttpPutResponseHopLimit": 2,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "BootMode": "uefi",
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default",
+                "RebootMigration": "default"
+            },
+            "CurrentInstanceBootMode": "uefi",
+            "Operator": {
+                "Managed": false
+            },
+            "InstanceId": "i-00370ee762047038c",
+            "ImageId": "ami-0576ef8e344fbf536",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PrivateDnsName": "ip-10-0-1-208.ec2.internal",
+            "PublicDnsName": "",
+            "StateTransitionReason": "",
+            "KeyName": "ec2-access-key-pair",
+            "AmiLaunchIndex": 0,
+            "ProductCodes": [],
+            "InstanceType": "t4g.nano",
+            "LaunchTime": "2026-05-19T19:21:31+00:00",
+            "Placement": {
+                "AvailabilityZoneId": "use1-az6",
+                "GroupName": "",
+                "Tenancy": "default",
+                "AvailabilityZone": "us-east-1a"
+            },
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "SubnetId": "subnet-0919954727df74b79",
+            "VpcId": "vpc-0cad9e805c28d0666",
+            "PrivateIpAddress": "10.0.1.208"
+        }
+    ]
+}
+
+aws ec2 terminate-instances --instance-ids i-00370ee762047038c
+---
+{
+    "TerminatingInstances": [
+        {
+            "InstanceId": "i-00370ee762047038c",
+            "CurrentState": {
+                "Code": 32,
+                "Name": "shutting-down"
+            },
+            "PreviousState": {
+                "Code": 16,
+                "Name": "running"
+            }
+        }
+    ]
+}
+
+aws ec2 run-instances \
+  --image-id ami-0576ef8e344fbf536 \
+  --instance-type t4g.nano \
+  --key-name ec2-access-key-pair \
+  --subnet-id subnet-0919954727df74b79 \
+  --security-group-ids sg-02f47f440dc2560a9 \
+  --associate-public-ip-address \
+  --user-data file://userdata.sh
+---
+{
+    "ReservationId": "r-0c568d9dc84740781",
+    "OwnerId": "953873390012",
+    "Groups": [],
+    "Instances": [
+        {
+            "Architecture": "arm64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "1b9fb1cf-87e3-4a65-80ba-76787a3d7681",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2026-05-19T19:31:02+00:00",
+                        "AttachmentId": "eni-attach-07f95a0dfc4a1e1b4",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupId": "sg-02f47f440dc2560a9",
+                            "GroupName": "Security-Group-EC2"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "0e:9e:e9:e9:5f:a3",
+                    "NetworkInterfaceId": "eni-0f5d8b97ebff07c43",
+                    "OwnerId": "953873390012",
+                    "PrivateIpAddress": "10.0.1.174",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateIpAddress": "10.0.1.174"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0919954727df74b79",
+                    "VpcId": "vpc-0cad9e805c28d0666",
+                    "InterfaceType": "interface",
+                    "Operator": {
+                        "Managed": false
+                    }
+                }
+            ],
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupId": "sg-02f47f440dc2560a9",
+                    "GroupName": "Security-Group-EC2"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 2,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "required",
+                "HttpPutResponseHopLimit": 2,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "BootMode": "uefi",
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default",
+                "RebootMigration": "default"
+            },
+            "CurrentInstanceBootMode": "uefi",
+            "Operator": {
+                "Managed": false
+            },
+            "InstanceId": "i-065bb2a7c7d060b8d",
+            "ImageId": "ami-0576ef8e344fbf536",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PrivateDnsName": "ip-10-0-1-174.ec2.internal",
+            "PublicDnsName": "",
+            "StateTransitionReason": "",
+            "KeyName": "ec2-access-key-pair",
+            "AmiLaunchIndex": 0,
+            "ProductCodes": [],
+            "InstanceType": "t4g.nano",
+            "LaunchTime": "2026-05-19T19:31:02+00:00",
+            "Placement": {
+                "AvailabilityZoneId": "use1-az6",
+                "GroupName": "",
+                "Tenancy": "default",
+                "AvailabilityZone": "us-east-1a"
+            },
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "SubnetId": "subnet-0919954727df74b79",
+            "VpcId": "vpc-0cad9e805c28d0666",
+            "PrivateIpAddress": "10.0.1.174"
+        }
+    ]
+}
+
+aws ec2 associate-iam-instance-profile \
+  --instance-id i-065bb2a7c7d060b8d \
+  --iam-instance-profile Name=ec2-s3-read-role
+---
+{
+    "IamInstanceProfileAssociation": {
+        "AssociationId": "iip-assoc-068459cc8ee690009",
+        "InstanceId": "i-065bb2a7c7d060b8d",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::953873390012:instance-profile/ec2-s3-read-role",
+            "Id": "AIPA54F2I3G6PYMX5CHSH"
+        },
+        "State": "associating"
+    }
+}
+
+----------------------------------------------------------
+
+ aws ec2 associate-iam-instance-profile \                                4 ✘  5m 53s  01:12:18 
+  --instance-id i-065bb2a7c7d060b8d \
+  --iam-instance-profile Name=ec2-s3-read-role
+
+ ~/Downloads/bootcamp  main ?6  ssh -i "secrets/ec2-access-key-pair.pem" ec2-user@100.54.208.123             ✔  21s  01:12:41 
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Tue May 19 19:36:33 2026 from 103.97.242.173
+[ec2-user@ip-10-0-1-174 ~]$ aws s3 ls
+^C
+[ec2-user@ip-10-0-1-174 ~]$ sudo -i
+[root@ip-10-0-1-174 ~]# aws s3 ls
+^C
+[root@ip-10-0-1-174 ~]# TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    56 100    56   0     0 31478     0  --:--:-- --:--:-- --:--:-- 56000
+[root@ip-10-0-1-174 ~]# curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169
+*   Trying 169.254.0.169:80...
+^C
+[root@ip-10-0-1-174 ~]# curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/
+ami-id
+ami-launch-index
+ami-manifest-path
+block-device-mapping/
+events/
+hostname
+iam/
+identity-credentials/
+instance-action
+instance-id
+instance-life-cycle
+instance-type
+local-hostname
+local-ipv4
+mac
+metrics/
+network/
+placement/
+profile
+public-hostname
+public-ipv4
+public-keys/
+reservation-id
+security-groups
+services/
+system[root@ip-10-0-1-174 ~]# curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/iam/
+info
+security-credentials/[root@ip-10-0-1-174 ~]# curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/iam/info
+{
+  "Code" : "Success",
+  "LastUpdated" : "2026-05-19T19:42:23Z",
+  "InstanceProfileArn" : "arn:aws:iam::953873390012:instance-profile/ec2-s3-read-role",
+  "InstanceProfileId" : "AIPA54F2I3G6PYMX5CHSH"
+}[root@ip-10-0-1-174 ~]# 
+
+----------------------------------------------------------
+
+TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`
+curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/
+
+
+aws ec2 create-volume \
+  --availability-zone us-east-1a \
+  --size 10 \
+  --volume-type gp3
+---
+{
+    "AvailabilityZoneId": "use1-az6",
+    "Iops": 3000,
+    "Tags": [],
+    "VolumeType": "gp3",
+    "MultiAttachEnabled": false,
+    "Throughput": 125,
+    "VolumeId": "vol-0c29584e1fba70480",
+    "Size": 10,
+    "SnapshotId": "",
+    "AvailabilityZone": "us-east-1a",
+    "State": "creating",
+    "CreateTime": "2026-05-19T19:49:34+00:00",
+    "Encrypted": false
+}
+
+aws ec2 attach-volume \
+  --volume-id vol-0c29584e1fba70480 \
+  --instance-id i-065bb2a7c7d060b8d \
+  --device /dev/xvdf
+---
+{
+    "VolumeId": "vol-0c29584e1fba70480",
+    "InstanceId": "i-065bb2a7c7d060b8d",
+    "Device": "/dev/xvdf",
+    "State": "attaching",
+    "AttachTime": "2026-05-19T19:51:18.221000+00:00"
+}
+
+aws ec2 stop-instances --instance-ids i-065bb2a7c7d060b8d
+---
+{
+    "StoppingInstances": [
+        {
+            "InstanceId": "i-065bb2a7c7d060b8d",
+            "CurrentState": {
+                "Code": 64,
+                "Name": "stopping"
+            },
+            "PreviousState": {
+                "Code": 16,
+                "Name": "running"
+            }
+        }
+    ]
+}
+
+aws ec2 detach-volume --volume-id vol-0c29584e1fba70480
+---
+{
+    "VolumeId": "vol-0c29584e1fba70480",
+    "InstanceId": "i-065bb2a7c7d060b8d",
+    "Device": "/dev/xvdf",
+    "State": "detaching",
+    "AttachTime": "2026-05-19T19:51:18+00:00"
+}
+
+aws ec2 attach-volume \
+  --volume-id vol-0c29584e1fba70480 \
+  --instance-id i-0f58a7b1a5ef95366 \
+  --device /dev/xvdf
+---
+{
+    "VolumeId": "vol-0c29584e1fba70480",
+    "InstanceId": "i-0f58a7b1a5ef95366",
+    "Device": "/dev/xvdf",
+    "State": "attaching",
+    "AttachTime": "2026-05-21T13:02:25.335000+00:00"
+}

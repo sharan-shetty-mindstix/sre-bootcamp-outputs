@@ -1,0 +1,192 @@
+aws ec2 describe-instances
+
+------
+SSH into it using your key pair.
+From inside the instance, run:
+curl http://169.254.169.254/latest/meta-data/instance-id
+curl http://169.254.169.254/latest/meta-data/iam/info
+What is 169.254.169.254? What does it return?
+------
+
+aws ec2-instance-connect ssh --instance-id i-0495e98b29a00876d
+---
+aws: [ERROR]: An error occurred (ParamValidation): There are no available instance connect endpoints.
+
+aws ec2 allocate-address --domain vpc
+---
+{
+    "AllocationId": "eipalloc-035c5234e9ddb8134",
+    "PublicIpv4Pool": "amazon",
+    "NetworkBorderGroup": "us-east-1",
+    "Domain": "vpc",
+    "PublicIp": "13.217.158.145"
+}
+
+Create a new EC2 instance with the key pair and the public IP address.
+
+aws ec2 run-instances \
+    --image-id ami-0576ef8e344fbf536 \
+    --instance-type t4g.nano \
+    --key-name ec2-access-key-pair \
+    --subnet-id subnet-0919954727df74b79
+---
+{
+    "ReservationId": "r-01356c0a5efba82ba",
+    "OwnerId": "953873390012",
+    "Groups": [],
+    "Instances": [
+        {
+            "Architecture": "arm64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "b949626c-6762-4ffc-ae21-dfe1c2463aa1",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2026-05-17T12:17:37+00:00",
+                        "AttachmentId": "eni-attach-0d54804dd02ed6952",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupId": "sg-04b669610998c5012",
+                            "GroupName": "default"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "0e:6d:bf:92:6c:49",
+                    "NetworkInterfaceId": "eni-0b905c33524a395bc",
+                    "OwnerId": "953873390012",
+                    "PrivateIpAddress": "10.0.1.202",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateIpAddress": "10.0.1.202"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0919954727df74b79",
+                    "VpcId": "vpc-0cad9e805c28d0666",
+                    "InterfaceType": "interface",
+                    "Operator": {
+                        "Managed": false
+                    }
+                }
+            ],
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupId": "sg-04b669610998c5012",
+                    "GroupName": "default"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 2,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "required",
+                "HttpPutResponseHopLimit": 2,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "BootMode": "uefi",
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default",
+                "RebootMigration": "default"
+            },
+            "CurrentInstanceBootMode": "uefi",
+            "Operator": {
+                "Managed": false
+            },
+            "InstanceId": "i-0f58a7b1a5ef95366",
+            "ImageId": "ami-0576ef8e344fbf536",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PrivateDnsName": "ip-10-0-1-202.ec2.internal",
+            "PublicDnsName": "",
+            "StateTransitionReason": "",
+            "KeyName": "ec2-access-key-pair",
+            "AmiLaunchIndex": 0,
+            "ProductCodes": [],
+            "InstanceType": "t4g.nano",
+            "LaunchTime": "2026-05-17T12:17:37+00:00",
+            "Placement": {
+                "AvailabilityZoneId": "use1-az6",
+                "GroupName": "",
+                "Tenancy": "default",
+                "AvailabilityZone": "us-east-1a"
+            },
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "SubnetId": "subnet-0919954727df74b79",
+            "VpcId": "vpc-0cad9e805c28d0666",
+            "PrivateIpAddress": "10.0.1.202"
+        }
+    ]
+}
+
+aws ec2 associate-address \
+    --instance-id i-0f58a7b1a5ef95366 \
+    --allocation-id eipalloc-035c5234e9ddb8134
+---
+{
+    "AssociationId": "eipassoc-07e69cf3d317aa225"
+}
+
+ssh -i "secrets/ec2-access-key-pair.pem" ec2-user@13.217.158.145
+
+Add a rule to attach and inbound and outbound 22 port to the NACL 
+
+aws ec2 create-network-acl-entry \
+    --network-acl-id acl-0ab324df662347c02 \
+    --rule-number 110 \
+    --protocol tcp \
+    --rule-action allow \
+    --cidr-block 0.0.0.0/0 \
+    --ingress \
+    --port-range From=22,To=22
+
+aws ec2 create-network-acl-entry \
+    --network-acl-id acl-0ab324df662347c02 \
+    --rule-number 110 \
+    --protocol tcp \
+    --rule-action allow \
+    --cidr-block 0.0.0.0/0 \
+    --egress \
+    --port-range From=22,To=22
+
+aws ec2 modify-instance-attribute \
+  --instance-id i-0f58a7b1a5ef95366 \
+  --groups sg-02f47f440dc2560a9
+

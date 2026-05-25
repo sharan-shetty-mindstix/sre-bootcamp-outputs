@@ -1,0 +1,32 @@
+
+ ~/Downloads/bootcamp  main ?6  aws ec2 stop-instances --instance-ids i-065bb2a7c7d060b8d                 ✔  30m 9s  18:30:33 
+
+ ~/Downloads/bootcamp  main ?6  aws ec2 detach-volume --volume-id vol-0c29584e1fba70480                      ✔  36s  18:31:11 
+
+ ~/Downloads/bootcamp  main ?6  aws ec2 attach-volume \                                                    ✔  1m 7s  18:32:20 
+  --volume-id vol-0c29584e1fba70480 \
+  --instance-id i-0f58a7b1a5ef95366 \
+  --device /dev/xvdf
+
+ ~/Downloads/bootcamp  main ?6  ssh -i "secrets/ec2-access-key-pair.pem" ec2-user@13.217.158.145             ✔  50s  18:33:13 
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Tue May 19 18:44:25 2026 from 103.97.242.173
+[ec2-user@ip-10-0-1-202 ~]$ sudo -i
+[root@ip-10-0-1-202 ~]# mkdir /data
+[root@ip-10-0-1-202 ~]# mount /dev/xvdf /data
+[root@ip-10-0-1-202 ~]# cat /data/test.txt
+persisted data
+[root@ip-10-0-1-202 ~]# 
+

@@ -1,0 +1,872 @@
+🔧 Assignment 3E — EFS: Shared Filesystem
+Mounting EFS: https://docs.aws.amazon.com/efs/latest/ug/mounting-fs.html EFS access points: https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html
+
+⚠️ EFS is not free tier. You will be charged ~$0.30/GB-month prorated to the time you use it. Keep this exercise under 1 hour and delete the filesystem immediately when done. Total cost: a few cents.
+
+Create an EFS filesystem. Create mount targets in both Public Subnet A and Public Subnet B. (EFS needs a Security Group that allows NFS port 2049 inbound from your EC2 instances.)
+Launch two EC2 instances — one in each public subnet.
+Mount the EFS filesystem on both:
+sudo mkdir /shared
+sudo mount -t efs <fs-id>:/ /shared
+On Instance 1: echo "written from instance 1" | sudo tee /shared/test.txt
+On Instance 2: cat /shared/test.txt — is the file there?
+Delete the EFS filesystem immediately after verifying.
+Question for your log: EBS vs EFS — when would you use each? Can two EC2 instances in different AZs share the same EBS volume? Can they share the same EFS filesystem? What does that tell you about the architectural difference?
+---
+
+aws efs create-file-system
+---
+{
+    "OwnerId": "953873390012",
+    "CreationToken": "3b380116-9d2b-42bd-bb65-97d2d55e0e08",
+    "FileSystemId": "fs-04fd724982f03d833",
+    "FileSystemArn": "arn:aws:elasticfilesystem:us-east-1:953873390012:file-system/fs-04fd724982f03d833",
+    "CreationTime": "2026-05-21T19:08:54+05:30",
+    "LifeCycleState": "creating",
+    "NumberOfMountTargets": 0,
+    "SizeInBytes": {
+        "Value": 0,
+        "ValueInIA": 0,
+        "ValueInStandard": 0,
+        "ValueInArchive": 0
+    },
+    "PerformanceMode": "generalPurpose",
+    "Encrypted": false,
+    "ThroughputMode": "bursting",
+    "Tags": [],
+    "FileSystemProtection": {
+        "ReplicationOverwriteProtection": "ENABLED"
+    }
+}
+
+aws efs create-mount-target \
+  --file-system-id fs-04fd724982f03d833 \
+  --subnet-id subnet-0919954727df74b79 \
+  --security-groups sg-02f47f440dc2560a9
+---
+{
+    "OwnerId": "953873390012",
+    "MountTargetId": "fsmt-03edd937e224ba365",
+    "FileSystemId": "fs-04fd724982f03d833",
+    "SubnetId": "subnet-0919954727df74b79",
+    "LifeCycleState": "creating",
+    "IpAddress": "10.0.1.198",
+    "NetworkInterfaceId": "eni-0ac871bec855e6683",
+    "AvailabilityZoneId": "use1-az6",
+    "AvailabilityZoneName": "us-east-1a",
+    "VpcId": "vpc-0cad9e805c28d0666"
+}
+
+aws efs create-mount-target \
+  --file-system-id fs-04fd724982f03d833 \
+  --subnet-id subnet-0ebfcfd0d3e6a82f7 \
+  --security-groups sg-02f47f440dc2560a9
+---
+{
+    "OwnerId": "953873390012",
+    "MountTargetId": "fsmt-030f08e1b67a7402a",
+    "FileSystemId": "fs-04fd724982f03d833",
+    "SubnetId": "subnet-0ebfcfd0d3e6a82f7",
+    "LifeCycleState": "creating",
+    "IpAddress": "10.0.2.206",
+    "NetworkInterfaceId": "eni-0b6fc425492ac3753",
+    "AvailabilityZoneId": "use1-az1",
+    "AvailabilityZoneName": "us-east-1b",
+    "VpcId": "vpc-0cad9e805c28d0666"
+}
+
+--------------------------------
+
+aws efs delete-mount-target \
+  --mount-target-id fsmt-03edd937e224ba365
+
+aws efs delete-mount-target \
+  --mount-target-id fsmt-030f08e1b67a7402a
+
+--------------------------------
+
+aws ec2 create-security-group \
+  --group-name efs-sg \
+  --description "EFS Security Group" \
+  --vpc-id vpc-0cad9e805c28d0666
+---
+{
+    "GroupId": "sg-03e92eb1b42cd4427",
+    "SecurityGroupArn": "arn:aws:ec2:us-east-1:953873390012:security-group/sg-03e92eb1b42cd4427"
+}
+
+aws ec2 authorize-security-group-ingress \
+  --group-id sg-03e92eb1b42cd4427 \
+  --protocol tcp \
+  --port 2049 \
+  --source-group sg-02f47f440dc2560a9
+---
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-045f753d11a8b0096",
+            "GroupId": "sg-03e92eb1b42cd4427",
+            "GroupOwnerId": "953873390012",
+            "IsEgress": false,
+            "IpProtocol": "tcp",
+            "FromPort": 2049,
+            "ToPort": 2049,
+            "ReferencedGroupInfo": {
+                "GroupId": "sg-02f47f440dc2560a9",
+                "UserId": "953873390012"
+            },
+            "SecurityGroupRuleArn": "arn:aws:ec2:us-east-1:953873390012:security-group-rule/sgr-045f753d11a8b0096"
+        }
+    ]
+}
+
+aws efs create-mount-target \
+  --file-system-id fs-04fd724982f03d833 \
+  --subnet-id subnet-0919954727df74b79 \
+  --security-groups sg-03e92eb1b42cd4427
+---
+{
+    "OwnerId": "953873390012",
+    "MountTargetId": "fsmt-0992128cae95ea849",
+    "FileSystemId": "fs-04fd724982f03d833",
+    "SubnetId": "subnet-0919954727df74b79",
+    "LifeCycleState": "creating",
+    "IpAddress": "10.0.1.4",
+    "NetworkInterfaceId": "eni-0374fcfb5e18bba87",
+    "AvailabilityZoneId": "use1-az6",
+    "AvailabilityZoneName": "us-east-1a",
+    "VpcId": "vpc-0cad9e805c28d0666"
+}
+
+aws efs create-mount-target \
+  --file-system-id fs-04fd724982f03d833 \
+  --subnet-id subnet-0ebfcfd0d3e6a82f7 \
+  --security-groups sg-03e92eb1b42cd4427
+---
+{
+    "OwnerId": "953873390012",
+    "MountTargetId": "fsmt-0d1149812b1b16e13",
+    "FileSystemId": "fs-04fd724982f03d833",
+    "SubnetId": "subnet-0ebfcfd0d3e6a82f7",
+    "LifeCycleState": "creating",
+    "IpAddress": "10.0.2.186",
+    "NetworkInterfaceId": "eni-0e4215f6232f7dccd",
+    "AvailabilityZoneId": "use1-az1",
+    "AvailabilityZoneName": "us-east-1b",
+    "VpcId": "vpc-0cad9e805c28d0666"
+}
+
+aws ec2 run-instances \
+  --image-id ami-0576ef8e344fbf536 \
+  --instance-type t4g.nano \
+  --key-name ec2-access-key-pair \
+  --subnet-id subnet-0919954727df74b79 \
+  --security-group-ids sg-02f47f440dc2560a9 \
+  --associate-public-ip-address \
+  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=efs-ec2-a}]'
+---
+{
+    "ReservationId": "r-039f1b6c482fe57e9",
+    "OwnerId": "953873390012",
+    "Groups": [],
+    "Instances": [
+        {
+            "Architecture": "arm64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "0b136b6f-e966-44fd-996c-445d5a702dcc",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2026-05-21T14:03:17+00:00",
+                        "AttachmentId": "eni-attach-02b53f8e95725974b",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupId": "sg-02f47f440dc2560a9",
+                            "GroupName": "Security-Group-EC2"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "0e:bb:e8:d3:87:5b",
+                    "NetworkInterfaceId": "eni-0a99257e13dd5600a",
+                    "OwnerId": "953873390012",
+                    "PrivateIpAddress": "10.0.1.160",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateIpAddress": "10.0.1.160"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0919954727df74b79",
+                    "VpcId": "vpc-0cad9e805c28d0666",
+                    "InterfaceType": "interface",
+                    "Operator": {
+                        "Managed": false
+                    }
+                }
+            ],
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupId": "sg-02f47f440dc2560a9",
+                    "GroupName": "Security-Group-EC2"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "efs-ec2-a"
+                }
+            ],
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 2,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "required",
+                "HttpPutResponseHopLimit": 2,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "BootMode": "uefi",
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default",
+                "RebootMigration": "default"
+            },
+            "CurrentInstanceBootMode": "uefi",
+            "Operator": {
+                "Managed": false
+            },
+            "InstanceId": "i-0182cddb1c323d9ac",
+            "ImageId": "ami-0576ef8e344fbf536",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PrivateDnsName": "ip-10-0-1-160.ec2.internal",
+            "PublicDnsName": "",
+            "StateTransitionReason": "",
+            "KeyName": "ec2-access-key-pair",
+            "AmiLaunchIndex": 0,
+            "ProductCodes": [],
+            "InstanceType": "t4g.nano",
+            "LaunchTime": "2026-05-21T14:03:17+00:00",
+            "Placement": {
+                "AvailabilityZoneId": "use1-az6",
+                "GroupName": "",
+                "Tenancy": "default",
+                "AvailabilityZone": "us-east-1a"
+            },
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "SubnetId": "subnet-0919954727df74b79",
+            "VpcId": "vpc-0cad9e805c28d0666",
+            "PrivateIpAddress": "10.0.1.160"
+        }
+    ]
+}
+
+aws ec2 run-instances \
+  --image-id ami-0576ef8e344fbf536 \
+  --instance-type t4g.nano \
+  --key-name ec2-access-key-pair \
+  --subnet-id subnet-0ebfcfd0d3e6a82f7 \
+  --security-group-ids sg-02f47f440dc2560a9 \
+  --associate-public-ip-address \
+  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=efs-ec2-b}]'
+---
+{
+    "ReservationId": "r-0bad2d6b167dc7cc9",
+    "OwnerId": "953873390012",
+    "Groups": [],
+    "Instances": [
+        {
+            "Architecture": "arm64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "87ecf983-3b5e-40e5-8388-4e773a555a35",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2026-05-21T14:05:27+00:00",
+                        "AttachmentId": "eni-attach-0db595355c93cad71",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupId": "sg-02f47f440dc2560a9",
+                            "GroupName": "Security-Group-EC2"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "02:52:7e:8f:4b:a9",
+                    "NetworkInterfaceId": "eni-062a852a8b981b64b",
+                    "OwnerId": "953873390012",
+                    "PrivateIpAddress": "10.0.2.33",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateIpAddress": "10.0.2.33"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0ebfcfd0d3e6a82f7",
+                    "VpcId": "vpc-0cad9e805c28d0666",
+                    "InterfaceType": "interface",
+                    "Operator": {
+                        "Managed": false
+                    }
+                }
+            ],
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupId": "sg-02f47f440dc2560a9",
+                    "GroupName": "Security-Group-EC2"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "efs-ec2-b"
+                }
+            ],
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 2,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "required",
+                "HttpPutResponseHopLimit": 2,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "BootMode": "uefi",
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default",
+                "RebootMigration": "default"
+            },
+            "CurrentInstanceBootMode": "uefi",
+            "Operator": {
+                "Managed": false
+            },
+            "InstanceId": "i-00f677a687d47ed6b",
+            "ImageId": "ami-0576ef8e344fbf536",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PrivateDnsName": "ip-10-0-2-33.ec2.internal",
+            "PublicDnsName": "",
+            "StateTransitionReason": "",
+            "KeyName": "ec2-access-key-pair",
+            "AmiLaunchIndex": 0,
+            "ProductCodes": [],
+            "InstanceType": "t4g.nano",
+            "LaunchTime": "2026-05-21T14:05:27+00:00",
+            "Placement": {
+                "AvailabilityZoneId": "use1-az1",
+                "GroupName": "",
+                "Tenancy": "default",
+                "AvailabilityZone": "us-east-1b"
+            },
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "SubnetId": "subnet-0ebfcfd0d3e6a82f7",
+            "VpcId": "vpc-0cad9e805c28d0666",
+            "PrivateIpAddress": "10.0.2.33"
+        }
+    ]
+}
+
+aws ec2 describe-instances \
+  --instance-ids i-0182cddb1c323d9ac \
+  --query "Reservations[].Instances[].PublicIpAddress" \
+  --output text
+---
+98.80.124.247
+
+aws ec2 describe-instances \
+  --instance-ids i-00f677a687d47ed6b \
+  --query "Reservations[].Instances[].PublicIpAddress" \
+  --output text
+---
+13.220.24.124
+
+aws ec2 terminate-instances --instance-ids i-0182cddb1c323d9ac i-00f677a687d47ed6b
+---
+{
+    "TerminatingInstances": [
+        {
+            "InstanceId": "i-0182cddb1c323d9ac",
+            "CurrentState": {
+                "Code": 32,
+                "Name": "shutting-down"
+            },
+            "PreviousState": {
+                "Code": 16,
+                "Name": "running"
+            }
+        },
+        {
+            "InstanceId": "i-00f677a687d47ed6b",
+            "CurrentState": {
+                "Code": 32,
+                "Name": "shutting-down"
+            },
+            "PreviousState": {
+                "Code": 16,
+                "Name": "running"
+            }
+        }
+    ]
+}
+
+aws ec2 run-instances \
+  --image-id ami-0576ef8e344fbf536 \
+  --instance-type t4g.nano \
+  --key-name ec2-access-key-pair \
+  --subnet-id subnet-0919954727df74b79 \
+  --security-group-ids sg-03e92eb1b42cd4427 \
+  --associate-public-ip-address \
+  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=efs-ec2-a}]'
+---
+{
+    "ReservationId": "r-01ad24a81ae14e64a",
+    "OwnerId": "953873390012",
+    "Groups": [],
+    "Instances": [
+        {
+            "Architecture": "arm64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "480e1d62-277b-47d7-b49b-4b43909c17c0",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2026-05-21T14:38:13+00:00",
+                        "AttachmentId": "eni-attach-0d1edeb654d2afbf5",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupId": "sg-03e92eb1b42cd4427",
+                            "GroupName": "efs-sg"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "0e:ee:aa:16:66:81",
+                    "NetworkInterfaceId": "eni-04cad627be71b584c",
+                    "OwnerId": "953873390012",
+                    "PrivateIpAddress": "10.0.1.78",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateIpAddress": "10.0.1.78"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0919954727df74b79",
+                    "VpcId": "vpc-0cad9e805c28d0666",
+                    "InterfaceType": "interface",
+                    "Operator": {
+                        "Managed": false
+                    }
+                }
+            ],
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupId": "sg-03e92eb1b42cd4427",
+                    "GroupName": "efs-sg"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "efs-ec2-a"
+                }
+            ],
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 2,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "required",
+                "HttpPutResponseHopLimit": 2,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "BootMode": "uefi",
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default",
+                "RebootMigration": "default"
+            },
+            "CurrentInstanceBootMode": "uefi",
+            "Operator": {
+                "Managed": false
+            },
+            "InstanceId": "i-032a99b43a9bda547",
+            "ImageId": "ami-0576ef8e344fbf536",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PrivateDnsName": "ip-10-0-1-78.ec2.internal",
+            "PublicDnsName": "",
+            "StateTransitionReason": "",
+            "KeyName": "ec2-access-key-pair",
+            "AmiLaunchIndex": 0,
+            "ProductCodes": [],
+            "InstanceType": "t4g.nano",
+            "LaunchTime": "2026-05-21T14:38:13+00:00",
+            "Placement": {
+                "AvailabilityZoneId": "use1-az6",
+                "GroupName": "",
+                "Tenancy": "default",
+                "AvailabilityZone": "us-east-1a"
+            },
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "SubnetId": "subnet-0919954727df74b79",
+            "VpcId": "vpc-0cad9e805c28d0666",
+            "PrivateIpAddress": "10.0.1.78"
+        }
+    ]
+}
+
+aws ec2 run-instances \
+  --image-id ami-0576ef8e344fbf536 \
+  --instance-type t4g.nano \
+  --key-name ec2-access-key-pair \
+  --subnet-id subnet-0ebfcfd0d3e6a82f7 \
+  --security-group-ids sg-03e92eb1b42cd4427 \
+  --associate-public-ip-address \
+  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=efs-ec2-b}]'
+---
+{
+    "ReservationId": "r-0a06f42a12a5a956a",
+    "OwnerId": "953873390012",
+    "Groups": [],
+    "Instances": [
+        {
+            "Architecture": "arm64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "ed0f4faf-7d51-4d0f-95a5-20f8fcb5fb6b",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2026-05-21T14:39:59+00:00",
+                        "AttachmentId": "eni-attach-094a8c0e1a590f608",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupId": "sg-03e92eb1b42cd4427",
+                            "GroupName": "efs-sg"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "02:21:d3:6a:ed:ff",
+                    "NetworkInterfaceId": "eni-0831db555aa6bc149",
+                    "OwnerId": "953873390012",
+                    "PrivateIpAddress": "10.0.2.148",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateIpAddress": "10.0.2.148"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0ebfcfd0d3e6a82f7",
+                    "VpcId": "vpc-0cad9e805c28d0666",
+                    "InterfaceType": "interface",
+                    "Operator": {
+                        "Managed": false
+                    }
+                }
+            ],
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupId": "sg-03e92eb1b42cd4427",
+                    "GroupName": "efs-sg"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "efs-ec2-b"
+                }
+            ],
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 2,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "required",
+                "HttpPutResponseHopLimit": 2,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "BootMode": "uefi",
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default",
+                "RebootMigration": "default"
+            },
+            "CurrentInstanceBootMode": "uefi",
+            "Operator": {
+                "Managed": false
+            },
+            "InstanceId": "i-04ce43c5c5e7cea38",
+            "ImageId": "ami-0576ef8e344fbf536",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PrivateDnsName": "ip-10-0-2-148.ec2.internal",
+            "PublicDnsName": "",
+            "StateTransitionReason": "",
+            "KeyName": "ec2-access-key-pair",
+            "AmiLaunchIndex": 0,
+            "ProductCodes": [],
+            "InstanceType": "t4g.nano",
+            "LaunchTime": "2026-05-21T14:39:59+00:00",
+            "Placement": {
+                "AvailabilityZoneId": "use1-az1",
+                "GroupName": "",
+                "Tenancy": "default",
+                "AvailabilityZone": "us-east-1b"
+            },
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "SubnetId": "subnet-0ebfcfd0d3e6a82f7",
+            "VpcId": "vpc-0cad9e805c28d0666",
+            "PrivateIpAddress": "10.0.2.148"
+        }
+    ]
+}
+
+aws ec2 describe-instances \
+  --instance-ids i-032a99b43a9bda547 \
+  --query "Reservations[].Instances[].PublicIpAddress" \
+  --output text
+---
+98.86.221.230
+
+aws ec2 describe-instances \
+  --instance-ids i-04ce43c5c5e7cea38 \
+  --query "Reservations[].Instances[].PublicIpAddress" \
+  --output text
+---
+3.94.22.199
+
+aws ec2 authorize-security-group-ingress \
+    --group-id sg-03e92eb1b42cd4427 \
+    --protocol tcp \
+    --port 22 \
+    --source-group sg-03e92eb1b42cd4427
+---
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-0e51023e057ae2799",
+            "GroupId": "sg-03e92eb1b42cd4427",
+            "GroupOwnerId": "953873390012",
+            "IsEgress": false,
+            "IpProtocol": "tcp",
+            "FromPort": 22,
+            "ToPort": 22,
+            "ReferencedGroupInfo": {
+                "GroupId": "sg-03e92eb1b42cd4427",
+                "UserId": "953873390012"
+            },
+            "SecurityGroupRuleArn": "arn:aws:ec2:us-east-1:953873390012:security-group-rule/sgr-0e51023e057ae2799"
+        }
+    ]
+}
+
+aws ec2 modify-instance-attribute \
+    --instance-id i-032a99b43a9bda547 \
+    --groups sg-02f47f440dc2560a9
+
+aws ec2 modify-instance-attribute \
+    --instance-id i-04ce43c5c5e7cea38 \
+    --groups sg-02f47f440dc2560a9
+
+aws ec2 delete-security-group \
+    --group-id sg-03e92eb1b42cd4427
+
+aws ec2 create-network-acl-entry \
+  --network-acl-id acl-0ab324df662347c02 \
+  --ingress \
+  --rule-number 90 \
+  --protocol tcp \
+  --port-range From=2049,To=2049 \
+  --cidr-block 10.0.0.0/16 \
+  --rule-action allow
+
+aws ec2 create-network-acl-entry \
+  --network-acl-id acl-0ab324df662347c02 \
+  --egress \
+  --rule-number 90 \
+  --protocol tcp \
+  --port-range From=2049,To=2049 \
+  --cidr-block 10.0.0.0/16 \
+  --rule-action allow
+
+mount -t efs fs-04fd724982f03d833:/ /shared
+
+aws efs delete-mount-target --mount-target-id fsmt-0992128cae95ea849
+
+aws efs delete-mount-target --mount-target-id fsmt-0d1149812b1b16e13
+
+aws efs delete-file-system --file-system-id fs-04fd724982f03d833
+
+aws ec2 terminate-instances \
+  --instance-ids i-032a99b43a9bda547 i-04ce43c5c5e7cea38
+---
+{
+    "TerminatingInstances": [
+        {
+            "InstanceId": "i-032a99b43a9bda547",
+            "CurrentState": {
+                "Code": 32,
+                "Name": "shutting-down"
+            },
+            "PreviousState": {
+                "Code": 16,
+                "Name": "running"
+            }
+        },
+        {
+            "InstanceId": "i-04ce43c5c5e7cea38",
+            "CurrentState": {
+                "Code": 32,
+                "Name": "shutting-down"
+            },
+            "PreviousState": {
+                "Code": 16,
+                "Name": "running"
+            }
+        }
+    ]
+}
