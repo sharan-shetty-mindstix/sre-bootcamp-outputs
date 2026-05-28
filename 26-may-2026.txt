@@ -1,0 +1,226 @@
+cat > wrong-bucket-policy.json <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::bootcamp-assignment-4a-s3-wrong-demo-bucket/*"
+      ]
+    }
+  ]
+}
+EOF
+
+aws iam put-role-policy \
+  --role-name ec2-s3-list-only-role \
+  --policy-name s3-list-only-policy \
+  --policy-document file://wrong-bucket-policy.json
+---
+[root@ip-10-0-1-88 ~]# aws s3 cp s3://bootcamp-assignment-4a-s3-demo-bucket/s3-object.txt .
+fatal error: An error occurred (403) when calling the HeadObject operation: Forbidden
+
+aws s3 mb s3://bootcamp-assignment-4a-s3-demo-bucket-2
+---
+make_bucket: bootcamp-assignment-4a-s3-demo-bucket-2
+
+aws s3api put-public-access-block \
+  --bucket bootcamp-assignment-4a-s3-demo-bucket-2 \
+  --public-access-block-configuration \
+BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true
+
+aws iam create-user --user-name s3-test-user
+---
+{
+  "User": {
+      "Path": "/",
+      "UserName": "s3-test-user",
+      "UserId": "AIDA54F2I3G6CXIFL36O3",
+      "Arn": "arn:aws:iam::{Password}:user/s3-test-user",
+      "CreateDate": "2026-05-26T19:53:06+00:00"
+  }
+}
+
+aws iam create-access-key --user-name s3-test-user
+---
+{
+  "AccessKey": {
+      "UserName": "s3-test-user",
+      "AccessKeyId": "{Password}",
+      "Status": "Active",
+      "SecretAccessKey": "{Password}",
+      "CreateDate": "2026-05-26T19:53:42+00:00"
+  }
+}
+
+aws configure --profile s3test
+
+aws s3 ls s3://bootcamp-assignment-4a-s3-demo-bucket-2 --profile s3test
+---
+aws: [ERROR]: An error occurred (AccessDenied) when calling the ListObjectsV2 operation: User: arn:aws:iam::{Password}:user/s3-test-user is not authorized to perform: s3:ListBucket on resource: "arn:aws:s3:::bootcamp-assignment-4a-s3-demo-bucket-2" because no identity-based policy allows the s3:ListBucket action
+
+cat > bucket-policy.json <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::{Password}:user/s3-test-user"
+      },
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::bootcamp-assignment-4a-s3-demo-bucket-2",
+        "arn:aws:s3:::bootcamp-assignment-4a-s3-demo-bucket-2/*"
+      ]
+    }
+  ]
+}
+EOF
+
+aws s3api put-bucket-policy \
+  --bucket bootcamp-assignment-4a-s3-demo-bucket-2 \
+  --policy file://bucket-policy.json
+
+aws s3 ls s3://bootcamp-assignment-4a-s3-demo-bucket-2 --profile s3test
+---
+2026-05-27 01:30:36         24 s3-object.txt
+
+cat > deny-policy.json <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Principal": {
+        "AWS": "arn:aws:iam::{Password}:user/s3-test-user"
+      },
+      "Action": "s3:*",
+      "Resource": [
+        "arn:aws:s3:::bootcamp-assignment-4a-s3-demo-bucket-2",
+        "arn:aws:s3:::bootcamp-assignment-4a-s3-demo-bucket-2/*"
+      ]
+    }
+  ]
+}
+EOF
+
+aws s3api put-bucket-policy \
+  --bucket bootcamp-assignment-4a-s3-demo-bucket-2 \
+  --policy file://deny-policy.json
+
+cat > identity-allow.json <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "s3:*",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+
+aws s3 ls s3://bootcamp-assignment-4a-s3-demo-bucket-2 --profile s3test
+---
+aws: [ERROR]: An error occurred (AccessDenied) when calling the ListObjectsV2 operation: User: arn:aws:iam::{Password}:user/s3-test-user is not authorized to perform: s3:ListBucket on resource: "arn:aws:s3:::bootcamp-assignment-4a-s3-demo-bucket-2" with an explicit deny in a resource-based policy
+
+aws s3 cp file.txt s3://bootcamp-assignment-4a-s3-demo-bucket/
+
+cat > cross-account-trust.json <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::{Password}:root"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+
+aws iam create-role \
+  --role-name cross-account-s3-role \
+  --assume-role-policy-document file://cross-account-trust.json
+---
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "cross-account-s3-role",
+        "RoleId": "AROA54F2I3G6PHMQB55UT",
+        "Arn": "arn:aws:iam::{Password}:role/cross-account-s3-role",
+        "CreateDate": "2026-05-26T20:14:18+00:00",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {
+                        "AWS": "arn:aws:iam::{Password}:root"
+                    },
+                    "Action": "sts:AssumeRole"
+                }
+            ]
+        }
+    }
+}
+
+cat > cross-account-s3-policy.json <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::bootcamp-assignment-4a-s3-demo-bucket",
+        "arn:aws:s3:::bootcamp-assignment-4a-s3-demo-bucket/*"
+      ]
+    }
+  ]
+}
+EOF
+
+aws iam put-role-policy \
+  --role-name cross-account-s3-role \
+  --policy-name cross-account-s3-policy \
+  --policy-document file://cross-account-s3-policy.json
+
+cat > bucket-cross-account-policy.json <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::{Password}:role/cross-account-s3-role"
+      },
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::bootcamp-assignment-4a-s3-demo-bucket",
+        "arn:aws:s3:::bootcamp-assignment-4a-s3-demo-bucket/*"
+      ]
+    }
+  ]
+}
+EOF
+
+aws s3api put-bucket-policy \
+  --bucket bootcamp-assignment-4a-s3-demo-bucket \
+  --policy file://bucket-cross-account-policy.json

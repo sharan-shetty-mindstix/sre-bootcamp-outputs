@@ -1,0 +1,240 @@
+cat > assume-role-policy.json <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "sts:AssumeRole",
+      "Resource": "arn:aws:iam::{Password}:role/cross-account-s3-role"
+    }
+  ]
+}
+EOF
+
+cat > ec2-trust.json <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+
+aws iam create-role \
+  --role-name ec2-assume-cross-account-role \
+  --assume-role-policy-document file://ec2-trust.json
+---
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "ec2-assume-cross-account-role",
+        "RoleId": "AROAUSJEUSAACCWNYHNB2",
+        "Arn": "arn:aws:iam::{Password}:role/ec2-assume-cross-account-role",
+        "CreateDate": "2026-05-26T20:29:57+00:00",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Service": "ec2.amazonaws.com"
+                    },
+                    "Action": "sts:AssumeRole"
+                }
+            ]
+        }
+    }
+}
+
+aws iam create-instance-profile \
+  --instance-profile-name ec2-cross-account-profile
+---
+{
+    "InstanceProfile": {
+        "Path": "/",
+        "InstanceProfileName": "ec2-cross-account-profile",
+        "InstanceProfileId": "AIPAUSJEUSAAMA34NXPAR",
+        "Arn": "arn:aws:iam::{Password}:instance-profile/ec2-cross-account-profile",
+        "CreateDate": "2026-05-26T20:30:50+00:00",
+        "Roles": []
+    }
+}
+
+aws iam add-role-to-instance-profile \
+  --instance-profile-name ec2-cross-account-profile \
+  --role-name ec2-assume-cross-account-role
+
+aws ec2 run-instances \
+  --image-id ami-0576ef8e344fbf536 \
+  --instance-type t4g.small \
+  --key-name ec2-access-key-pair \
+  --subnet-id subnet-0eaaaa95f8c344442 \
+  --security-group-ids sg-0e856b7cd2d621645 \
+  --associate-public-ip-address \
+  --iam-instance-profile Name=ec2-cross-account-profile
+---
+{
+    "ReservationId": "r-0253c5d85b26d29e1",
+    "OwnerId": "{Password}",
+    "Groups": [],
+    "Instances": [
+        {
+            "Architecture": "arm64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "c42e342a-3118-4db7-b6c7-0ebddc678c31",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "IamInstanceProfile": {
+                "Arn": "arn:aws:iam::{Password}:instance-profile/ec2-cross-account-profile",
+                "Id": "AIPAUSJEUSAAMA34NXPAR"
+            },
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2026-05-26T20:43:37+00:00",
+                        "AttachmentId": "eni-attach-0f32ed840dc8ea9ab",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupId": "sg-0e856b7cd2d621645",
+                            "GroupName": "default"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "0a:ff:da:b2:f3:ed",
+                    "NetworkInterfaceId": "eni-02bdcde440d965a59",
+                    "OwnerId": "{Password}",
+                    "PrivateDnsName": "ip-172-31-30-170.ec2.internal",
+                    "PrivateIpAddress": "172.31.30.170",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateDnsName": "ip-172-31-30-170.ec2.internal",
+                            "PrivateIpAddress": "172.31.30.170"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0eaaaa95f8c344442",
+                    "VpcId": "vpc-0dd190f2d4324bfdf",
+                    "InterfaceType": "interface",
+                    "Operator": {
+                        "Managed": false
+                    }
+                }
+            ],
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupId": "sg-0e856b7cd2d621645",
+                    "GroupName": "default"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 2,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "required",
+                "HttpPutResponseHopLimit": 2,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "BootMode": "uefi",
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default",
+                "RebootMigration": "default"
+            },
+            "CurrentInstanceBootMode": "uefi",
+            "Operator": {
+                "Managed": false
+            },
+            "InstanceId": "i-049490060167bfd30",
+            "ImageId": "ami-0576ef8e344fbf536",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PrivateDnsName": "ip-172-31-30-170.ec2.internal",
+            "PublicDnsName": "",
+            "StateTransitionReason": "",
+            "KeyName": "ec2-access-key-pair",
+            "AmiLaunchIndex": 0,
+            "ProductCodes": [],
+            "InstanceType": "t4g.small",
+            "LaunchTime": "2026-05-26T20:43:37+00:00",
+            "Placement": {
+                "AvailabilityZoneId": "use1-az4",
+                "GroupName": "",
+                "Tenancy": "default",
+                "AvailabilityZone": "us-east-1c"
+            },
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "SubnetId": "subnet-0eaaaa95f8c344442",
+            "VpcId": "vpc-0dd190f2d4324bfdf",
+            "PrivateIpAddress": "172.31.30.170"
+        }
+    ]
+}
+
+ssh -i "secrets/personal-aws-acc/ec2-access-key-pair.pem" ec2-user@ec2-100-53-186-243.compute-1.amazonaws.com
+ssh -i "secrets/personal-aws-acc/ec2-access-key-pair.pem" ec2-user@100.53.186.243
+
+aws sts assume-role \
+  --role-arn arn:aws:iam::{Password}:role/cross-account-s3-role \
+  --role-session-name bootcamp-cross-account
+---
+{
+    "Credentials": {
+        "AccessKeyId": "{Password}",
+        "SecretAccessKey": "{Password}",
+        "SessionToken": "{Password}",
+        "Expiration": "2026-05-28T13:16:13+00:00"
+    },
+    "AssumedRoleUser": {
+        "AssumedRoleId": "AROA54F2I3G6PHMQB55UT:bootcamp-cross-account",
+        "Arn": "arn:aws:sts::{Password}:assumed-role/cross-account-s3-role/bootcamp-cross-account"
+    }
+}
+
+export AWS_ACCESS_KEY_ID={Password}
+export AWS_SECRET_ACCESS_KEY={Password}
+export AWS_SESSION_TOKEN={Password}
+
+aws s3 ls s3://bootcamp-assignment-4a-s3-demo-bucket
+
+aws s3 cp s3://bootcamp-assignment-4a-s3-demo-bucket/file.txt .

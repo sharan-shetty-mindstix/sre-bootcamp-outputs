@@ -1,0 +1,286 @@
+```
+🔧 Assignment 4A — "Why Can't EC2 Access S3?" (IAM Mistake Assignment)
+This assignment has three broken scenarios. Each produces a different error. Diagnose each one before fixing.
+
+Scenario 1 — No role attached:
+
+Launch an EC2 with no IAM role. SSH in. Run aws s3 ls. What is the exact error message?
+Scenario 2 — Role attached but wrong permissions: 2. Create a role with a trust policy for EC2. Give it only s3:ListBucket — deliberately omit s3:GetObject. 3. Attach to an EC2. SSH in. Run aws s3 ls s3://<bucket>/ — does it work? 4. Run aws s3 cp s3://<bucket>/file.txt . — does it work? What is the exact error message? 5. Is the error message different from Scenario 1? What does the difference tell you?
+
+Scenario 3 — Right permissions, wrong resource: 6. Update the permissions policy to include s3:GetObject but scope it to a different bucket ARN (not the one you're trying to access). 7. Try to download again. What happens? Same error as Scenario 2, or different?
+
+Write in your log: three distinct IAM failure modes for S3 access from EC2. For each: the failure scenario, the exact error symptom, and the fix.
+
+🔧 Assignment 4B — S3 Bucket Policy (Resource-Based Policy)
+Bucket policy examples: https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html
+
+Create an S3 bucket. Block all public access.
+Create an IAM user with no S3 permissions in their identity-based policy.
+Try to list the bucket as that user. Expected: denied.
+Add a bucket policy that allows s3:ListBucket and s3:GetObject for that specific user's ARN. Try again.
+Now add an explicit deny for that user in the bucket policy. Also add an explicit allow for them in their identity-based policy. Try to access the bucket. What wins?
+Question for your log: Walk through the cross-account policy evaluation logic (https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic-cross-account.html). Why does explicit deny in the resource policy win even when the identity policy says allow?
+
+🔧 Assignment 4C — Cross-Account S3 Access (Pair Assignment)
+Pair with another fresher. One of you is Account A (S3 bucket owner), the other is Account B (EC2 that needs access).
+
+Goal: EC2 in Account B reads objects from a bucket in Account A. No hardcoded credentials anywhere.
+
+Account A:
+
+Create an S3 bucket. Upload a few files.
+Create an IAM role cross-account-s3-role:
+Trust policy: allows Account B's account ID (not a specific user — the account) to assume this role
+Permissions policy: s3:GetObject and s3:ListBucket on your bucket ARN specifically
+Add a bucket policy allowing the cross-account-s3-role ARN to access the bucket.
+Why are both the role AND the bucket policy needed for cross-account? Read the cross-account evaluation docs and explain before proceeding.
+
+Account B:
+
+Create an IAM role for EC2 with permission to call sts:AssumeRole on Account A's role ARN specifically.
+Launch an EC2 with this role attached.
+SSH in. Assume Account A's role:
+aws sts assume-role \
+  --role-arn arn:aws:iam::<AccountA-ID>:role/cross-account-s3-role \
+  --role-session-name bootcamp-cross-account
+Export the temporary credentials as environment variables. List and download files from Account A's bucket.
+Questions for your log:
+
+Why were both things needed — the role in Account A AND the bucket policy? Try removing the bucket policy and retrying. What happens?
+The temporary credentials expire. How long do they last by default? How would a long-running application handle this?
+````
+
+aws ec2 run-instances \
+  --image-id ami-0576ef8e344fbf536 \
+  --instance-type t4g.nano \
+  --key-name ec2-access-key-pair \
+  --subnet-id subnet-0919954727df74b79 \
+  --security-group-ids sg-02f47f440dc2560a9 \
+  --associate-public-ip-address
+---
+{
+    "ReservationId": "r-085cb33f19269336e",
+    "OwnerId": "{Password}",
+    "Groups": [],
+    "Instances": [
+        {
+            "Architecture": "arm64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "6de2c757-854c-41f3-80d0-67bd3394e771",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2026-05-25T19:30:41+00:00",
+                        "AttachmentId": "eni-attach-0d630bb77e25e716d",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupId": "sg-02f47f440dc2560a9",
+                            "GroupName": "Security-Group-EC2"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "0e:b1:4c:83:cd:1f",
+                    "NetworkInterfaceId": "eni-0e91139bd874a31a4",
+                    "OwnerId": "{Password}",
+                    "PrivateDnsName": "ip-10-0-1-88.ec2.internal",
+                    "PrivateIpAddress": "10.0.1.88",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateDnsName": "ip-10-0-1-88.ec2.internal",
+                            "PrivateIpAddress": "10.0.1.88"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0919954727df74b79",
+                    "VpcId": "vpc-0cad9e805c28d0666",
+                    "InterfaceType": "interface",
+                    "Operator": {
+                        "Managed": false
+                    }
+                }
+            ],
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupId": "sg-02f47f440dc2560a9",
+                    "GroupName": "Security-Group-EC2"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 2,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "required",
+                "HttpPutResponseHopLimit": 2,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "BootMode": "uefi",
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default",
+                "RebootMigration": "default"
+            },
+            "CurrentInstanceBootMode": "uefi",
+            "Operator": {
+                "Managed": false
+            },
+            "InstanceId": "i-09dd27f0b6123dcd0",
+            "ImageId": "ami-0576ef8e344fbf536",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PrivateDnsName": "ip-10-0-1-88.ec2.internal",
+            "PublicDnsName": "",
+            "StateTransitionReason": "",
+            "KeyName": "ec2-access-key-pair",
+            "AmiLaunchIndex": 0,
+            "ProductCodes": [],
+            "InstanceType": "t4g.nano",
+            "LaunchTime": "2026-05-25T19:30:41+00:00",
+            "Placement": {
+                "AvailabilityZoneId": "use1-az6",
+                "GroupName": "",
+                "Tenancy": "default",
+                "AvailabilityZone": "us-east-1a"
+            },
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "SubnetId": "subnet-0919954727df74b79",
+            "VpcId": "vpc-0cad9e805c28d0666",
+            "PrivateIpAddress": "10.0.1.88"
+        }
+    ]
+}
+
+cat > trust-policy.json <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+
+aws iam create-role \
+  --role-name ec2-s3-list-only-role \
+  --assume-role-policy-document file://trust-policy.json
+---
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "ec2-s3-list-only-role",
+        "RoleId": "AROA54F2I3G6LTPU5X4TN",
+        "Arn": "arn:aws:iam::{Password}:role/ec2-s3-list-only-role",
+        "CreateDate": "2026-05-25T19:36:10+00:00",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Service": "ec2.amazonaws.com"
+                    },
+                    "Action": "sts:AssumeRole"
+                }
+            ]
+        }
+    }
+}
+
+cat > s3-list-only-policy.json <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::bootcamp-assignment-4a-s3-demo-bucket"
+      ]
+    }
+  ]
+}
+EOF
+
+aws iam put-role-policy \
+  --role-name ec2-s3-list-only-role \
+  --policy-name s3-list-only-policy \
+  --policy-document file://s3-list-only-policy.json
+
+aws iam create-instance-profile \
+  --instance-profile-name ec2-s3-list-only-profile
+---
+{
+    "InstanceProfile": {
+        "Path": "/",
+        "InstanceProfileName": "ec2-s3-list-only-profile",
+        "InstanceProfileId": "AIPA54F2I3G6KPDLQO3QK",
+        "Arn": "arn:aws:iam::{Password}:instance-profile/ec2-s3-list-only-profile",
+        "CreateDate": "2026-05-25T19:44:47+00:00",
+        "Roles": []
+    }
+}
+
+aws iam add-role-to-instance-profile \
+  --instance-profile-name ec2-s3-list-only-profile \
+  --role-name ec2-s3-list-only-role
+
+aws ec2 associate-iam-instance-profile \
+  --instance-id i-09dd27f0b6123dcd0 \
+  --iam-instance-profile Name=ec2-s3-list-only-profile
+---
+{
+    "IamInstanceProfileAssociation": {
+        "AssociationId": "iip-assoc-06614ceb01e48c13e",
+        "InstanceId": "i-09dd27f0b6123dcd0",
+        "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::{Password}:instance-profile/ec2-s3-list-only-profile",
+            "Id": "AIPA54F2I3G6KPDLQO3QK"
+        },
+        "State": "associating"
+    }
+}
+
+aws s3 cp s3://bootcamp-assignment-4a-s3-demo-bucket/s3-object.txt .

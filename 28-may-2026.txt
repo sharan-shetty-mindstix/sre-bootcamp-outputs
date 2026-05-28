@@ -1,0 +1,11 @@
+[ec2-user@ip-172-31-30-170 ~]$ aws s3 ls s3://bootcamp-assignment-4a-s3-demo-bucket
+2026-05-26 20:13:06        110 file.txt
+2026-05-25 19:53:30         24 s3-object.txt
+[ec2-user@ip-172-31-30-170 ~]$ aws s3 cp s3://bootcamp-assignment-4a-s3-demo-bucket/file.txt .
+download: s3://bootcamp-assignment-4a-s3-demo-bucket/file.txt to ./file.txt
+[ec2-user@ip-172-31-30-170 ~]$ aws sts get-caller-identity
+{
+    "UserId": "AROA54F2I3G6PHMQB55UT:bootcamp-cross-account",
+    "Account": "{Password}",
+    "Arn": "arn:aws:sts::{Password}:assumed-role/cross-account-s3-role/bootcamp-cross-account"
+}

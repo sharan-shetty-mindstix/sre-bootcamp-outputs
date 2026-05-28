@@ -1,0 +1,16 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Principal": {
+        "AWS": "arn:aws:iam::{Password}:user/s3-test-user"
+      },
+      "Action": "s3:*",
+      "Resource": [
+        "arn:aws:s3:::bootcamp-assignment-4a-s3-demo-bucket-2",
+        "arn:aws:s3:::bootcamp-assignment-4a-s3-demo-bucket-2/*"
+      ]
+    }
+  ]
+}
