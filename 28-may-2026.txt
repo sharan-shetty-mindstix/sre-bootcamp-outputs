@@ -1,11 +1,700 @@
-[ec2-user@ip-172-31-30-170 ~]$ aws s3 ls s3://bootcamp-assignment-4a-s3-demo-bucket
-2026-05-26 20:13:06        110 file.txt
-2026-05-25 19:53:30         24 s3-object.txt
-[ec2-user@ip-172-31-30-170 ~]$ aws s3 cp s3://bootcamp-assignment-4a-s3-demo-bucket/file.txt .
-download: s3://bootcamp-assignment-4a-s3-demo-bucket/file.txt to ./file.txt
-[ec2-user@ip-172-31-30-170 ~]$ aws sts get-caller-identity
+aws ec2 create-security-group \
+  --group-name alb-sg \
+  --description "ALB SG" \
+  --vpc-id vpc-0cad9e805c28d0666
+---
 {
-    "UserId": "AROA54F2I3G6PHMQB55UT:bootcamp-cross-account",
-    "Account": "{Password}",
-    "Arn": "arn:aws:sts::{Password}:assumed-role/cross-account-s3-role/bootcamp-cross-account"
+    "GroupId": "sg-052ebd677647b02ad",
+    "SecurityGroupArn": "arn:aws:ec2:us-east-1:953873390012:security-group/sg-052ebd677647b02ad"
+}
+
+aws ec2 authorize-security-group-ingress \
+    --group-id sg-052ebd677647b02ad \
+    --protocol tcp \
+    --port 80 \
+    --cidr 0.0.0.0/0
+---
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-026b6a0c0d1b1d10a",
+            "GroupId": "sg-052ebd677647b02ad",
+            "GroupOwnerId": "953873390012",
+            "IsEgress": false,
+            "IpProtocol": "tcp",
+            "FromPort": 80,
+            "ToPort": 80,
+            "CidrIpv4": "0.0.0.0/0",
+            "SecurityGroupRuleArn": "arn:aws:ec2:us-east-1:953873390012:security-group-rule/sgr-026b6a0c0d1b1d10a"
+        }
+    ]
+}
+
+aws ec2 authorize-security-group-ingress \
+  --group-id sg-052ebd677647b02ad \
+  --protocol tcp \
+  --port 443 \
+  --cidr 0.0.0.0/0
+---
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-0791c89df809c7073",
+            "GroupId": "sg-052ebd677647b02ad",
+            "GroupOwnerId": "953873390012",
+            "IsEgress": false,
+            "IpProtocol": "tcp",
+            "FromPort": 443,
+            "ToPort": 443,
+            "CidrIpv4": "0.0.0.0/0",
+            "SecurityGroupRuleArn": "arn:aws:ec2:us-east-1:953873390012:security-group-rule/sgr-0791c89df809c7073"
+        }
+    ]
+}
+
+aws ec2 create-security-group \
+  --group-name ec2-web-sg \
+  --description "EC2 Web SG" \
+  --vpc-id vpc-0cad9e805c28d0666
+---
+{
+    "GroupId": "sg-0a7741b83254c4658",
+    "SecurityGroupArn": "arn:aws:ec2:us-east-1:953873390012:security-group/sg-0a7741b83254c4658"
+}
+
+aws ec2 authorize-security-group-ingress \
+  --group-id sg-0a7741b83254c4658 \
+  --protocol tcp \
+  --port 80 \
+  --source-group sg-052ebd677647b02ad
+---
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-03e66b6d60b8d1ca9",
+            "GroupId": "sg-0a7741b83254c4658",
+            "GroupOwnerId": "953873390012",
+            "IsEgress": false,
+            "IpProtocol": "tcp",
+            "FromPort": 80,
+            "ToPort": 80,
+            "ReferencedGroupInfo": {
+                "GroupId": "sg-052ebd677647b02ad",
+                "UserId": "953873390012"
+            },
+            "SecurityGroupRuleArn": "arn:aws:ec2:us-east-1:953873390012:security-group-rule/sgr-03e66b6d60b8d1ca9"
+        }
+    ]
+}
+
+aws ec2 authorize-security-group-ingress \
+  --group-id sg-0a7741b83254c4658 \
+  --protocol tcp \
+  --port 22 \
+  --cidr 0.0.0.0/0
+---
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-00e8c4a9aa31c383e",
+            "GroupId": "sg-0a7741b83254c4658",
+            "GroupOwnerId": "953873390012",
+            "IsEgress": false,
+            "IpProtocol": "tcp",
+            "FromPort": 22,
+            "ToPort": 22,
+            "CidrIpv4": "0.0.0.0/0",
+            "SecurityGroupRuleArn": "arn:aws:ec2:us-east-1:953873390012:security-group-rule/sgr-00e8c4a9aa31c383e"
+        }
+    ]
+}
+
+aws ec2 run-instances \
+  --image-id ami-0576ef8e344fbf536 \
+  --instance-type t4g.nano \
+  --key-name ec2-access-key-pair \
+  --subnet-id subnet-0919954727df74b79 \
+  --security-group-ids sg-0a7741b83254c4658 \
+  --associate-public-ip-address \
+  --user-data file://userdata-1.sh
+---
+{
+    "ReservationId": "r-0154ad67be8bcd1b6",
+    "OwnerId": "953873390012",
+    "Groups": [],
+    "Instances": [
+        {
+            "Architecture": "arm64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "a8461ece-9892-4f4b-afc2-59c707892bbc",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2026-05-28T14:00:36+00:00",
+                        "AttachmentId": "eni-attach-0a8e61958c86f27b4",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupId": "sg-0a7741b83254c4658",
+                            "GroupName": "ec2-web-sg"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "0e:c1:4a:d5:57:8d",
+                    "NetworkInterfaceId": "eni-025d140ec89db6267",
+                    "OwnerId": "953873390012",
+                    "PrivateDnsName": "ip-10-0-1-153.ec2.internal",
+                    "PrivateIpAddress": "10.0.1.153",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateDnsName": "ip-10-0-1-153.ec2.internal",
+                            "PrivateIpAddress": "10.0.1.153"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0919954727df74b79",
+                    "VpcId": "vpc-0cad9e805c28d0666",
+                    "InterfaceType": "interface",
+                    "Operator": {
+                        "Managed": false
+                    }
+                }
+            ],
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupId": "sg-0a7741b83254c4658",
+                    "GroupName": "ec2-web-sg"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 2,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "required",
+                "HttpPutResponseHopLimit": 2,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "BootMode": "uefi",
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default",
+                "RebootMigration": "default"
+            },
+            "CurrentInstanceBootMode": "uefi",
+            "Operator": {
+                "Managed": false
+            },
+            "InstanceId": "i-0a6181edbcc46bec2",
+            "ImageId": "ami-0576ef8e344fbf536",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PrivateDnsName": "ip-10-0-1-153.ec2.internal",
+            "PublicDnsName": "",
+            "StateTransitionReason": "",
+            "KeyName": "ec2-access-key-pair",
+            "AmiLaunchIndex": 0,
+            "ProductCodes": [],
+            "InstanceType": "t4g.nano",
+            "LaunchTime": "2026-05-28T14:00:36+00:00",
+            "Placement": {
+                "AvailabilityZoneId": "use1-az6",
+                "GroupName": "",
+                "Tenancy": "default",
+                "AvailabilityZone": "us-east-1a"
+            },
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "SubnetId": "subnet-0919954727df74b79",
+            "VpcId": "vpc-0cad9e805c28d0666",
+            "PrivateIpAddress": "10.0.1.153"
+         }
+    ]
+}
+
+aws ec2 run-instances \
+  --image-id ami-0576ef8e344fbf536 \
+  --instance-type t4g.nano \
+  --key-name ec2-access-key-pair \
+  --subnet-id subnet-0ebfcfd0d3e6a82f7 \
+  --security-group-ids sg-0a7741b83254c4658 \
+  --associate-public-ip-address \
+  --user-data file://userdata-2.sh
+---
+{
+    "ReservationId": "r-0c2c10802fad1e6f9",
+    "OwnerId": "953873390012",
+    "Groups": [],
+    "Instances": [
+        {
+            "Architecture": "arm64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "81c3e8e0-89b8-4cc1-a087-20bee87bc35b",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2026-05-28T14:02:00+00:00",
+                        "AttachmentId": "eni-attach-08dbfcb06a75ff438",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupId": "sg-0a7741b83254c4658",
+                            "GroupName": "ec2-web-sg"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "02:aa:f6:0a:11:27",
+                    "NetworkInterfaceId": "eni-035e78cb5085c992f",
+                    "OwnerId": "953873390012",
+                    "PrivateDnsName": "ip-10-0-2-190.ec2.internal",
+                    "PrivateIpAddress": "10.0.2.190",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateDnsName": "ip-10-0-2-190.ec2.internal",
+                            "PrivateIpAddress": "10.0.2.190"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0ebfcfd0d3e6a82f7",
+                    "VpcId": "vpc-0cad9e805c28d0666",
+                    "InterfaceType": "interface",
+                    "Operator": {
+                        "Managed": false
+                    }
+                }
+            ],
+            "RootDeviceName": "/dev/xvda",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupId": "sg-0a7741b83254c4658",
+                    "GroupName": "ec2-web-sg"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 2,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "required",
+                "HttpPutResponseHopLimit": 2,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "BootMode": "uefi",
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default",
+                "RebootMigration": "default"
+            },
+            "CurrentInstanceBootMode": "uefi",
+            "Operator": {
+                "Managed": false
+            },
+            "InstanceId": "i-050896a4517ba2c55",
+            "ImageId": "ami-0576ef8e344fbf536",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PrivateDnsName": "ip-10-0-2-190.ec2.internal",
+            "PublicDnsName": "",
+            "StateTransitionReason": "",
+            "KeyName": "ec2-access-key-pair",
+            "AmiLaunchIndex": 0,
+            "ProductCodes": [],
+            "InstanceType": "t4g.nano",
+            "LaunchTime": "2026-05-28T14:02:00+00:00",
+            "Placement": {
+                "AvailabilityZoneId": "use1-az1",
+                "GroupName": "",
+                "Tenancy": "default",
+                "AvailabilityZone": "us-east-1b"
+            },
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "SubnetId": "subnet-0ebfcfd0d3e6a82f7",
+            "VpcId": "vpc-0cad9e805c28d0666",
+            "PrivateIpAddress": "10.0.2.190"
+        }
+    ]
+}
+
+aws elbv2 create-target-group \
+  --name bootcamp-target-group \
+  --protocol HTTP \
+  --port 80 \
+  --vpc-id vpc-0cad9e805c28d0666 \
+  --target-type instance \
+  --health-check-path /
+---
+{
+    "TargetGroups": [
+        {
+            "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:953873390012:targetgroup/bootcamp-target-group/cfd71c61afb5ef74",
+            "TargetGroupName": "bootcamp-target-group",
+            "Protocol": "HTTP",
+            "Port": 80,
+            "VpcId": "vpc-0cad9e805c28d0666",
+            "HealthCheckProtocol": "HTTP",
+            "HealthCheckPort": "traffic-port",
+            "HealthCheckEnabled": true,
+            "HealthCheckIntervalSeconds": 30,
+            "HealthCheckTimeoutSeconds": 5,
+            "HealthyThresholdCount": 5,
+            "UnhealthyThresholdCount": 2,
+            "HealthCheckPath": "/",
+            "Matcher": {
+                "HttpCode": "200"
+            },
+            "TargetType": "instance",
+            "ProtocolVersion": "HTTP1",
+            "IpAddressType": "ipv4"
+        }
+    ]
+}
+
+aws elbv2 register-targets \
+  --target-group-arn arn:aws:elasticloadbalancing:us-east-1:953873390012:targetgroup/bootcamp-target-group/cfd71c61afb5ef74 \
+  --targets Id=i-0a6181edbcc46bec2 Id=i-050896a4517ba2c55
+
+aws elbv2 create-load-balancer \
+  --name bootcamp-alb \
+  --subnets subnet-0919954727df74b79 subnet-0ebfcfd0d3e6a82f7 \
+  --security-groups sg-052ebd677647b02ad \
+  --scheme internet-facing \
+  --type application
+---
+{
+    "LoadBalancers": [
+        {
+            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:953873390012:loadbalancer/app/bootcamp-alb/f75327b998aa4fc1",
+            "DNSName": "bootcamp-alb-1330515316.us-east-1.elb.amazonaws.com",
+            "CanonicalHostedZoneId": "Z35SXDOTRQ7X7K",
+            "CreatedTime": "2026-05-28T16:05:58.041000+00:00",
+            "LoadBalancerName": "bootcamp-alb",
+            "Scheme": "internet-facing",
+            "VpcId": "vpc-0cad9e805c28d0666",
+            "State": {
+                "Code": "provisioning"
+            },
+            "Type": "application",
+            "AvailabilityZones": [
+                {
+                    "ZoneName": "us-east-1b",
+                    "SubnetId": "subnet-0ebfcfd0d3e6a82f7",
+                    "LoadBalancerAddresses": []
+                },
+                {
+                    "ZoneName": "us-east-1a",
+                    "SubnetId": "subnet-0919954727df74b79",
+                    "LoadBalancerAddresses": []
+                }
+            ],
+            "SecurityGroups": [
+                "sg-052ebd677647b02ad"
+            ],
+            "IpAddressType": "ipv4"
+        }
+    ]
+}
+
+aws elbv2 create-listener \
+  --load-balancer-arn arn:aws:elasticloadbalancing:us-east-1:953873390012:loadbalancer/app/bootcamp-alb/f75327b998aa4fc1 \
+  --protocol HTTP \
+  --port 80 \
+  --default-actions Type=forward,TargetGroupArn=arn:aws:elasticloadbalancing:us-east-1:953873390012:targetgroup/bootcamp-target-group/cfd71c61afb5ef74
+---
+{
+    "Listeners": [
+        {
+            "ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:953873390012:listener/app/bootcamp-alb/f75327b998aa4fc1/07ff14f1e4056486",
+            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:953873390012:loadbalancer/app/bootcamp-alb/f75327b998aa4fc1",
+            "Port": 80,
+            "Protocol": "HTTP",
+            "DefaultActions": [
+                {
+                    "Type": "forward",
+                    "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:953873390012:targetgroup/bootcamp-target-group/cfd71c61afb5ef74",
+                    "ForwardConfig": {
+                        "TargetGroups": [
+                            {
+                                "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:953873390012:targetgroup/bootcamp-target-group/cfd71c61afb5ef74",
+                                "Weight": 1
+                            }
+                        ],
+                        "TargetGroupStickinessConfig": {
+                            "Enabled": false
+                        }
+                    }
+                }
+                ]
+        }
+    ]
+}
+
+aws elbv2 describe-target-health \
+  --target-group-arn arn:aws:elasticloadbalancing:us-east-1:953873390012:targetgroup/bootcamp-target-group/cfd71c61afb5ef74
+---
+{
+    "TargetHealthDescriptions": [
+        {
+            "Target": {
+                "Id": "i-050896a4517ba2c55",
+                "Port": 80
+            },
+            "HealthCheckPort": "80",
+            "TargetHealth": {
+                "State": "healthy"
+            },
+            "AdministrativeOverride": {
+                "State": "no_override",
+                "Reason": "AdministrativeOverride.NoOverride",
+                "Description": "No override is currently active on target"
+            }
+        },
+        {
+            "Target": {
+                "Id": "i-0a6181edbcc46bec2",
+                "Port": 80
+            },
+            "HealthCheckPort": "80",
+            "TargetHealth": {
+                "State": "healthy"
+            },
+            "AdministrativeOverride": {
+                "State": "no_override",
+                "Reason": "AdministrativeOverride.NoOverride",
+                "Description": "No override is currently active on target"
+            }
+        }
+    ]
+}
+
+while true; do curl http://bootcamp-alb-1330515316.us-east-1.elb.amazonaws.com; echo; sleep 1; done
+
+aws elbv2 modify-target-group \
+  --target-group-arn arn:aws:elasticloadbalancing:us-east-1:953873390012:targetgroup/bootcamp-target-group/cfd71c61afb5ef74 \
+  --health-check-path /healthz
+---
+{
+    "TargetGroups": [
+        {
+            "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:953873390012:targetgroup/bootcamp-target-group/cfd71c61afb5ef74",
+            "TargetGroupName": "bootcamp-target-group",
+            "Protocol": "HTTP",
+            "Port": 80,
+            "VpcId": "vpc-0cad9e805c28d0666",
+            "HealthCheckProtocol": "HTTP",
+            "HealthCheckPort": "traffic-port",
+            "HealthCheckEnabled": true,
+            "HealthCheckIntervalSeconds": 30,
+            "HealthCheckTimeoutSeconds": 5,
+            "HealthyThresholdCount": 5,
+            "UnhealthyThresholdCount": 2,
+            "HealthCheckPath": "/healthz",
+            "Matcher": {
+                "HttpCode": "200"
+            },
+            "LoadBalancerArns": [
+                "arn:aws:elasticloadbalancing:us-east-1:953873390012:loadbalancer/app/bootcamp-alb/f75327b998aa4fc1"
+            ],
+            "TargetType": "instance",
+            "ProtocolVersion": "HTTP1",
+            "IpAddressType": "ipv4"
+        }
+    ]
+}
+
+aws elbv2 describe-target-health \
+  --target-group-arn arn:aws:elasticloadbalancing:us-east-1:953873390012:targetgroup/bootcamp-target-group/cfd71c61afb5ef74
+---
+{
+    "TargetHealthDescriptions": [
+        {
+            "Target": {
+                "Id": "i-050896a4517ba2c55",
+                "Port": 80
+            },
+            "HealthCheckPort": "80",
+            "TargetHealth": {
+                "State": "unhealthy",
+                "Reason": "Target.ResponseCodeMismatch",
+                "Description": "Health checks failed with these codes: [404]"
+            },
+            "AdministrativeOverride": {
+                "State": "no_override",
+                "Reason": "AdministrativeOverride.NoOverride",
+                "Description": "No override is currently active on target"
+            }
+        },
+        {
+            "Target": {
+                "Id": "i-0a6181edbcc46bec2",
+                "Port": 80
+            },
+            "HealthCheckPort": "80",
+            "TargetHealth": {
+                "State": "unhealthy",
+                "Reason": "Target.ResponseCodeMismatch",
+                "Description": "Health checks failed with these codes: [404]"
+            },
+            "AdministrativeOverride": {
+                "State": "no_override",
+                "Reason": "AdministrativeOverride.NoOverride",
+                "Description": "No override is currently active on target"
+            }
+        }
+    ]
+}
+
+aws elbv2 modify-target-group \
+  --target-group-arn arn:aws:elasticloadbalancing:us-east-1:953873390012:targetgroup/bootcamp-target-group/cfd71c61afb5ef74 \
+  --health-check-path /
+---
+{
+    "TargetGroups": [
+        {
+            "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:953873390012:targetgroup/bootcamp-target-group/cfd71c61afb5ef74",
+            "TargetGroupName": "bootcamp-target-group",
+            "Protocol": "HTTP",
+            "Port": 80,
+            "VpcId": "vpc-0cad9e805c28d0666",
+            "HealthCheckProtocol": "HTTP",
+            "HealthCheckPort": "traffic-port",
+            "HealthCheckEnabled": true,
+            "HealthCheckIntervalSeconds": 30,
+            "HealthCheckTimeoutSeconds": 5,
+            "HealthyThresholdCount": 5,
+            "UnhealthyThresholdCount": 2,
+            "HealthCheckPath": "/",
+            "Matcher": {
+                "HttpCode": "200"
+            },
+            "LoadBalancerArns": [
+                "arn:aws:elasticloadbalancing:us-east-1:953873390012:loadbalancer/app/bootcamp-alb/f75327b998aa4fc1"
+            ],
+            "TargetType": "instance",
+            "ProtocolVersion": "HTTP1",
+            "IpAddressType": "ipv4"
+        }
+    ]
+}
+
+aws elbv2 modify-target-group \
+  --target-group-arn arn:aws:elasticloadbalancing:us-east-1:953873390012:targetgroup/bootcamp-target-group/cfd71c61afb5ef74 \
+  --port 8080
+
+aws ec2 revoke-security-group-ingress \
+  --group-id sg-0a7741b83254c4658 \
+  --protocol tcp \
+  --port 80 \
+  --source-group sg-052ebd677647b02ad
+---
+{
+    "Return": true,
+    "RevokedSecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-03e66b6d60b8d1ca9",
+            "GroupId": "sg-0a7741b83254c4658",
+            "IsEgress": false,
+            "IpProtocol": "tcp",
+            "FromPort": 80,
+            "ToPort": 80,
+            "ReferencedGroupId": "sg-052ebd677647b02ad"
+        }
+    ]
+}
+
+aws ec2 authorize-security-group-ingress \
+  --group-id sg-0a7741b83254c4658 \
+  --protocol tcp \
+  --port 80 \
+  --source-group sg-052ebd677647b02ad
+---
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-09b845293b53abce3",
+            "GroupId": "sg-0a7741b83254c4658",
+            "GroupOwnerId": "953873390012",
+            "IsEgress": false,
+            "IpProtocol": "tcp",
+            "FromPort": 80,
+            "ToPort": 80,
+            "ReferencedGroupInfo": {
+                "GroupId": "sg-052ebd677647b02ad",
+                "UserId": "953873390012"
+            },
+            "SecurityGroupRuleArn": "arn:aws:ec2:us-east-1:953873390012:security-group-rule/sgr-09b845293b53abce3"
+        }
+    ]
 }

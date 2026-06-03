@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Glass Calculator</title>
+  <style>
+    :root {
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --glass-shadow: rgba(0, 0, 0, 0.25);
+      --text-color: #ffffff;
+      --btn-hover: rgba(255, 255, 255, 0.2);
+      --btn-active: rgba(255, 255, 255, 0.3);
+      --accent-color: #ff9a9e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+      overflow: hidden;
+    }
+
+    /* Background decorative circles */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+      backdrop-filter: blur(5px);
+      z-index: -1;
+    }
+    
+    .circle-1 {
+      width: 300px;
+      height: 300px;
+      top: 10%;
+      left: 20%;
+    }
+    
+    .circle-2 {
+      width: 200px;
+      height: 200px;
+      bottom: 15%;
+      right: 25%;
+    }
+
+    .calculator {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 25px;
+      width: 320px;
+      box-shadow: 0 15px 35px var(--glass-shadow);
+      z-index: 1;
+    }
+
+    .display {
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: right;
+      color: var(--text-color);
+      border: 1px solid var(--glass-border);
+      box-shadow: inset 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .previous-operand {
+      font-size: 1rem;
+      min-height: 1.2rem;
+      opacity: 0.7;
+      margin-bottom: 5px;
+      word-wrap: break-word;
+    }
+
+    .current-operand {
+      font-size: 2.5rem;
+      font-weight: 300;
+      word-wrap: break-word;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    button {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-color);
+      font-size: 1.2rem;
+      border-radius: 12px;
+      padding: 15px 0;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    button:hover {
+      background: var(--btn-hover);
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      background: var(--btn-active);
+      transform: translateY(0);
+    }
+
+    .operator {
+      background: rgba(255, 255, 255, 0.15);
+      font-weight: bold;
+    }
+
+    .equals {
+      grid-column: span 2;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      color: #333;
+      font-weight: bold;
+      border: none;
+    }
+
+    .equals:hover {
+      background: linear-gradient(135deg, #fecfef 0%, #ff9a9e 100%);
+    }
+
+    .clear {
+      grid-column: span 2;
+      background: rgba(255, 100, 100, 0.2);
+    }
+
+    .clear:hover {
+      background: rgba(255, 100, 100, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="circle circle-1"></div>
+  <div class="circle circle-2"></div>
+
+  <div class="calculator">
+    <div class="display">
+      <div class="previous-operand" id="previous-operand"></div>
+      <div class="current-operand" id="current-operand">0</div>
+    </div>
+    <div class="buttons">
+      <button class="clear" onclick="clearDisplay()">AC</button>
+      <button class="operator" onclick="deleteNumber()">DEL</button>
+      <button class="operator" onclick="chooseOperation('/')">&divide;</button>
+      
+      <button onclick="appendNumber('7')">7</button>
+      <button onclick="appendNumber('8')">8</button>
+      <button onclick="appendNumber('9')">9</button>
+      <button class="operator" onclick="chooseOperation('*')">&times;</button>
+      
+      <button onclick="appendNumber('4')">4</button>
+      <button onclick="appendNumber('5')">5</button>
+      <button onclick="appendNumber('6')">6</button>
+      <button class="operator" onclick="chooseOperation('-')">&minus;</button>
+      
+      <button onclick="appendNumber('1')">1</button>
+      <button onclick="appendNumber('2')">2</button>
+      <button onclick="appendNumber('3')">3</button>
+      <button class="operator" onclick="chooseOperation('+')">+</button>
+      
+      <button onclick="appendNumber('0')">0</button>
+      <button onclick="appendNumber('.')">.</button>
+      <button class="equals" onclick="compute()">=</button>
+    </div>
+  </div>
+
+  <script>
+    let currentOperand = '0';
+    let previousOperand = '';
+    let operation = undefined;
+
+    const currentOperandTextElement = document.getElementById('current-operand');
+    const previousOperandTextElement = document.getElementById('previous-operand');
+
+    function updateDisplay() {
+      currentOperandTextElement.innerText = currentOperand;
+      if (operation != null) {
+        let displayOp = operation;
+        if (operation === '*') displayOp = '×';
+        if (operation === '/') displayOp = '÷';
+        previousOperandTextElement.innerText = `${previousOperand} ${displayOp}`;
+      } else {
+        previousOperandTextElement.innerText = '';
+      }
+    }
+
+    function clearDisplay() {
+      currentOperand = '0';
+      previousOperand = '';
+      operation = undefined;
+      updateDisplay();
+    }
+
+    function deleteNumber() {
+      if (currentOperand === '0') return;
+      if (currentOperand.length === 1) {
+        currentOperand = '0';
+      } else {
+        currentOperand = currentOperand.toString().slice(0, -1);
+      }
+      updateDisplay();
+    }
+
+    function appendNumber(number) {
+      if (number === '.' && currentOperand.includes('.')) return;
+      if (currentOperand === '0' && number !== '.') {
+        currentOperand = number.toString();
+      } else {
+        currentOperand = currentOperand.toString() + number.toString();
+      }
+      updateDisplay();
+    }
+
+    function chooseOperation(op) {
+      if (currentOperand === '0' && previousOperand === '') return;
+      if (previousOperand !== '') {
+        compute();
+      }
+      operation = op;
+      previousOperand = currentOperand;
+      currentOperand = '0';
+      updateDisplay();
+    }
+
+    function compute() {
+      let computation;
+      const prev = parseFloat(previousOperand);
+      const current = parseFloat(currentOperand);
+      if (isNaN(prev) || isNaN(current)) return;
+      
+      switch (operation) {
+        case '+':
+          computation = prev + current;
+          break;
+        case '-':
+          computation = prev - current;
+          break;
+        case '*':
+          computation = prev * current;
+          break;
+        case '/':
+          if (current === 0) {
+            computation = "Error";
+          } else {
+            computation = prev / current;
+          }
+          break;
+        default:
+          return;
+      }
+      
+      currentOperand = computation.toString();
+      operation = undefined;
+      previousOperand = '';
+      updateDisplay();
+    }
+  </script>
+</body>
+</html>

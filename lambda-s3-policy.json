@@ -1,0 +1,97 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": "arn:aws:s3:::assignment-6a-s3-demo-bucket"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": "arn:aws:s3:::assignment-6a-s3-demo-bucket/*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+
+aws s3 mb s3://assignment-6c-s3-demo-bucket-static-site
+---
+make_bucket: assignment-6c-s3-demo-bucket-static-site
+
+aws s3api put-public-access-block \
+  --bucket assignment-6c-s3-demo-bucket-static-site \
+  --public-access-block-configuration \
+BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false
+
+aws s3 website s3://assignment-6c-s3-demo-bucket-static-site/ \
+  --index-document index.html
+
+cat > public-bucket-policy.json <<EOF
+{
+  "Version":"2012-10-17",
+  "Statement":[
+    {
+      "Sid":"PublicRead",
+      "Effect":"Allow",
+      "Principal":"*",
+      "Action":"s3:GetObject",
+      "Resource":"arn:aws:s3:::assignment-6c-s3-demo-bucket-static-site/*"
+    }
+  ]
+}
+EOF
+
+aws s3api put-bucket-policy \
+  --bucket assignment-6c-s3-demo-bucket-static-site \
+  --policy file://public-bucket-policy.json
+
+aws s3 cp index.html s3://assignment-6c-s3-demo-bucket-static-site/
+---
+upload: ./index.html to s3://assignment-6c-s3-demo-bucket-static-site/index.html
+
+aws s3api get-bucket-website \
+  --bucket assignment-6c-s3-demo-bucket-static-site
+---
+{
+  "IndexDocument": {
+      "Suffix": "index.html"
+  }
+}
+
+aws s3api get-bucket-location \
+  --bucket assignment-6c-s3-demo-bucket-static-site
+---
+{
+  "LocationConstraint": null
+}
+
+curl http://assignment-6c-s3-demo-bucket-static-site.s3-website-us-east-1.amazonaws.com/
+
+
+aws s3 rm s3://assignment-6c-s3-demo-bucket-static-site/index.html
+---
+delete: s3://assignment-6c-s3-demo-bucket-static-site/index.html
+
+aws s3api delete-bucket \
+  --bucket assignment-6c-s3-demo-bucket-static-site
+
+aws s3 rm s3://assignment-6a-s3-demo-bucket/test.txt
+---
+delete: s3://assignment-6a-s3-demo-bucket/test.txt
+
+aws s3 rb s3://assignment-6a-s3-demo-bucket
+---
+remove_bucket: assignment-6a-s3-demo-bucket

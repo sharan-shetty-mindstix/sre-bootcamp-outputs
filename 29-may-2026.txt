@@ -1,0 +1,299 @@
+aws ec2 create-launch-template \
+  --launch-template-name bootcamp-asg-launch-template \
+  --launch-template-data "{
+    \"ImageId\":\"ami-0576ef8e344fbf536\",
+    \"InstanceType\":\"t4g.nano\",
+    \"KeyName\":\"ec2-access-key-pair\",
+    \"SecurityGroupIds\":[\"sg-0a7741b83254c4658\"],
+    \"UserData\":\"$(base64 -i asg-userdata.sh | tr -d '\n')\"
+  }"
+---
+{
+    "LaunchTemplate": {
+        "LaunchTemplateId": "lt-0bf28c4c9ba610ce2",
+        "LaunchTemplateName": "bootcamp-asg-launch-template",
+        "CreateTime": "2026-05-29T22:36:22+00:00",
+        "CreatedBy": "arn:aws:iam::953873390012:user/sre-bootcamp",
+        "DefaultVersionNumber": 1,
+        "LatestVersionNumber": 1,
+        "Operator": {
+            "Managed": false
+        }
+    }
+}
+
+aws autoscaling create-auto-scaling-group \
+  --auto-scaling-group-name bootcamp-asg \
+  --launch-template LaunchTemplateName=bootcamp-asg-launch-template,Version=1 \
+  --min-size 1 \
+  --desired-capacity 2 \
+  --max-size 4 \
+  --vpc-zone-identifier "subnet-0919954727df74b79,subnet-0ebfcfd0d3e6a82f7" \
+  --target-group-arns "arn:aws:elasticloadbalancing:us-east-1:953873390012:targetgroup/bootcamp-target-group/cfd71c61afb5ef74"
+
+aws autoscaling describe-auto-scaling-groups \
+  --auto-scaling-group-names bootcamp-asg
+---
+{
+    "AutoScalingGroups": [
+        {
+            "AutoScalingGroupName": "bootcamp-asg",
+            "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:953873390012:autoScalingGroup:1ecaf79e-4c2b-4e4e-be4d-ff8cf24c806f:autoScalingGroupName/bootcamp-asg",
+            "LaunchTemplate": {
+                "LaunchTemplateId": "lt-0bf28c4c9ba610ce2",
+                "LaunchTemplateName": "bootcamp-asg-launch-template",
+                "Version": "1"
+            },
+            "MinSize": 1,
+            "MaxSize": 4,
+            "DesiredCapacity": 2,
+            "DefaultCooldown": 300,
+            "AvailabilityZones": [
+                "us-east-1a",
+                "us-east-1b"
+            ],
+            "AvailabilityZoneIds": [
+                "use1-az6",
+                "use1-az1"
+            ],
+            "LoadBalancerNames": [],
+            "TargetGroupARNs": [
+                "arn:aws:elasticloadbalancing:us-east-1:953873390012:targetgroup/bootcamp-target-group/cfd71c61afb5ef74"
+            ],
+            "HealthCheckType": "EC2",
+            "HealthCheckGracePeriod": 0,
+            "Instances": [
+                {
+                    "InstanceId": "i-002798e14bcf07192",
+                    "InstanceType": "t4g.nano",
+                    "AvailabilityZone": "us-east-1a",
+                    "AvailabilityZoneId": "use1-az6",
+                    "LifecycleState": "InService",
+                    "HealthStatus": "Healthy",
+                    "LaunchTemplate": {
+                        "LaunchTemplateId": "lt-0bf28c4c9ba610ce2",
+                        "LaunchTemplateName": "bootcamp-asg-launch-templ
+ate",
+                        "Version": "1"
+                    },
+                    "ProtectedFromScaleIn": false
+                },
+                {
+                    "InstanceId": "i-09f7b4fb01c96cb46",
+                    "InstanceType": "t4g.nano",
+                    "AvailabilityZone": "us-east-1b",
+                    "AvailabilityZoneId": "use1-az1",
+                    "LifecycleState": "InService",
+                    "HealthStatus": "Healthy",
+                    "LaunchTemplate": {
+                        "LaunchTemplateId": "lt-0bf28c4c9ba610ce2",
+                        "LaunchTemplateName": "bootcamp-asg-launch-templ
+ate",
+                        "Version": "1"
+                    },
+                    "ProtectedFromScaleIn": false
+                }
+            ],
+            "CreatedTime": "2026-05-29T22:38:03.669000+00:00",
+            "SuspendedProcesses": [],
+            "VPCZoneIdentifier": "subnet-0ebfcfd0d3e6a82f7,subnet-091995
+4727df74b79",
+            "EnabledMetrics": [],
+            "Tags": [],
+            "TerminationPolicies": [
+                "Default"
+            ],
+            "NewInstancesProtectedFromScaleIn": false,
+            "ServiceLinkedRoleARN": "arn:aws:iam::953873390012:role/aws-
+service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling",
+            "TrafficSources": [
+                {
+                    "Identifier": "arn:aws:elasticloadbalancing:us-east-
+1:953873390012:targetgroup/bootcamp-target-group/cfd71c61afb5ef74",
+                    "Type": "elbv2"
+                }
+            ],
+            "AvailabilityZoneDistribution": {
+                "CapacityDistributionStrategy": "balanced-best-effort"
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "default"
+            },
+            "InstanceLifecyclePolicy": {
+                "RetentionTriggers": {
+                    "TerminateHookAbandon": "terminate"
+                }
+            }
+        }
+    ]
+}
+
+aws ec2 terminate-instances \
+  --instance-ids i-002798e14bcf07192
+---
+{
+    "TerminatingInstances": [
+        {
+            "InstanceId": "i-002798e14bcf07192",
+            "CurrentState": {
+                "Code": 32,
+                "Name": "shutting-down"
+            },
+            "PreviousState": {
+                "Code": 16,
+                "Name": "running"
+            }
+        }
+    ]
+}
+
+aws autoscaling describe-auto-scaling-groups \
+  --auto-scaling-group-names bootcamp-asg
+---
+{
+    "AutoScalingGroups": [
+        {
+            "AutoScalingGroupName": "bootcamp-asg",
+            "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:953873390012:autoScalingGroup:1ecaf79e-4c2b-4e4e-be4d-ff8cf24c806f:autoScalingGroupName/bootcamp-asg",
+            "LaunchTemplate": {
+                "LaunchTemplateId": "lt-0bf28c4c9ba610ce2",
+                "LaunchTemplateName": "bootcamp-asg-launch-template",
+                "Version": "1"
+            }
+        }
+    ]
+}
+
+aws ec2 terminate-instances \
+  --instance-ids i-09f7b4fb01c96cb46
+---
+{
+    "TerminatingInstances": [
+        {
+            "InstanceId": "i-09f7b4fb01c96cb46",
+            "CurrentState": {
+                "Code": 32,
+                "Name": "shutting-down"
+            },
+            "PreviousState": {
+                "Code": 16,
+                "Name": "running"
+            }
+        }
+    ]
+}
+
+aws autoscaling update-auto-scaling-group \
+  --auto-scaling-group-name bootcamp-asg \
+  --desired-capacity 1
+
+aws sns create-topic --name cpu-alert-topic
+---
+{
+    "TopicArn": "arn:aws:sns:us-east-1:953873390012:cpu-alert-topic"
+}
+
+aws sns subscribe \
+  --topic-arn arn:aws:sns:us-east-1:953873390012:cpu-alert-topic \
+  --protocol email \
+  --notification-endpoint sharan.shetty@mindstix.com
+---
+{
+    "SubscriptionArn": "pending confirmation"
+}
+
+aws sns list-subscriptions
+---
+{
+    "Subscriptions": [
+        {
+            "SubscriptionArn": "arn:aws:sns:us-east-1:953873390012:cpu-alert-topic:a181b31d-5304-4322-a84e-5068fcf5e6e5",
+            "Owner": "953873390012",
+            "Protocol": "email",
+            "Endpoint": "sharan.shetty@mindstix.com",
+            "TopicArn": "arn:aws:sns:us-east-1:953873390012:cpu-alert-topic"
+        }
+    ]
+}
+
+aws cloudwatch put-metric-alarm \
+  --alarm-name HighCPUAlarm \
+  --metric-name CPUUtilization \
+  --namespace AWS/EC2 \
+  --statistic Average \
+  --period 60 \
+  --threshold 50 \
+  --comparison-operator GreaterThanThreshold \
+  --evaluation-periods 2 \
+  --dimensions Name=AutoScalingGroupName,Value=bootcamp-asg \
+  --alarm-actions arn:aws:sns:us-east-1:953873390012:cpu-alert-topic
+
+dnf install -y stress
+stress --cpu 4 --timeout 300
+
+dnf install -y amazon-cloudwatch-agent
+
+cat > cwagent-config.json <<EOF
+{
+  "logs": {
+    "logs_collected": {
+      "files": {
+        "collect_list": [
+          {
+            "file_path": "/var/log/cloud-init-output.log",
+            "log_group_name": "cloud-init-logs",
+            "log_stream_name": "{instance_id}"
+          }
+        ]
+      }
+    }
+  }
+}
+EOF
+
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+  -a fetch-config \
+  -m ec2 \
+  -c file:cwagent-config.json \
+  -s
+---
+****** processing amazon-cloudwatch-agent ******
+Starting config-downloader, this will map back to a call to amazon-cloudwatch-agent
+Executing /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent with arguments: [config-downloader -mode ec2 -download-source file:cwagent-config.json -output-dir /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.d -config /opt/aws/amazon-cloudwatch-agent/etc/common-config.toml -multi-config default]I! Trying to detect region from ec2
+D! [EC2] Found active network interface
+I! imds retry client will retry 1 times
+Start configuration validation...
+2026/05/30 12:26:17 Reading json config file path: /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.d/file_cwagent-config.json.tmp ...
+2026/05/30 12:26:17 I! Valid Json input schema.
+2026/05/30 12:26:17 Configuration validation first phase succeeded
+Starting config-translator, this will map back to a call to amazon-cloudwatch-agent
+Executing /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent with arguments: [config-translator -output /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.toml -mode ec2 -config /opt/aws/amazon-cloudwatch-agent/etc/common-config.toml -multi-config default -input /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json -input-dir /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.d]I! Trying to detect region from ec2
+D! [EC2] Found active network interface
+I! imds retry client will retry 1 times
+/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent -schematest -config /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.toml
+Configuration validation second phase succeeded
+Configuration validation succeeded
+amazon-cloudwatch-agent has already been stopped
+Created symlink /etc/systemd/system/multi-user.target.wants/amazon-cloudwatch-agent.service → /etc/systemd/system/amazon-cloudwatch-agent.service.
+
+cat > cw-policy.json <<EOF                                           ✔  16m 11s  17:57:40 
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+
+aws iam put-role-policy \
+  --role-name ec2-s3-list-only-role \
+  --policy-name cloudwatch-logs-policy \
+  --policy-document file://cw-policy.json

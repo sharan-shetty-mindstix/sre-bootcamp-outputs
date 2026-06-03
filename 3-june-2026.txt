@@ -1,0 +1,205 @@
+aws s3 mb s3://assignment-6a-s3-demo-bucket
+---
+make_bucket: assignment-6a-s3-demo-bucket
+
+aws s3api put-public-access-block \
+  --bucket assignment-6a-s3-demo-bucket \
+  --public-access-block-configuration \
+BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true
+
+aws s3 cp test.txt s3://assignment-6a-s3-demo-bucket/
+---
+upload: ./test.txt to s3://assignment-6a-s3-demo-bucket/test.txt
+
+aws s3 ls s3://assignment-6a-s3-demo-bucket/
+---
+s3://assignment-6a-s3-demo-bucket/
+2026-06-03
+
+aws s3 cp s3://assignment-6a-s3-demo-bucket/test.txt downloaded.txt
+---
+download: s3://assignment-6a-s3-demo-bucket/test.txt to ./downloaded.txt
+
+aws iam list-attached-user-policies \
+  --user-name ec2-s3-full-access
+
+aws iam create-role \                                                    ✔  17:31:41 
+  --role-name lambda-s3-role \
+  --assume-role-policy-document file://lambda-trust-policy.json
+---
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "lambda-s3-role",
+        "RoleId": "AROA54F2I3G6FXLHPYDQ2",
+        "Arn": "arn:aws:iam::953873390012:role/lambda-s3-role",
+        "CreateDate": "2026-06-03T12:02:18+00:00",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Service": "lambda.amazonaws.com"
+                    },
+                    "Action": "sts:AssumeRole"
+                }
+            ]
+        }
+    }
+}
+
+aws iam put-role-policy \
+  --role-name lambda-s3-role \
+  --policy-name lambda-s3-policy \
+  --policy-document file://lambda-s3-policy.json
+
+aws iam get-role \
+  --role-name lambda-s3-role
+---
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "lambda-s3-role",
+        "RoleId": "AROA54F2I3G6FXLHPYDQ2",
+        "Arn": "arn:aws:iam::953873390012:role/lambda-s3-role",
+        "CreateDate": "2026-06-03T12:02:18+00:00",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Service": "lambda.amazonaws.com"
+                    },
+                    "Action": "sts:AssumeRole"
+                }
+            ]
+        },
+        "MaxSessionDuration": 3600,
+        "RoleLastUsed": {}
+    }
+}
+
+cat > lambda_function.py <<EOF
+import boto3
+
+def lambda_handler(event, context):
+    s3 = boto3.client('s3')
+    bucket = '<BUCKET_NAME>'
+    response = s3.list_objects_v2(Bucket=bucket)
+    objects = [obj['Key'] for obj in response.get('Contents', [])]
+    print(f"Found objects: {objects}")
+    return {
+        'statusCode': 200,
+        'body': str(objects)
+    }
+EOF
+
+zip function.zip lambda_function.py
+
+aws lambda create-function \
+  --function-name list-s3-objects \
+  --runtime python3.13 \
+  --handler lambda_function.lambda_handler \
+  --zip-file fileb://function.zip \
+  --role arn:aws:iam::953873390012:role/lambda-s3-role
+---
+{
+    "FunctionName": "list-s3-objects",
+    "FunctionArn": "arn:aws:lambda:us-east-1:953873390012:function:list-s3-objects",
+    "Runtime": "python3.13",
+    "Role": "arn:aws:iam::953873390012:role/lambda-s3-role",
+    "Handler": "lambda_function.lambda_handler",
+    "CodeSize": 416,
+    "Description": "",
+    "Timeout": 3,
+    "MemorySize": 128,
+    "LastModified": "2026-06-03T12:34:06.364+0000",
+    "CodeSha256": "Hyn8JxYKBl02RRmqXXVlqtx2XOmul+0balYKdtMJsDI=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "e9abd348-1d5d-4c43-94bf-5ffd7b925c75",
+    "State": "Pending",
+    "StateReason": "The function is being created.",
+    "StateReasonCode": "Creating",
+    "PackageType": "Zip",
+    "Architectures": [
+        "x86_64"
+    ],
+    "EphemeralStorage": {
+        "Size": 512
+    },
+    "SnapStart": {
+        "ApplyOn": "None",
+        "OptimizationStatus": "Off"
+    },
+    "RuntimeVersionConfig": {
+        "RuntimeVersionArn": "arn:aws:lambda:us-east-1::runtime:b80aa8cfc4306316d8164ccc5e4a7effaf5d6038865946d200964f23367ef
+28b"
+    },
+    "LoggingConfig": {
+        "LogFormat": "Text",
+        "LogGroup": "/aws/lambda/list-s3-objects"
+    }
+}
+
+aws lambda invoke \
+  --function-name list-s3-objects \
+  output.json
+---
+{
+    "StatusCode": 200,
+    "FunctionError": "Unhandled",
+    "ExecutedVersion": "$LATEST"
+}
+
+aws logs describe-log-groups
+---
+{
+    "logGroups": [
+        {
+            "logGroupName": "/aws/lambda/list-s3-objects",
+            "creationTime": 1780490107203,
+            "metricFilterCount": 0,
+            "arn": "arn:aws:logs:us-east-1:953873390012:log-group:/aws/lambda/list-s3-objects:*",
+            "storedBytes": 0,
+            "logGroupClass": "STANDARD",
+            "logGroupArn": "arn:aws:logs:us-east-1:953873390012:log-group:/aws/lambda/list-s3-objects",
+            "deletionProtectionEnabled": false,
+            "bearerTokenAuthenticationEnabled": false
+        },
+        {
+            "logGroupName": "cloud-init-logs",
+            "creationTime": 1780144193451,
+            "metricFilterCount": 0,
+            "arn": "arn:aws:logs:us-east-1:953873390012:log-group:cloud-init-logs:*",
+            "storedBytes": 4855,
+            "logGroupClass": "STANDARD",
+            "logGroupArn": "arn:aws:logs:us-east-1:953873390012:log-group:cloud-init-logs",
+            "deletionProtectionEnabled": false,
+            "bearerTokenAuthenticationEnabled": false
+        }
+    ]
+}
+
+aws logs describe-log-streams \
+  --log-group-name /aws/lambda/list-s3-objects
+---
+{
+    "logStreams": [
+        {
+            "logStreamName": "2026/06/03/[$LATEST]53732fa774394aaeb39ab58e565d3219",
+            "creationTime": 1780490107234,
+            "firstEventTimestamp": 1780490103653,
+            "lastEventTimestamp": 1780490104099,
+            "lastIngestionTime": 1780490107244,
+            "uploadSequenceToken": "49039859674385740234279157999747558795126092880549920872",
+            "arn": "arn:aws:logs:us-east-1:953873390012:log-group:/aws/lambda/list-s3-objects:log-stream:2026/06/03/[$LATEST]53732fa774394aaeb39ab58e565d3219",
+            "storedBytes": 0
+        }
+    ]
+}
+
